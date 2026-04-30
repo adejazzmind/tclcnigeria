@@ -1,0 +1,62 @@
+﻿@model tclcnigeria.Models.ContactForm
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Contact Us</h1>
+        <p class="lead">Have a question or want to visit? We'd love to hear from you.</p>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row g-5">
+        <div class="col-lg-6">
+            <div class="bg-white p-4 shadow-sm rounded">
+                <form asp-action="Contact" method="post">
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Your Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" placeholder="name@example.com" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Subject" class="form-label"></label>
+                        <input asp-for="Subject" class="form-control" />
+                        <span asp-validation-for="Subject" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Message" class="form-label"></label>
+                        <textarea asp-for="Message" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="Message" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="h-100 p-4 bg-light rounded shadow-sm">
+                <h4 class="fw-bold mb-3">Our Location</h4>
+                <div class="ratio ratio-16x9 mb-4">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126844.0634861111!2d3.33615!3d6.524379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a397c78212!2sLagos!5e0!3m2!1sen!2sng!4v1641000000000" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <p><strong>Address:</strong> Lagos, Nigeria</p>
+                <p><strong>Phone:</strong> +234 800 000 0000</p>
+                <p><strong>Email:</strong> info@tclcnigeria.org</p>
+            </div>
+        </div>
+    </div>
+</div>

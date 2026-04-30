@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - tclcnigeria</title>
+
+    <!-- --- SEO & Social Media Meta Tags --- -->
+    <meta name="description" content="Welcome to TCLC Nigeria. Faith, Growth, Transformation." />
+    <meta name="keywords" content="Church, Nigeria, Lagos, Faith, Worship, TCLC, Pastor Edwin Etomi" />
+
+    <!-- --- Stylesheets --- -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold text-primary" asp-area="" asp-controller="Home" asp-action="Index">TCLC NIGERIA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Corrected Navigation: ms-auto pushes links to the right -->
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="About">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Ministries">Ministries</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Sermons">Sermons</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content wrapper with flex-grow -->
+    <div class="container site-content flex-grow-1">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Final Tightened Footer -->
+    <footer class="footer border-top text-muted bg-white mt-auto py-2">
+        <div class="container text-center">
+            <p class="mb-1 small" style="font-size: 0.75rem;">&copy; 2026 - **TCLC Nigeria** - <a asp-controller="Home" asp-action="Privacy" class="text-decoration-none text-muted">Privacy</a></p>
+            
+            <div class="admin-badge shadow-sm d-inline-block p-1 px-3 rounded bg-light border">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="d-flex gap-2 justify-content-center align-items-center">
+                        <small class="text-uppercase fw-bold text-muted" style="font-size: 0.6rem;">Admin:</small>
+                        <a asp-controller="SermonsAdmin" asp-action="Index" class="btn btn-sm btn-link text-decoration-none py-0 small" style="font-size: 0.7rem;">Sermons</a>
+                        <span class="text-muted">|</span>
+                        <a asp-controller="ContactAdmin" asp-action="Index" class="btn btn-sm btn-link text-decoration-none py-0 text-danger small" style="font-size: 0.7rem;">Messages</a>
+                        <span class="text-muted">|</span>
+                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home")" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-link text-dark py-0 small" style="font-size: 0.7rem;">Logout</button>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <a asp-area="Identity" asp-page="/Account/Login" class="text-secondary text-decoration-none" style="font-size: 0.7rem;">Admin Login</a>
+                }
+            </div>
+            <p class="text-muted mt-1 mb-0" style="font-size: 0.65rem;">Connecting people to Christ through faith and service.</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

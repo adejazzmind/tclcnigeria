@@ -1,0 +1,48 @@
+﻿@model IEnumerable<tclcnigeria.Models.ContactForm>
+
+@{
+    ViewData["Title"] = "Inbox";
+}
+
+<div class="container py-4">
+    <h2 class="fw-bold mb-4"><i class="bi bi-envelope-paper"></i> Message Inbox</h2>
+
+    <table class="table table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.DateSent)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Subject)</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                // PRO LOGIC: Apply 'table-danger' (red) if the message is unread
+                string rowStyle = !item.IsRead ? "table-danger fw-bold" : "";
+
+                <tr class="@rowStyle">
+                    <td>@item.DateSent.ToString("MMM dd, HH:mm")</td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Subject)</td>
+                    <td>
+                        @if (!item.IsRead)
+                        {
+                            <span class="badge bg-danger">New</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Read</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Open</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
