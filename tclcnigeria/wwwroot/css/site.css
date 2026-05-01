@@ -1,25 +1,24 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+:root {
+    --navy-blue: #000080;
+    --brand-blue: #007BFF;
+    --light-blue: #ADD8E6;
+    --lilac-white: #F3E5F5;
+    --light-yellow: #FFF9C4;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+/* Updated Hero Section with Navy Blue overlay */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 128, 0.7), rgba(0, 0, 128, 0.7)), url('/images/church-hero.jpg');
+    background-size: cover;
+    color: var(--lilac-white);
 }
 
-.site-content {
-    flex: 1 0 auto;
-    /* This makes sure the container doesn't force extra bottom space */
-    margin-bottom: 0 !important;
-}
-
-.footer {
-    flex-shrink: 0;
-    width: 100%;
-    background-color: #ffffff;
-    border-top: 1px solid #dee2e6;
-    padding: 0.5rem 0 !important;
+/* Light Yellow buttons for high visibility */
+.btn-church-cta {
+    background-color: var(--light-yellow);
+    color: var(--navy-blue);
+    border-radius: 50px;
+    font-weight: 800;
+    padding: 12px 35px;
+    border: 2px solid var(--light-blue);
 }

@@ -26,7 +26,6 @@ namespace tclcnigeria.Controllers
 
         public IActionResult Sermons()
         {
-            // PULL DATA: This fetches all sermons from your SQL Database
             var sermonList = _context.Sermons.OrderByDescending(s => s.DatePreached).ToList();
             return View(sermonList);
         }
@@ -44,7 +43,7 @@ namespace tclcnigeria.Controllers
         {
             if (ModelState.IsValid)
             {
-                // SAVE DATA: This saves the contact message to your SQL Database
+                model.DateSent = DateTime.UtcNow; // Ensures timestamp is set before saving
                 _context.ContactMessages.Add(model);
                 _context.SaveChanges();
 

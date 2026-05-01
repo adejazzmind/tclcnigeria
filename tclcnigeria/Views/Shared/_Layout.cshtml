@@ -23,7 +23,6 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <!-- Corrected Navigation: ms-auto pushes links to the right -->
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a></li>
@@ -44,10 +43,13 @@
         </main>
     </div>
 
-    <!-- Final Tightened Footer -->
+    <!-- Footer -->
     <footer class="footer border-top text-muted bg-white mt-auto py-2">
         <div class="container text-center">
-            <p class="mb-1 small" style="font-size: 0.75rem;">&copy; 2026 - **TCLC Nigeria** - <a asp-controller="Home" asp-action="Privacy" class="text-decoration-none text-muted">Privacy</a></p>
+            <p class="mb-1 small" style="font-size: 0.75rem;">
+                &copy; 2026 - <strong>TCLC Nigeria</strong> -
+                <a asp-controller="Home" asp-action="Privacy" class="text-decoration-none text-muted">Privacy</a>
+            </p>
             
             <div class="admin-badge shadow-sm d-inline-block p-1 px-3 rounded bg-light border">
                 @if (User.Identity.IsAuthenticated)

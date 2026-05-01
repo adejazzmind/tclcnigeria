@@ -6,11 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // --- 1. Add Services to the Container ---
 
-// Connection string will be pulled from appsettings.json locally 
+// Connection string pulled from appsettings.json locally
 // or from Environment Variables on Render
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Switched from SQL Server to PostgreSQL for Neon Compatibility
+// PostgreSQL for Neon compatibility
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
@@ -20,6 +20,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => {
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
     options.Password.RequireLowercase = false;
+    options.SignIn.RequireConfirmedAccount = false; // Allows login without email confirmation
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -29,20 +30,11 @@ builder.Services.AddRazorPages();
 var app = builder.Build();
 
 // --- 2. Database Auto-Migration ---
+// Try/catch removed so migration failures crash loudly and are visible in logs
 using (var scope = app.Services.CreateScope())
 {
-    var services = scope.ServiceProvider;
-    try
-    {
-        var db = services.GetRequiredService<ApplicationDbContext>();
-        // This is CRITICAL for Render/Neon: It creates your tables automatically on the cloud
-        db.Database.Migrate();
-    }
-    catch (Exception ex)
-    {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred during startup migration.");
-    }
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    db.Database.Migrate();
 }
 
 // --- 3. Configure the HTTP Request Pipeline ---
