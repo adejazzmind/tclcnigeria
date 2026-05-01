@@ -2,90 +2,132 @@
     ViewData["Title"] = "Our Ministries";
 }
 
-<div class="container py-5">
-    <div class="text-center mb-5">
-        <h1 class="fw-bold text-primary display-4">Our Ministries</h1>
-        <p class="lead text-muted">There is a place for you to grow and serve at TCLC Nigeria.</p>
-        <hr class="mx-auto" style="width: 100px; height: 3px; background-color: #007bff;">
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="container position-relative" style="z-index:2;">
+        <span class="eyebrow" style="color:var(--yellow);">Get Involved</span>
+        <h1 class="mt-2 mb-3">Our <em>Ministries</em></h1>
+        <p>There is a place for you to grow, serve, and thrive at TCLC Nigeria.</p>
     </div>
+</section>
 
-    <div class="row g-4">
-        <!-- Ministry Card 1 -->
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0 rounded-3">
-                <div class="card-body text-center p-4">
-                    <div class="display-5 text-primary mb-3">
-                        <i class="bi bi-people-fill"></i>
+<section style="padding:5rem 0;">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Men's Ministry -->
+            <div class="col-md-4">
+                <div class="ministry-card">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75"
+                         class="ministry-card-img" alt="Men's Ministry">
+                    <div class="ministry-card-body">
+                        <div class="ministry-icon"><i class="bi bi-people-fill"></i></div>
+                        <h5 class="fw-bold mb-2" style="font-family:var(--font-display);">Men's Ministry</h5>
+                        <p style="color:var(--text-mid);font-size:.93rem;margin:0;">
+                            Empowering men to lead with integrity, faith, and strength in their families
+                            and communities.
+                        </p>
                     </div>
-                    <h4 class="card-title fw-bold">Men's Ministry</h4>
-                    <p class="card-text text-muted">Empowering men to lead with integrity, faith, and strength in their families and communities.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Ministry Card 2 -->
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0 rounded-3 text-white bg-primary">
-                <div class="card-body text-center p-4">
-                    <div class="display-5 mb-3">
-                        <i class="bi bi-flower1"></i>
+            <!-- Women of Excellence (featured) -->
+            <div class="col-md-4">
+                <div class="ministry-card featured" style="height:100%;">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=75"
+                         class="ministry-card-img" alt="Women of Excellence">
+                    <div class="ministry-card-body">
+                        <div class="ministry-icon"><i class="bi bi-flower1"></i></div>
+                        <h5 class="fw-bold mb-2" style="font-family:var(--font-display);color:var(--white);">Women of Excellence</h5>
+                        <p style="color:rgba(255,255,255,.78);font-size:.93rem;margin:0;">
+                            Building a community of faith-filled women dedicated to prayer, mentorship,
+                            and service.
+                        </p>
                     </div>
-                    <h4 class="card-title fw-bold">Women of Excellence</h4>
-                    <p class="card-text">Building a community of faith-filled women dedicated to prayer, mentorship, and service.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Ministry Card 3 -->
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0 rounded-3">
-                <div class="card-body text-center p-4">
-                    <div class="display-5 text-primary mb-3">
-                        <i class="bi bi-person-arms-up"></i>
+            <!-- Youth Rising -->
+            <div class="col-md-4">
+                <div class="ministry-card">
+                    <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&q=75"
+                         class="ministry-card-img" alt="Youth Rising">
+                    <div class="ministry-card-body">
+                        <div class="ministry-icon"><i class="bi bi-person-arms-up"></i></div>
+                        <h5 class="fw-bold mb-2" style="font-family:var(--font-display);">Youth Rising</h5>
+                        <p style="color:var(--text-mid);font-size:.93rem;margin:0;">
+                            Inspiring the next generation to find their purpose and passion in the
+                            Word of God.
+                        </p>
                     </div>
-                    <h4 class="card-title fw-bold">Youth Rising</h4>
-                    <p class="card-text text-muted">Inspiring the next generation to find their purpose and passion in the Word of God.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Ministry Card 4 -->
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0 rounded-3">
-                <div class="card-body text-center p-4">
-                    <div class="display-5 text-primary mb-3">
-                        <i class="bi bi-music-note-beamed"></i>
+            <!-- Worship & Arts -->
+            <div class="col-md-4">
+                <div class="ministry-card">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=75"
+                         class="ministry-card-img" alt="Worship and Arts">
+                    <div class="ministry-card-body">
+                        <div class="ministry-icon"><i class="bi bi-music-note-beamed"></i></div>
+                        <h5 class="fw-bold mb-2" style="font-family:var(--font-display);">Worship &amp; Arts</h5>
+                        <p style="color:var(--text-mid);font-size:.93rem;margin:0;">
+                            Using music, drama, and technical arts to create an atmosphere for God's
+                            presence.
+                        </p>
                     </div>
-                    <h4 class="card-title fw-bold">Worship & Arts</h4>
-                    <p class="card-text text-muted">Using our talents in music, drama, and technical arts to create an atmosphere for God's presence.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Ministry Card 5 -->
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0 rounded-3">
-                <div class="card-body text-center p-4">
-                    <div class="display-5 text-primary mb-3">
-                        <i class="bi bi-book"></i>
+            <!-- Children's Church -->
+            <div class="col-md-4">
+                <div class="ministry-card">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=75"
+                         class="ministry-card-img" alt="Children's Church">
+                    <div class="ministry-card-body">
+                        <div class="ministry-icon"><i class="bi bi-book"></i></div>
+                        <h5 class="fw-bold mb-2" style="font-family:var(--font-display);">Children's Church</h5>
+                        <p style="color:var(--text-mid);font-size:.93rem;margin:0;">
+                            A safe, fun, and engaging environment where children learn the foundations
+                            of faith.
+                        </p>
                     </div>
-                    <h4 class="card-title fw-bold">Children's Church</h4>
-                    <p class="card-text text-muted">A safe, fun, and engaging environment where children learn the foundations of faith.</p>
                 </div>
             </div>
+
+            <!-- Outreach Team -->
+            <div class="col-md-4">
+                <div class="ministry-card">
+                    <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=75"
+                         class="ministry-card-img" alt="Outreach Team">
+                    <div class="ministry-card-body">
+                        <div class="ministry-icon"><i class="bi bi-hand-thumbs-up"></i></div>
+                        <h5 class="fw-bold mb-2" style="font-family:var(--font-display);">Outreach Team</h5>
+                        <p style="color:var(--text-mid);font-size:.93rem;margin:0;">
+                            Taking the love of Christ beyond our walls through community service
+                            and evangelism.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Ministry Card 6 -->
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0 rounded-3">
-                <div class="card-body text-center p-4">
-                    <div class="display-5 text-primary mb-3">
-                        <i class="bi bi-hand-thumbs-up"></i>
-                    </div>
-                    <h4 class="card-title fw-bold">Outreach Team</h4>
-                    <p class="card-text text-muted">Taking the love of Christ beyond our walls through community service and evangelism.</p>
-                </div>
+        <!-- CTA -->
+        <div class="text-center mt-5 pt-3">
+            <div style="background:linear-gradient(135deg,var(--lilac-soft),var(--yellow-soft));
+                border-radius:var(--r);padding:3rem;border:1px solid rgba(201,184,232,.3);">
+                <h3 style="font-family:var(--font-display);">Ready to Get Involved?</h3>
+                <p style="color:var(--text-mid);margin-bottom:1.5rem;">
+                    Reach out to us and we'll connect you to the right ministry for you.
+                </p>
+                <a asp-controller="Home" asp-action="Contact"
+                       style="display:inline-block;background:var(--navy);color:var(--white);
+                    border-radius:50px;padding:13px 36px;font-weight:600;
+                    text-decoration:none;box-shadow:0 6px 20px rgba(7,13,46,.2);">
+                    Contact Us <i class="bi bi-arrow-right ms-1"></i>
+                </a>
             </div>
         </div>
     </div>
-</div>
+</section>

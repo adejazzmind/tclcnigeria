@@ -4,25 +4,63 @@
     ViewData["Title"] = "Sermon Archive";
 }
 
-<div class="container py-5">
-    <h1 class="text-center mb-5 fw-bold">Recent Sermons</h1>
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="container position-relative" style="z-index:2;">
+        <span class="eyebrow" style="color:var(--yellow);">The Word of God</span>
+        <h1 class="mt-2 mb-3">Sermon <em>Archive</em></h1>
+        <p>Watch, listen, and grow through the teachings of TCLC Nigeria.</p>
+    </div>
+</section>
 
-    <div class="row">
-        @foreach (var sermon in Model)
+<section style="padding:5rem 0;">
+    <div class="container">
+        @if (!Model.Any())
         {
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm border-0">
-                    <div class="ratio ratio-16x9">
-                        <iframe src="@sermon.VideoUrl" title="@sermon.Title" allowfullscreen></iframe>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">@sermon.Title</h5>
-                        <p class="text-muted mb-1"><strong>Speaker:</strong> @sermon.Speaker</p>
-                        <p class="text-muted mb-2"><strong>Date:</strong> @sermon.DatePreached.ToString("MMM dd, yyyy")</p>
-                        <p class="card-text">@sermon.Description</p>
-                    </div>
+            <div class="text-center py-5">
+                <div style="width:80px;height:80px;border-radius:50%;background:var(--lilac-soft);
+                    display:flex;align-items:center;justify-content:center;
+                    margin:0 auto 1.5rem;font-size:2rem;color:var(--brand-blue);">
+                    <i class="bi bi-camera-video"></i>
                 </div>
+                <h4 style="font-family:var(--font-display);">No sermons yet</h4>
+                <p style="color:var(--text-mid);">Check back soon — new sermons are added regularly.</p>
+            </div>
+        }
+        else
+        {
+            <div class="row g-4">
+                @foreach (var sermon in Model)
+                {
+                    <div class="col-md-6">
+                        <div class="sermon-card">
+                            @if (!string.IsNullOrEmpty(sermon.VideoUrl))
+                            {
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="@sermon.VideoUrl" title="@sermon.Title"
+                                            allowfullscreen style="border:0;"></iframe>
+                                </div>
+                            }
+                            <div class="sermon-card-body">
+                                @if (!string.IsNullOrEmpty(sermon.SeriesName))
+                                {
+                                    <span class="sermon-tag">@sermon.SeriesName</span>
+                                }
+                                <h5 class="fw-bold mb-2" style="font-family:var(--font-display);">
+                                    @sermon.Title
+                                </h5>
+                                <div class="d-flex gap-3 mb-2" style="color:var(--text-light);font-size:.85rem;">
+                                    <span><i class="bi bi-person me-1"></i>@sermon.Speaker</span>
+                                    <span><i class="bi bi-calendar3 me-1"></i>@sermon.DatePreached.ToString("MMM dd, yyyy")</span>
+                                </div>
+                                <p style="color:var(--text-mid);font-size:.93rem;margin:0;">
+                                    @sermon.Description
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         }
     </div>
-</div>
+</section>
