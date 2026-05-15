@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore; // Change this
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace tclcnigeria.Models
 {
-    // Change inheritance to IdentityDbContext
     public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -13,5 +12,8 @@ namespace tclcnigeria.Models
 
         public DbSet<Sermon> Sermons { get; set; }
         public DbSet<ContactForm> ContactMessages { get; set; }
+        public DbSet<ChurchEvent> Events { get; set; }
+        public DbSet<PrayerRequest> PrayerRequests { get; set; }
+        public DbSet<Donation> Donations { get; set; }
     }
 }

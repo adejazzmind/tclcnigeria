@@ -4,36 +4,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TCLC Nigeria</title>
-    <meta name="description" content="Welcome to TCLC Nigeria — Faith, Growth, Transformation in Lagos, Nigeria." />
-    <meta name="keywords" content="Church, Nigeria, Lagos, Faith, Worship, TCLC, Pastor Edwin Etomi" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
-<body class="d-flex flex-column min-vh-100">
-
+<body>
     <header>
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    TCLC NIGERIA
+                <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
+                    <!-- Using a placeholder icon if logo is missing, or replace src with your local file -->
+                    <img src="~/images/tclc-logo.png" alt="Logo" height="35" class="me-2" onerror="this.style.display='none'" />
+                    <span>TCLC <span class="text-gold">NIGERIA</span></span>
                 </a>
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarMain" aria-controls="navbarMain"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarMain">
-                    <ul class="navbar-nav ms-auto gap-1 align-items-lg-center">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="About">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="About">About</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Ministries">Ministries</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Sermons">Sermons</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Contact"
-                                   style="background:var(--brand-blue);color:#fff!important;border-radius:50px;padding:.45rem 1.4rem!important;">
-                                Contact Us
-                            </a>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        <li class="nav-item ms-lg-3">
+                            <a asp-controller="Home" asp-action="Contact" class="btn btn-give">Give Online</a>
                         </li>
                     </ul>
                 </div>
@@ -41,47 +36,48 @@
         </nav>
     </header>
 
-    <div class="flex-grow-1">
-        <main role="main">
-            @RenderBody()
-        </main>
-    </div>
+    <div style="height: 80px;"></div> <!-- Spacer for fixed header -->
 
-    <footer class="footer">
-        <div class="container text-center">
-            <p class="mb-1" style="font-size:.78rem;">
-                &copy; 2026 &nbsp;·&nbsp; <strong>TCLC Nigeria</strong> &nbsp;·&nbsp;
-                <a asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
-            </p>
+    <main role="main">
+        @RenderBody()
+    </main>
 
-            <div class="admin-badge shadow-sm d-inline-block px-3 py-1 my-1">
-                @if (User.Identity != null && User.Identity.IsAuthenticated)
-                {
-                    <div class="d-flex gap-2 justify-content-center align-items-center">
-                        <small class="text-uppercase fw-bold" style="font-size:.6rem;color:rgba(255,255,255,.5)!important;">Admin:</small>
-                        <a asp-controller="SermonsAdmin" asp-action="Index" style="font-size:.72rem;">Sermons</a>
-                        <span style="color:rgba(255,255,255,.3)">|</span>
-                        <a asp-controller="ContactAdmin" asp-action="Index" style="font-size:.72rem;color:#f87171!important;">Messages</a>
-                        <span style="color:rgba(255,255,255,.3)">|</span>
-                        <form asp-area="Identity" asp-page="/Account/Logout"
-                              asp-route-returnUrl="@Url.Action("Index", "Home")"
-                              method="post" class="d-inline m-0">
-                            <button type="submit" class="btn btn-link p-0"
-                                    style="font-size:.72rem;color:rgba(255,255,255,.65)!important;text-decoration:none;">
-                                Logout
-                            </button>
-                        </form>
+    <footer class="footer-hybrid">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h5>TCLC Nigeria</h5>
+                    <p>Bringing healing to the nations of the world, building a total man, and restoring people to their destinies.</p>
+                    <div class="mt-4">
+                        <a href="https://facebook.com/thecityofthelordchurch" target="_blank" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="https://instagram.com/tclcnigeria" target="_blank" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.youtube.com/@@tclcnigeria" target="_blank" class="social-icon"><i class="bi bi-youtube"></i></a>
                     </div>
-                }
-                else
-                {
-                    <a asp-area="Identity" asp-page="/Account/Login" style="font-size:.72rem;">Admin Login</a>
-                }
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>Quick Links</h5>
+                    <a asp-controller="Home" asp-action="About" class="footer-link">About Us</a>
+                    <a asp-controller="Home" asp-action="Sermons" class="footer-link">Sermons</a>
+                    <a asp-controller="Home" asp-action="Ministries" class="footer-link">Ministries</a>
+                    <a asp-controller="Home" asp-action="Contact" class="footer-link">Contact</a>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h5>Service Times</h5>
+                    <p class="mb-1">Sunday Service</p>
+                    <p class="fw-bold mb-3">10:00 AM</p>
+                    <p class="mb-1">Wednesday Bible Study</p>
+                    <p class="fw-bold">6:00 PM</p>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Contact Info</h5>
+                    <p class="mb-2"><i class="bi bi-geo-alt me-2"></i> 25, Kudirat Soule Str, Ifako/Ogba, Lagos</p>
+                    <p class="mb-2"><i class="bi bi-telephone me-2"></i> +234 808 883 4964</p>
+                    <p><i class="bi bi-envelope me-2"></i> tclcnigeria@gmail.com</p>
+                </div>
             </div>
-
-            <p class="mt-1 mb-0" style="font-size:.68rem;color:rgba(255,255,255,.4);">
-                Connecting people to Christ through faith and service.
-            </p>
+            <div class="footer-bottom mt-5 pt-4 border-top border-secondary text-center">
+                <p class="small text-white-50">&copy; @DateTime.Now.Year The City Of The Lord Church Nigeria. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 

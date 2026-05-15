@@ -1,6 +1,131 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<!-- Page Header -->
+<section class="hero-section py-5">
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <p class="lead text-light mb-0">Your trust matters to us at TCLC Nigeria.</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+
+            <!-- Last Updated Badge -->
+            <div class="d-flex align-items-center mb-4">
+                <span class="badge bg-light text-dark border px-3 py-2">
+                    <i class="bi bi-calendar-event"></i>
+                    Last Updated: @DateTime.Now.ToString("MMMM yyyy")
+                </span>
+            </div>
+
+            <!-- Introduction -->
+            <div class="mb-5">
+                <p class="lead text-muted">
+                    The City Of The Lord Church Nigeria (TCLC Nigeria) — <em>"we", "us", or "our"</em> —
+                    respects your privacy. This Privacy Policy explains how we collect, use,
+                    and protect your information when you visit our website.
+                </p>
+            </div>
+
+            <!-- Section 1: Information We Collect -->
+            <section class="mb-5">
+                <h2 class="text-primary fw-bold">
+                    <i class="bi bi-info-circle"></i> Information We Collect
+                </h2>
+                <p class="text-muted">
+                    When you contact us through our website, we collect:
+                </p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Your full name</li>
+                    <li class="list-group-item">Your email address</li>
+                    <li class="list-group-item">The content of your message</li>
+                </ul>
+                <p class="text-muted mt-3 small">
+                    This information is collected for the sole purpose of responding to your inquiry.
+                </p>
+            </section>
+
+            <!-- Section 2: How We Use Your Information -->
+            <section class="mb-5">
+                <h2 class="text-primary fw-bold">
+                    <i class="bi bi-shield-check"></i> How We Use Your Information
+                </h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">To respond to your messages and inquiries.</li>
+                    <li class="list-group-item">To send updates about our services and events (only if you opt-in).</li>
+                    <li class="list-group-item">To improve our services and ministry to you.</li>
+                </ul>
+            </section>
+
+            <!-- Section 3: Information Sharing -->
+            <section class="mb-5">
+                <h2 class="text-primary fw-bold">
+                    <i class="bi bi-lock"></i> Information Sharing
+                </h2>
+                <p class="text-muted">
+                    We <strong>do not sell, trade, or share</strong> your personal information
+                    with third parties. Your data remains private to TCLC Nigeria.
+                </p>
+            </section>
+
+            <!-- Section 4: Your Rights -->
+            <section class="mb-5">
+                <h2 class="text-primary fw-bold">
+                    <i class="bi bi-person-check"></i> Your Rights
+                </h2>
+                <p class="text-muted">You have the right to:</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Request access to your personal data.</li>
+                    <li class="list-group-item">Request correction of inaccurate information.</li>
+                    <li class="list-group-item">Request deletion of your information from our records.</li>
+                </ul>
+            </section>
+
+            <!-- Section 5: Contact -->
+            <section class="mb-5">
+                <h2 class="text-primary fw-bold">
+                    <i class="bi bi-envelope"></i> Contact Us
+                </h2>
+                <p class="text-muted">
+                    If you have any questions about this Privacy Policy, please reach out:
+                </p>
+
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <small class="text-muted text-uppercase fw-bold">Email</small>
+                                <p class="mb-0 fw-semibold">tclcnigeria@gmail.com</p>
+                            </div>
+                            <div class="col-md-4">
+                                <small class="text-muted text-uppercase fw-bold">Phone</small>
+                                <p class="mb-0 fw-semibold">+234 808 883 4964</p>
+                            </div>
+                            <div class="col-md-4">
+                                <small class="text-muted text-uppercase fw-bold">Address</small>
+                                <p class="mb-0 fw-semibold small">
+                                    25, Kudirat Soule Str, Off Coker Str,<br>
+                                    College, Ifako/Ogba, Lagos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <div class="text-center mt-5 pt-3 border-top">
+                <p class="text-muted mb-3">Have a question or need assistance?</p>
+                <a asp-controller="Home" asp-action="Contact" class="btn-church-cta">
+                    <i class="bi bi-chat-dots"></i> Contact Us
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>

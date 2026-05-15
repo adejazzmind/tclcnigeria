@@ -7,8 +7,8 @@
 <!-- PAGE HERO -->
 <section class="page-hero">
     <div class="container position-relative" style="z-index:2;">
-        <span class="eyebrow" style="color:var(--yellow);">The Word of God</span>
-        <h1 class="mt-2 mb-3">Sermon <em>Archive</em></h1>
+        <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill">The Word of God</span>
+        <h1 class="mt-2">Sermon <em>Archive</em></h1>
         <p>Watch, listen, and grow through the teachings of TCLC Nigeria.</p>
     </div>
 </section>
@@ -18,7 +18,7 @@
         @if (!Model.Any())
         {
             <div class="text-center py-5">
-                <div style="width:80px;height:80px;border-radius:50%;background:var(--lilac-soft);
+                <div style="width:80px;height:80px;border-radius:50%;background:var(--lilac-soft, #ede5f8);
                     display:flex;align-items:center;justify-content:center;
                     margin:0 auto 1.5rem;font-size:2rem;color:var(--brand-blue);">
                     <i class="bi bi-camera-video"></i>
@@ -41,6 +41,13 @@
                                             allowfullscreen style="border:0;"></iframe>
                                 </div>
                             }
+                            else
+                            {
+                                <!-- Placeholder Image if no video URL -->
+                                <img src="https://images.unsplash.com/photo-1478147427282-58a87a120781?w=600&q=80"
+                                     class="img-fluid w-100" alt="Sermon thumbnail" style="height: 250px; object-fit: cover;" />
+                            }
+
                             <div class="sermon-card-body">
                                 @if (!string.IsNullOrEmpty(sermon.SeriesName))
                                 {
