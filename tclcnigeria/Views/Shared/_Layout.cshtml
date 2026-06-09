@@ -3,32 +3,56 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TCLC Nigeria</title>
+    <title>@ViewData["Title"] - The City of the Lord Church Nigeria</title>
+    <meta name="description" content="The City of the Lord Church Nigeria — Bringing healing to the nations." />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
+
     <header>
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
-                    <!-- Using a placeholder icon if logo is missing, or replace src with your local file -->
-                    <img src="~/images/tclc-logo.png" alt="Logo" height="35" class="me-2" onerror="this.style.display='none'" />
-                    <span>TCLC <span class="text-gold">NIGERIA</span></span>
+                <a class="navbar-brand d-flex align-items-center gap-2"
+                   asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="data:image/png;base64,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"
+                         alt="TCLC Logo" height="46" width="46"
+                         style="border-radius:50%;object-fit:cover;" />
+                    <div style="line-height:1.15;">
+                        <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:900;
+                            background:linear-gradient(135deg,var(--navy),var(--brand-blue));
+                            -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+                            background-clip:text;">
+                            TCLC NIGERIA
+                        </div>
+                        <div style="font-size:.58rem;color:var(--text-light);letter-spacing:.4px;
+                            text-transform:uppercase;font-weight:500;">
+                            The City of the Lord Church
+                        </div>
+                    </div>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+                <button class="navbar-toggler border-0" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto align-items-center">
+                    <ul class="navbar-nav ms-auto align-items-center gap-1">
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="About">About</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Ministries">Ministries</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Sermons">Sermons</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Events" asp-action="Index">Events</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Prayer" asp-action="Index">Prayer</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                        <li class="nav-item ms-lg-3">
-                            <a asp-controller="Home" asp-action="Contact" class="btn btn-give">Give Online</a>
+                        <li class="nav-item ms-lg-2">
+                            <a asp-controller="Give" asp-action="Index"
+                               class="btn-hero-primary"
+                               style="padding:9px 24px;font-size:.9rem;">
+                                Give Online
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -36,47 +60,205 @@
         </nav>
     </header>
 
-    <div style="height: 80px;"></div> <!-- Spacer for fixed header -->
+    <div style="height:80px;"></div>
 
-    <main role="main">
-        @RenderBody()
-    </main>
+    <div class="flex-grow-1">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
 
-    <footer class="footer-hybrid">
+    <footer style="background:var(--navy);color:rgba(255,255,255,.7);padding:4rem 0 1.5rem;">
         <div class="container">
             <div class="row g-5">
+
                 <div class="col-lg-4">
-                    <h5>TCLC Nigeria</h5>
-                    <p>Bringing healing to the nations of the world, building a total man, and restoring people to their destinies.</p>
-                    <div class="mt-4">
-                        <a href="https://facebook.com/thecityofthelordchurch" target="_blank" class="social-icon"><i class="bi bi-facebook"></i></a>
-                        <a href="https://instagram.com/tclcnigeria" target="_blank" class="social-icon"><i class="bi bi-instagram"></i></a>
-                        <a href="https://www.youtube.com/@@tclcnigeria" target="_blank" class="social-icon"><i class="bi bi-youtube"></i></a>
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <img src="data:image/png;base64,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"
+                             alt="TCLC Logo" height="40" width="40"
+                             style="border-radius:50%;object-fit:cover;" />
+                        <div>
+                            <div style="font-family:var(--font-display);font-weight:900;
+                                color:var(--white);font-size:1rem;">
+                                TCLC Nigeria
+                            </div>
+                            <div style="font-size:.58rem;color:rgba(255,255,255,.4);
+                                text-transform:uppercase;letter-spacing:.4px;">
+                                The City of the Lord Church
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color:rgba(255,255,255,.6);font-size:.88rem;line-height:1.8;margin-bottom:1rem;">
+                        Bringing healing to the nations of the world, building a total man,
+                        and restoring people to their destinies.
+                    </p>
+                    <p style="color:rgba(255,255,255,.4);font-size:.78rem;font-style:italic;margin-bottom:1rem;">
+                        Founded by Rev. Dr. J.S.A Oladele
+                    </p>
+                    <div class="d-flex gap-2">
+                        <a href="https://facebook.com/thecityofthelordchurch" target="_blank"
+                           style="width:36px;height:36px;border-radius:50%;
+                            background:rgba(255,255,255,.08);display:flex;
+                            align-items:center;justify-content:center;
+                            color:rgba(255,255,255,.7);text-decoration:none;">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com/tclcnigeria" target="_blank"
+                           style="width:36px;height:36px;border-radius:50%;
+                            background:rgba(255,255,255,.08);display:flex;
+                            align-items:center;justify-content:center;
+                            color:rgba(255,255,255,.7);text-decoration:none;">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@@tclcnigeria" target="_blank"
+                           style="width:36px;height:36px;border-radius:50%;
+                            background:rgba(255,255,255,.08);display:flex;
+                            align-items:center;justify-content:center;
+                            color:rgba(255,255,255,.7);text-decoration:none;">
+                            <i class="bi bi-youtube"></i>
+                        </a>
                     </div>
                 </div>
+
                 <div class="col-lg-2 col-6">
-                    <h5>Quick Links</h5>
-                    <a asp-controller="Home" asp-action="About" class="footer-link">About Us</a>
-                    <a asp-controller="Home" asp-action="Sermons" class="footer-link">Sermons</a>
-                    <a asp-controller="Home" asp-action="Ministries" class="footer-link">Ministries</a>
-                    <a asp-controller="Home" asp-action="Contact" class="footer-link">Contact</a>
+                    <h6 style="color:var(--yellow);font-size:.8rem;font-weight:700;
+                        letter-spacing:2px;text-transform:uppercase;margin-bottom:1.2rem;">
+                        Quick Links
+                    </h6>
+                    <div class="d-flex flex-column gap-2">
+                        <a asp-controller="Home" asp-action="About"
+                           style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.88rem;">About Us</a>
+                        <a asp-controller="Home" asp-action="Sermons"
+                           style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.88rem;">Sermons</a>
+                        <a asp-controller="Home" asp-action="Ministries"
+                           style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.88rem;">Ministries</a>
+                        <a asp-controller="Events" asp-action="Index"
+                           style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.88rem;">Events</a>
+                        <a asp-controller="Prayer" asp-action="Index"
+                           style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.88rem;">Prayer Request</a>
+                        <a asp-controller="Give" asp-action="Index"
+                           style="color:var(--yellow);text-decoration:none;font-size:.88rem;font-weight:600;">Give Online</a>
+                        <a asp-controller="Home" asp-action="Contact"
+                           style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.88rem;">Contact</a>
+                    </div>
                 </div>
+
                 <div class="col-lg-3 col-6">
-                    <h5>Service Times</h5>
-                    <p class="mb-1">Sunday Service</p>
-                    <p class="fw-bold mb-3">10:00 AM</p>
-                    <p class="mb-1">Wednesday Bible Study</p>
-                    <p class="fw-bold">6:00 PM</p>
+                    <h6 style="color:var(--yellow);font-size:.8rem;font-weight:700;
+                        letter-spacing:2px;text-transform:uppercase;margin-bottom:1.2rem;">
+                        Service Times
+                    </h6>
+                    <div class="d-flex flex-column gap-2">
+                        <div style="background:rgba(255,255,255,.05);border-radius:10px;
+                            padding:.8rem 1rem;border-left:3px solid var(--yellow);">
+                            <p style="color:var(--white);font-weight:600;font-size:.88rem;margin-bottom:.1rem;">
+                                Sunday Service
+                            </p>
+                            <p style="color:rgba(255,255,255,.5);font-size:.82rem;margin:0;">10:00 AM</p>
+                        </div>
+                        <div style="background:rgba(255,255,255,.05);border-radius:10px;
+                            padding:.8rem 1rem;border-left:3px solid var(--brand-blue);">
+                            <p style="color:var(--white);font-weight:600;font-size:.88rem;margin-bottom:.1rem;">
+                                Wednesday Bible Study
+                            </p>
+                            <p style="color:rgba(255,255,255,.5);font-size:.82rem;margin:0;">6:00 PM</p>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="col-lg-3">
-                    <h5>Contact Info</h5>
-                    <p class="mb-2"><i class="bi bi-geo-alt me-2"></i> 25, Kudirat Soule Str, Ifako/Ogba, Lagos</p>
-                    <p class="mb-2"><i class="bi bi-telephone me-2"></i> +234 808 883 4964</p>
-                    <p><i class="bi bi-envelope me-2"></i> tclcnigeria@gmail.com</p>
+                    <h6 style="color:var(--yellow);font-size:.8rem;font-weight:700;
+                        letter-spacing:2px;text-transform:uppercase;margin-bottom:1.2rem;">
+                        Contact Info
+                    </h6>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="d-flex gap-2" style="align-items:flex-start;">
+                            <i class="bi bi-geo-alt-fill"
+                               style="color:var(--yellow);margin-top:3px;flex-shrink:0;"></i>
+                            <p style="color:rgba(255,255,255,.6);font-size:.85rem;
+                                line-height:1.7;margin:0;">
+                                25, Kudirat Soule Street, off Coker Street,<br>
+                                Orimolade Bus Stop, College Road,<br>
+                                Ifako, Ogba, Lagos.
+                            </p>
+                        </div>
+                        <div class="d-flex gap-2 align-items-center">
+                            <i class="bi bi-telephone-fill"
+                               style="color:var(--yellow);flex-shrink:0;"></i>
+                            <a href="tel:07082768005"
+                               style="color:rgba(255,255,255,.6);font-size:.88rem;text-decoration:none;">
+                                07082768005
+                            </a>
+                        </div>
+                        <div class="d-flex gap-2 align-items-center">
+                            <i class="bi bi-envelope-fill"
+                               style="color:var(--yellow);flex-shrink:0;"></i>
+                            <a href="mailto:tclcnigeria@gmail.com"
+                               style="color:rgba(255,255,255,.6);font-size:.88rem;text-decoration:none;">
+                                tclcnigeria@gmail.com
+                            </a>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-            <div class="footer-bottom mt-5 pt-4 border-top border-secondary text-center">
-                <p class="small text-white-50">&copy; @DateTime.Now.Year The City Of The Lord Church Nigeria. All Rights Reserved.</p>
+
+            <div style="border-top:1px solid rgba(255,255,255,.08);margin-top:3rem;
+                padding-top:1.5rem;display:flex;flex-wrap:wrap;
+                justify-content:space-between;align-items:center;gap:1rem;">
+                <p style="color:rgba(255,255,255,.35);font-size:.78rem;margin:0;">
+                    &copy; @DateTime.Now.Year The City of The Lord Church Nigeria.
+                    All Rights Reserved. Founded by Rev. Dr. J.S.A Oladele.
+                </p>
+                <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+                    border-radius:50px;padding:4px 16px;display:inline-block;">
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        <div class="d-flex gap-2 align-items-center">
+                            <small style="font-size:.6rem;color:rgba(255,255,255,.35);
+                                text-transform:uppercase;font-weight:700;letter-spacing:1px;">
+                                Admin:
+                            </small>
+                            <a asp-controller="SermonsAdmin" asp-action="Index"
+                               style="font-size:.72rem;color:rgba(255,255,255,.55);text-decoration:none;">
+                                Sermons
+                            </a>
+                            <span style="color:rgba(255,255,255,.2);">|</span>
+                            <a asp-controller="ContactAdmin" asp-action="Index"
+                               style="font-size:.72rem;color:#f87171;text-decoration:none;">Messages</a>
+                            <span style="color:rgba(255,255,255,.2);">|</span>
+                            <a asp-controller="EventsAdmin" asp-action="Index"
+                               style="font-size:.72rem;color:rgba(255,255,255,.55);text-decoration:none;">
+                                Events
+                            </a>
+                            <span style="color:rgba(255,255,255,.2);">|</span>
+                            <a asp-controller="PrayerAdmin" asp-action="Index"
+                               style="font-size:.72rem;color:rgba(255,255,255,.55);text-decoration:none;">
+                                Prayers
+                            </a>
+                            <span style="color:rgba(255,255,255,.2);">|</span>
+                            <a asp-controller="GivingAdmin" asp-action="Index"
+                               style="font-size:.72rem;color:var(--yellow);text-decoration:none;">Giving</a>
+                            <span style="color:rgba(255,255,255,.2);">|</span>
+                            <form asp-area="Identity" asp-page="/Account/Logout"
+                                  asp-route-returnUrl="@Url.Action("Index", "Home")"
+                                  method="post" class="d-inline m-0">
+                                <button type="submit" class="btn btn-link p-0"
+                                        style="font-size:.72rem;color:rgba(255,255,255,.55);
+                                    text-decoration:none;">
+                                    Logout
+                                </button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Login"
+                           style="font-size:.72rem;color:rgba(255,255,255,.4);text-decoration:none;">
+                            Admin Login
+                        </a>
+                    }
+                </div>
             </div>
         </div>
     </footer>

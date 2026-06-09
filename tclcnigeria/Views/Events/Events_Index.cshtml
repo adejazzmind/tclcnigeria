@@ -1,0 +1,144 @@
+﻿@model IEnumerable<tclcnigeria.Models.ChurchEvent>
+
+@{
+    ViewData["Title"] = "Upcoming Events";
+}
+
+<section class="page-hero">
+    <div class="container position-relative" style="z-index:2;">
+        <span class="eyebrow" style="color:var(--yellow);">What's Happening</span>
+        <h1 class="mt-2 mb-3">Upcoming <em>Events</em></h1>
+        <p>Stay connected with everything happening at TCLC Nigeria.</p>
+    </div>
+</section>
+
+<section style="padding:5rem 0;">
+    <div class="container">
+
+        @if (!Model.Any())
+        {
+            <div class="text-center py-5">
+                <div style="width:80px;height:80px;border-radius:50%;background:var(--lilac-soft);
+                    display:flex;align-items:center;justify-content:center;
+                    margin:0 auto 1.5rem;font-size:2rem;color:var(--brand-blue);">
+                    <i class="bi bi-calendar3"></i>
+                </div>
+                <h4 style="font-family:var(--font-display);">No upcoming events</h4>
+                <p style="color:var(--text-mid);">Check back soon — exciting events are being planned!</p>
+            </div>
+        }
+        else
+        {
+            var featured = Model.FirstOrDefault(e => e.IsFeatured) ?? Model.First();
+
+            <div style="background:linear-gradient(135deg,var(--navy),var(--brand-blue));
+                border-radius:24px;padding:3rem;margin-bottom:3rem;
+                position:relative;overflow:hidden;">
+                <div style="position:absolute;top:-40px;right:-40px;width:220px;height:220px;
+                border-radius:50%;background:rgba(245,200,66,.1);"></div>
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <span style="background:var(--yellow);color:var(--navy);font-size:.7rem;
+                            font-weight:700;letter-spacing:2px;text-transform:uppercase;
+                            padding:5px 16px;border-radius:50px;display:inline-block;
+                            margin-bottom:1rem;">
+                            Featured Event
+                        </span>
+                        <h2 style="color:var(--white);font-family:var(--font-display);font-size:2.2rem;">
+                            @featured.Title
+                        </h2>
+                        <p style="color:rgba(255,255,255,.78);font-size:1rem;margin-bottom:1.5rem;">
+                            @featured.Description
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <span style="color:var(--yellow);font-size:.9rem;">
+                                <i class="bi bi-calendar-event me-2"></i>
+                                @featured.EventDate.ToString("dddd, MMMM dd, yyyy")
+                            </span>
+                            <span style="color:rgba(255,255,255,.7);font-size:.9rem;">
+                                <i class="bi bi-clock me-2"></i>
+                                @featured.EventDate.ToString("h:mm tt")
+                            </span>
+                            @if (!string.IsNullOrEmpty(featured.Location))
+                            {
+                                <span style="color:rgba(255,255,255,.7);font-size:.9rem;">
+                                    <i class="bi bi-geo-alt me-2"></i>@featured.Location
+                                </span>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-center mt-4 mt-lg-0">
+                        <div style="background:rgba(255,255,255,.1);border-radius:var(--r);padding:2rem;">
+                            <div style="font-family:var(--font-display);font-size:4rem;font-weight:900;
+                                color:var(--yellow);line-height:1;">
+                                @featured.EventDate.Day
+                            </div>
+                            <div style="color:rgba(255,255,255,.8);font-size:1.1rem;font-weight:600;">
+                                @featured.EventDate.ToString("MMMM yyyy")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                @foreach (var ev in Model)
+                {
+                    <div class="col-md-6 col-lg-4">
+                        <div style="background:var(--white);border-radius:var(--r);overflow:hidden;
+                            box-shadow:var(--shadow-sm);border:1px solid rgba(201,184,232,.2);
+                            transition:all .3s ease;">
+                            <div style="background:linear-gradient(135deg,var(--navy),var(--brand-blue));
+                                padding:1.2rem;display:flex;align-items:center;gap:1rem;">
+                                <div style="background:var(--yellow);border-radius:10px;
+                                    padding:.6rem 1rem;text-align:center;min-width:56px;">
+                                    <div style="font-family:var(--font-display);font-size:1.6rem;
+                                        font-weight:900;color:var(--navy);line-height:1;">
+                                        @ev.EventDate.Day
+                                    </div>
+                                    <div style="font-size:.65rem;font-weight:700;color:var(--navy);
+                                        text-transform:uppercase;letter-spacing:1px;">
+                                        @ev.EventDate.ToString("MMM")
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="color:rgba(255,255,255,.6);font-size:.78rem;">
+                                        @ev.EventDate.ToString("dddd")
+                                    </div>
+                                    <div style="color:var(--white);font-weight:600;font-size:.9rem;">
+                                        @ev.EventDate.ToString("h:mm tt")
+                                    </div>
+                                </div>
+                                @if (!string.IsNullOrEmpty(ev.Category))
+                                {
+                                    <span style="margin-left:auto;background:rgba(255,255,255,.12);
+                                        color:rgba(255,255,255,.8);font-size:.68rem;
+                                        font-weight:600;letter-spacing:1px;
+                                        text-transform:uppercase;padding:3px 10px;
+                                        border-radius:50px;">
+                                        @ev.Category
+                                    </span>
+                                }
+                            </div>
+                            <div style="padding:1.5rem;">
+                                <h5 style="font-family:var(--font-display);margin-bottom:.6rem;">
+                                    @ev.Title
+                                </h5>
+                                <p style="color:var(--text-mid);font-size:.9rem;margin-bottom:.8rem;">
+                                    @ev.Description
+                                </p>
+                                @if (!string.IsNullOrEmpty(ev.Location))
+                                {
+                                    <p style="color:var(--text-light);font-size:.83rem;margin:0;">
+                                        <i class="bi bi-geo-alt me-1"></i>@ev.Location
+                                    </p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+    </div>
+</section>

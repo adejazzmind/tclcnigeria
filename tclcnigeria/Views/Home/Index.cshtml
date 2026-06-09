@@ -2,35 +2,25 @@
     ViewData["Title"] = "Home";
 }
 
-<!-- HERO SECTION -->
-<section class="hero-hybrid">
-    <div class="container hero-content">
-        <div class="row align-items-center">
-            <div class="col-lg-8">
-                <!-- Logo (Ensure you have this file or it will hide via onerror) -->
-                <img src="~/images/tclc-logo.png" asp-append-version="true" alt="TCLC Logo" class="brand-logo" onerror="this.style.display='none'" />
-
-                <div class="hero-badge">
-                    <i class="bi bi-stars"></i> Welcome to TCLC Nigeria
-                </div>
-
-                <h1 class="hero-title">
-                    Where <span class="text-gold">Faith</span> Grows <br />
-                    & Lives Are <br />
-                    Transformed
+<!-- HERO -->
+<section class="hero-section">
+    <div class="container position-relative" style="z-index:3;">
+        <div class="row align-items-center" style="min-height:80vh;">
+            <div class="col-lg-7">
+                <div class="hero-badge fade-up">✦ The City of the Lord Church Nigeria</div>
+                <h1 class="hero-title fade-up delay-1">
+                    Bringing <span>Healing</span> to<br>the Nations
                 </h1>
-
-                <p class="hero-text">
-                    Join a vibrant community of believers in Lagos, Nigeria — worshipping together,
-                    growing in the Word, and serving our generation with love and power.
+                <p class="hero-subtitle fade-up delay-2">
+                    Building a total man, restoring people to their destinies, and teaching the
+                    uncompromised Word of God — in Lagos, Nigeria and beyond.
                 </p>
-
-                <div class="hero-actions">
+                <div class="d-flex flex-wrap gap-3 fade-up delay-3">
                     <a asp-controller="Home" asp-action="Sermons" class="btn-hero-primary">
                         <i class="bi bi-play-circle me-2"></i>Watch Sermons
                     </a>
-                    <a asp-controller="Home" asp-action="About" class="btn-hero-secondary">
-                        Learn More <i class="bi bi-arrow-right ms-2"></i>
+                    <a asp-controller="Home" asp-action="About" class="btn-hero-outline">
+                        Our Story <i class="bi bi-arrow-right ms-1"></i>
                     </a>
                 </div>
             </div>
@@ -38,172 +28,223 @@
     </div>
 </section>
 
-<!-- FLOATING INFO CARDS -->
-<div class="container info-cards-wrap">
+<!-- SERVICE CARDS -->
+<section class="container hero-stats pb-2">
     <div class="row g-4">
         <div class="col-md-4">
-            <div class="info-card gold">
-                <div class="info-icon gold mx-auto"><i class="bi bi-calendar-check"></i></div>
-                <h3 class="h3">Sunday Service</h3>
-                <p class="mb-0 text-muted-custom">Every Sunday · 10:00 AM</p>
+            <div class="stat-card fade-up delay-1">
+                <div class="stat-icon"><i class="bi bi-calendar-check"></i></div>
+                <h5 class="fw-bold mb-1" style="font-family:var(--font-display);">Sunday Service</h5>
+                <p class="mb-0" style="color:var(--text-mid);font-size:.95rem;">Every Sunday · 9:00 AM – 11:30 AM</p>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="info-card purple">
-                <div class="info-icon purple mx-auto"><i class="bi bi-geo-alt"></i></div>
-                <h3 class="h3">Location</h3>
-                <p class="mb-0 text-muted-custom">25, Kudirat Soule Str,<br />Ifako/Ogba, Lagos</p>
+            <div class="stat-card fade-up delay-2">
+                <div class="stat-icon"><i class="bi bi-book-half"></i></div>
+                <h5 class="fw-bold mb-1" style="font-family:var(--font-display);">Mid-Week Service</h5>
+                <p class="mb-0" style="color:var(--text-mid);font-size:.95rem;">Wednesdays · 6:00 PM</p>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="info-card green">
-                <div class="info-icon green mx-auto"><i class="bi bi-envelope"></i></div>
-                <h3 class="h3">Contact Us</h3>
-                <p class="mb-0 text-muted-custom">+234 808 883 4964<br />tclcnigeria@gmail.com</p>
+            <div class="stat-card fade-up delay-3">
+                <div class="stat-icon"><i class="bi bi-geo-alt"></i></div>
+                <h5 class="fw-bold mb-1" style="font-family:var(--font-display);">Our Location</h5>
+                <p class="mb-0" style="color:var(--text-mid);font-size:.92rem;">
+                    25, Kudirat Soule Street, Ifako, Ogba, Lagos
+                </p>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<!-- FOUNDER SECTION -->
-<section class="py-section">
+<!-- ABOUT STRIP -->
+<section style="padding:6rem 0 5rem;">
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <!-- Image is set in CSS (.founder-image-box) -->
-                <div class="founder-image-box"></div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="section-eyebrow" style="color: var(--gold);">Meet Our Leader</div>
-                <h2 class="section-title left">Rev. Dr. J.S.A Oladele</h2>
-                <p class="fs-5 text-muted-custom">
-                    Founder & General Overseer of The City Of The Lord Church Nigeria.
-                </p>
-
-                <p class="text-muted-custom">
-                    With a mandate to proclaim the love of Christ and bring healing to the nations,
-                    Rev. Oladele has dedicated his life to building total men and restoring destinies
-                    through the uncompromised Word of God.
-                </p>
-
-                <div class="mt-4 mb-4">
-                    <div class="highlight-pill"><i class="bi bi-check-circle-fill text-emerald"></i> Word of God</div>
-                    <div class="highlight-pill"><i class="bi bi-check-circle-fill text-orange"></i> Holy Spirit</div>
-                    <div class="highlight-pill"><i class="bi bi-check-circle-fill text-purple"></i> Healing & Destiny</div>
+                <div style="position:relative;border-radius:24px;overflow:hidden;
+                    box-shadow:var(--shadow-lg);">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=800&q=80"
+                         alt="TCLC Nigeria Worship" class="img-fluid w-100"
+                         style="height:420px;object-fit:cover;">
+                    <div style="position:absolute;bottom:24px;left:24px;
+                        background:var(--yellow);border-radius:12px;
+                        padding:12px 20px;box-shadow:var(--shadow-md);">
+                        <p class="mb-0 fw-bold" style="color:var(--navy);font-size:.85rem;">
+                            <i class="bi bi-people-fill me-2"></i>A Family of Believers
+                        </p>
+                    </div>
                 </div>
-
-                <a asp-controller="Home" asp-action="About" class="btn btn-outline-dark rounded-pill px-4 py-2">
-                    Read Full Biography
+            </div>
+            <div class="col-lg-6">
+                <span class="eyebrow">About TCLC Nigeria</span>
+                <h2 class="section-title mb-3">
+                    A Church Built on the <em>Uncompromised Word of God</em>
+                </h2>
+                <div class="divider" style="margin-left:0;"></div>
+                <p style="color:var(--text-mid);font-size:1.05rem;line-height:1.9;margin-bottom:1rem;">
+                    The City of the Lord Church Nigeria was founded by
+                    <strong style="color:var(--navy);">Rev. Dr. J.S.A Oladele</strong> with a mandate
+                    from God — bringing healing to the nations, building total men and women in Christ,
+                    and restoring people to their God-given destinies.
+                </p>
+                <p style="color:var(--text-mid);font-size:1.05rem;line-height:1.9;">
+                    We believe and preach the Gospel of Jesus Christ, Who is our Lord and Savior.
+                    We are a Priest and a Peculiar People of God. Christ in us is our Hope of Glory.
+                </p>
+                <a asp-controller="Home" asp-action="About"
+                   style="display:inline-flex;align-items:center;gap:8px;color:var(--brand-blue);
+                    font-weight:600;text-decoration:none;margin-top:.5rem;font-size:.95rem;">
+                    Read More About Us <i class="bi bi-arrow-right"></i>
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- MINISTRIES SECTION -->
-<section class="py-section bg-light">
-    <div class="container text-center">
-        <div class="section-eyebrow">Get Involved</div>
-        <h2 class="section-title center">Our Ministries</h2>
-        <p class="text-muted-custom mb-5">There is a place for you to grow, serve, and connect at TCLC.</p>
-
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="ministry-card">
-                    <div class="ministry-icon bg-icon-navy mx-auto"><i class="bi bi-people-fill"></i></div>
-                    <h4>Men's Fellowship</h4>
-                    <p class="mb-0 text-muted-custom">Leading with integrity and strength.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ministry-card">
-                    <div class="ministry-icon bg-icon-purple mx-auto"><i class="bi bi-flower1"></i></div>
-                    <h4>Women's Ministry</h4>
-                    <p class="mb-0 text-muted-custom">Faith, prayer, and excellence.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ministry-card">
-                    <div class="ministry-icon bg-icon-gold mx-auto"><i class="bi bi-person-arms-up"></i></div>
-                    <h4>Youth Ministry</h4>
-                    <p class="mb-0 text-muted-custom">Passion, purpose, and power.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ministry-card">
-                    <div class="ministry-icon bg-icon-green mx-auto"><i class="bi bi-music-note-beamed"></i></div>
-                    <h4>Choir & Arts</h4>
-                    <p class="mb-0 text-muted-custom">Worshiping in spirit and truth.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ministry-card">
-                    <div class="ministry-icon bg-icon-purple mx-auto"><i class="bi bi-book"></i></div>
-                    <h4>Children's Church</h4>
-                    <p class="mb-0 text-muted-custom">Building foundations of faith.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ministry-card">
-                    <div class="ministry-icon bg-icon-gold mx-auto"><i class="bi bi-megaphone"></i></div>
-                    <h4>Evangelism</h4>
-                    <p class="mb-0 text-muted-custom">Reaching the lost with love.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- GIVING SECTION -->
-<section class="dark-feature-section py-section">
+<!-- FOUNDER QUOTE -->
+<section style="padding:4rem 0;background:linear-gradient(135deg,var(--navy),var(--navy-mid));">
     <div class="container">
-        <div class="row align-items-center g-4">
-            <div class="col-lg-5">
-                <h2 class="section-title left text-white">Partner With Us</h2>
-                <p class="fs-4 text-white-50 fst-italic">"Give, and it will be given to you..." – Luke 6:38</p>
-                <p class="text-white-50 mb-0">
-                    Support the vision of healing nations through your tithes and offerings.
+        <div class="row align-items-center g-5">
+            <div class="col-lg-4 text-center">
+                <img src="https://tclceternallife.org/wp-content/uploads/2022/09/Rev-Dr-JSA-Oladele.jpg"
+                     alt="Rev. Dr. J.S.A Oladele"
+                     onerror="this.src='https://ui-avatars.com/api/?name=JSA+Oladele&size=300&background=F5C842&color=070D2E'"
+                     style="width:200px;height:200px;border-radius:50%;object-fit:cover;
+                border:4px solid var(--yellow);
+                box-shadow:0 12px 40px rgba(0,0,0,.4);">
+                <p class="mt-3 mb-0 fw-bold" style="color:var(--white);font-size:1rem;">
+                    Rev. Dr. J.S.A Oladele
+                </p>
+                <p style="color:var(--yellow);font-size:.78rem;font-weight:600;
+                    text-transform:uppercase;letter-spacing:1.5px;margin:0;">
+                    Founder &amp; General Overseer
                 </p>
             </div>
-
-            <div class="col-lg-7">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="giving-card">
-                            <h5 class="text-gold text-uppercase fw-bold ls-1">Tithes</h5>
-                            <p class="mb-1 fw-bold text-muted-custom small">Union Bank</p>
-                            <div class="giving-account">0006520956</div>
-                            <p class="mb-0 small text-muted-custom">The City Of The Lord Church Nigeria</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="giving-card">
-                            <h5 class="text-purple text-uppercase fw-bold ls-1">Offerings</h5>
-                            <p class="mb-1 fw-bold text-muted-custom small">Polaris Bank</p>
-                            <div class="giving-account">1771157918</div>
-                            <p class="mb-0 small text-muted-custom">The City Of The Lord Church Nigeria</p>
-                        </div>
-                    </div>
+            <div class="col-lg-8">
+                <div style="position:relative;padding-left:2rem;">
+                    <div style="position:absolute;left:0;top:0;bottom:0;width:4px;
+                    background:linear-gradient(to bottom,var(--yellow),var(--lilac));
+                    border-radius:4px;"></div>
+                    <p style="font-family:var(--font-display);font-size:1.5rem;font-style:italic;
+                        color:var(--white);line-height:1.6;margin-bottom:1.2rem;">
+                        "We are a Priest, and a Peculiar People of God. Christ in us is our Hope of Glory.
+                        The Lord lives within us and we rejoice in His presence always."
+                    </p>
+                    <p style="color:rgba(255,255,255,.6);font-size:.9rem;margin:0;">
+                        — Rev. Dr. J.S.A Oladele, Founder · The City of the Lord Church
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CTA SECTION -->
-<section class="py-section">
+<!-- MINISTRIES PREVIEW -->
+<section style="padding:5rem 0;">
     <div class="container">
-        <div class="premium-cta">
-            <div class="section-eyebrow">Join Us This Sunday</div>
-            <h2 class="section-title center">Experience the Presence of God</h2>
-            <p class="text-muted-custom mx-auto" style="max-width:700px;">
-                Everyone is welcome at TCLC Nigeria. Come as you are and encounter the love of God
-                in a warm, Spirit-filled atmosphere.
-            </p>
-            <a asp-controller="Home" asp-action="Contact" class="btn btn-dark rounded-pill px-4 py-3 mt-3">
-                <i class="bi bi-envelope me-2"></i>Get In Touch
+        <div class="text-center mb-5">
+            <span class="eyebrow">Get Involved</span>
+            <h2 class="section-title">There's a Place for <em>You</em> Here</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div style="background:var(--white);border-radius:var(--r);padding:2rem;
+                    box-shadow:var(--shadow-sm);border:1px solid rgba(201,184,232,.2);
+                    transition:all .3s ease;"
+                     onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='var(--shadow-lg)'"
+                     onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='var(--shadow-sm)'">
+                    <div style="width:52px;height:52px;border-radius:14px;
+                        background:linear-gradient(135deg,var(--lilac-soft),var(--light-blue));
+                        display:flex;align-items:center;justify-content:center;
+                        font-size:1.4rem;color:var(--brand-blue);margin-bottom:1rem;">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <h5 style="font-family:var(--font-display);">Men's Ministry</h5>
+                    <p style="color:var(--text-mid);font-size:.92rem;margin:0;">
+                        Empowering men to lead with integrity, faith, and strength.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div style="background:linear-gradient(135deg,var(--navy),var(--brand-blue));
+                    border-radius:var(--r);padding:2rem;box-shadow:var(--shadow-md);">
+                    <div style="width:52px;height:52px;border-radius:14px;
+                        background:rgba(245,200,66,.2);display:flex;align-items:center;
+                        justify-content:center;font-size:1.4rem;
+                        color:var(--yellow);margin-bottom:1rem;">
+                        <i class="bi bi-flower1"></i>
+                    </div>
+                    <h5 style="color:var(--white);font-family:var(--font-display);">Women of Excellence</h5>
+                    <p style="color:rgba(255,255,255,.75);font-size:.92rem;margin:0;">
+                        Building faith-filled women through prayer and mentorship.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div style="background:var(--white);border-radius:var(--r);padding:2rem;
+                    box-shadow:var(--shadow-sm);border:1px solid rgba(201,184,232,.2);
+                    transition:all .3s ease;"
+                     onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='var(--shadow-lg)'"
+                     onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='var(--shadow-sm)'">
+                    <div style="width:52px;height:52px;border-radius:14px;
+                        background:linear-gradient(135deg,var(--yellow-soft),var(--lilac-soft));
+                        display:flex;align-items:center;justify-content:center;
+                        font-size:1.4rem;color:var(--navy);margin-bottom:1rem;">
+                        <i class="bi bi-person-arms-up"></i>
+                    </div>
+                    <h5 style="font-family:var(--font-display);">Youth Rising</h5>
+                    <p style="color:var(--text-mid);font-size:.92rem;margin:0;">
+                        Inspiring the next generation to find purpose in God's Word.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a asp-controller="Home" asp-action="Ministries"
+               style="display:inline-flex;align-items:center;gap:8px;color:var(--brand-blue);
+                font-weight:600;text-decoration:none;font-size:.95rem;">
+                View All Ministries <i class="bi bi-arrow-right"></i>
             </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:0 0 5rem;">
+    <div class="container">
+        <div style="background:linear-gradient(135deg,var(--lilac-soft),var(--yellow-soft));
+            border-radius:24px;padding:4rem 3rem;text-align:center;
+            border:1px solid rgba(201,184,232,.4);box-shadow:var(--shadow-md);">
+            <span class="eyebrow">Join Us This Sunday</span>
+            <h2 class="section-title mb-3">Experience the Presence of God</h2>
+            <p style="color:var(--text-mid);font-size:1.05rem;max-width:520px;margin:0 auto 1rem;">
+                25, Kudirat Soule Street, off Coker Street, Orimolade Bus Stop,<br>
+                College Road, Ifako, Ogba, Lagos.
+            </p>
+            <p style="color:var(--brand-blue);font-weight:600;margin-bottom:2rem;">
+                <i class="bi bi-telephone me-1"></i> 07082768005
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a asp-controller="Home" asp-action="Contact"
+                   style="display:inline-block;background:var(--navy);color:var(--white);
+                    border-radius:50px;padding:14px 36px;font-weight:600;
+                    text-decoration:none;box-shadow:0 8px 24px rgba(7,13,46,.2);
+                    transition:all .25s ease;"
+                   onmouseover="this.style.background='var(--brand-blue)';this.style.transform='translateY(-2px)'"
+                   onmouseout="this.style.background='var(--navy)';this.style.transform='translateY(0)'">
+                    <i class="bi bi-envelope me-2"></i>Get In Touch
+                </a>
+                <a asp-controller="Prayer" asp-action="Index"
+                   style="display:inline-block;background:transparent;color:var(--navy);
+                    border:2px solid var(--navy);border-radius:50px;padding:14px 36px;
+                    font-weight:600;text-decoration:none;transition:all .25s ease;"
+                   onmouseover="this.style.background='var(--navy)';this.style.color='#fff'"
+                   onmouseout="this.style.background='transparent';this.style.color='var(--navy)'">
+                    <i class="bi bi-send-heart me-2"></i>Send a Prayer Request
+                </a>
+            </div>
         </div>
     </div>
 </section>

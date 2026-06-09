@@ -14,11 +14,11 @@ namespace tclcnigeria.Models
         public string Email { get; set; } = string.Empty;
 
         [Required]
-        [Range(100, 10000000, ErrorMessage = "Minimum donation is ₦100")]
+        [Range(100, 10000000, ErrorMessage = "Minimum donation is 100")]
         public decimal Amount { get; set; }
 
         [Display(Name = "Giving Type")]
-        public string GivingType { get; set; } = "Tithe"; // Tithe, Offering, Seed, Project, Other
+        public string GivingType { get; set; } = "Tithe";
 
         public string? Note { get; set; }
 
@@ -26,7 +26,7 @@ namespace tclcnigeria.Models
         public string? PaymentReference { get; set; }
 
         [Display(Name = "Payment Status")]
-        public string PaymentStatus { get; set; } = "Pending"; // Pending, Completed, Failed
+        public string PaymentStatus { get; set; } = "Pending";
 
         [Display(Name = "Date")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

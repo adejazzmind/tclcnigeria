@@ -25,7 +25,7 @@ namespace tclcnigeria.Models
         public string Location { get; set; } = string.Empty;
 
         [StringLength(50)]
-        public string Category { get; set; } = "General"; // General, Youth, Women, Men, Outreach
+        public string Category { get; set; } = "General";
 
         public string ImageUrl { get; set; } = string.Empty;
 

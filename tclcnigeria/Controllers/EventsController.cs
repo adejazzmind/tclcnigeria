@@ -5,7 +5,7 @@ using tclcnigeria.Models;
 
 namespace tclcnigeria.Controllers
 {
-    // ── PUBLIC: /Events ──────────────────────────────────────────
+    // PUBLIC
     public class EventsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -13,7 +13,7 @@ namespace tclcnigeria.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var events = await _context.Events
+            var events = await _context.ChurchEvents
                 .Where(e => e.EventDate >= DateTime.UtcNow.AddDays(-1))
                 .OrderBy(e => e.EventDate)
                 .ToListAsync();
@@ -21,7 +21,7 @@ namespace tclcnigeria.Controllers
         }
     }
 
-    // ── ADMIN: /EventsAdmin ──────────────────────────────────────
+    // ADMIN
     [Authorize]
     public class EventsAdminController : Controller
     {
@@ -30,7 +30,9 @@ namespace tclcnigeria.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var events = await _context.Events.OrderByDescending(e => e.EventDate).ToListAsync();
+            var events = await _context.ChurchEvents
+                .OrderByDescending(e => e.EventDate)
+                .ToListAsync();
             return View(events);
         }
 
@@ -54,7 +56,7 @@ namespace tclcnigeria.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
-            var churchEvent = await _context.Events.FindAsync(id);
+            var churchEvent = await _context.ChurchEvents.FindAsync(id);
             if (churchEvent == null) return NotFound();
             return View(churchEvent);
         }
@@ -77,7 +79,7 @@ namespace tclcnigeria.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
-            var churchEvent = await _context.Events.FirstOrDefaultAsync(e => e.Id == id);
+            var churchEvent = await _context.ChurchEvents.FirstOrDefaultAsync(e => e.Id == id);
             if (churchEvent == null) return NotFound();
             return View(churchEvent);
         }
@@ -86,8 +88,8 @@ namespace tclcnigeria.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var churchEvent = await _context.Events.FindAsync(id);
-            if (churchEvent != null) _context.Events.Remove(churchEvent);
+            var churchEvent = await _context.ChurchEvents.FindAsync(id);
+            if (churchEvent != null) _context.ChurchEvents.Remove(churchEvent);
             await _context.SaveChangesAsync();
             TempData["Success"] = "Event deleted.";
             return RedirectToAction(nameof(Index));

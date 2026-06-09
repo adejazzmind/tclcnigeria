@@ -1,0 +1,287 @@
+﻿@{
+    ViewData["Title"] = "Give Online";
+}
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="container position-relative" style="z-index:2;">
+        <span class="eyebrow" style="color:var(--yellow);">Support the Vision</span>
+        <h1 class="mt-2 mb-3">Give <em>Generously</em></h1>
+        <p>Your giving partners with us to advance the Kingdom of God in Lagos and beyond.</p>
+    </div>
+</section>
+
+<section style="padding:5rem 0;">
+    <div class="container">
+
+        @if (TempData["Success"] != null)
+        {
+            <div style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:1px solid #6ee7b7;
+                border-radius:var(--r);color:#065f46;padding:1.5rem 2rem;margin-bottom:2rem;
+                display:flex;align-items:center;gap:1rem;">
+                <span style="font-size:2rem;">🙏</span>
+                <div>@TempData["Success"]</div>
+            </div>
+        }
+
+        <!-- Scripture banner -->
+        <div style="background:linear-gradient(135deg,var(--lilac-soft),var(--yellow-soft));
+            border-radius:var(--r);padding:1.8rem 2rem;margin-bottom:3rem;
+            border-left:4px solid var(--yellow);text-align:center;">
+            <p style="font-family:var(--font-display);font-size:1.05rem;color:var(--navy);
+                font-style:italic;margin-bottom:.4rem;">
+                "Each of you should give what you have decided in your heart to give, not reluctantly
+                or under compulsion, for God loves a cheerful giver."
+            </p>
+            <span style="color:var(--brand-blue);font-weight:600;font-size:.88rem;">
+                — 2 Corinthians 9:7
+            </span>
+        </div>
+
+        <div class="row g-5">
+
+            <!-- GIVING FORM -->
+            <div class="col-lg-7">
+                <div class="contact-form-card">
+                    <h4 style="font-family:var(--font-display);margin-bottom:.5rem;">Give Online via Paystack</h4>
+                    <p style="color:var(--text-mid);font-size:.92rem;margin-bottom:1.8rem;">
+                        Secure, fast and easy. All transactions are encrypted via Paystack.
+                    </p>
+
+                    <!-- Quick amount buttons -->
+                    <div class="mb-4">
+                        <label style="font-size:.88rem;font-weight:600;color:var(--text-dark);
+                        display:block;margin-bottom:.8rem;">Select Amount (₦)</label>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            @foreach (var amt in new[] { 1000, 2000, 5000, 10000, 25000, 50000 })
+                            {
+                                <button type="button" onclick="setAmount(@amt, this)"
+                                        style="border:2px solid rgba(201,184,232,.5);
+                                    background:var(--off-white);border-radius:50px;
+                                    padding:8px 20px;font-weight:600;font-size:.88rem;
+                                    cursor:pointer;transition:all .2s ease;color:var(--text-dark);">
+                                    ₦@amt.ToString("N0")
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label style="font-size:.88rem;font-weight:600;color:var(--text-dark);">Full Name</label>
+                        <input type="text" id="donorName" class="form-control" placeholder="Your full name" />
+                    </div>
+                    <div class="mb-3">
+                        <label style="font-size:.88rem;font-weight:600;color:var(--text-dark);">Email Address</label>
+                        <input type="email" id="donorEmail" class="form-control" placeholder="name@example.com" />
+                    </div>
+                    <div class="mb-3">
+                        <label style="font-size:.88rem;font-weight:600;color:var(--text-dark);">Amount (₦)</label>
+                        <input type="number" id="donorAmount" class="form-control"
+                               placeholder="Enter amount e.g. 5000" min="100" />
+                    </div>
+                    <div class="mb-4">
+                        <label style="font-size:.88rem;font-weight:600;color:var(--text-dark);">Giving Type</label>
+                        <select id="givingType" class="form-select">
+                            <option value="Tithe">Tithe</option>
+                            <option value="Offering">Offering</option>
+                            <option value="Seed">Seed Faith</option>
+                            <option value="Project">Building Project</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <button onclick="payWithPaystack()" class="btn-submit">
+                        <i class="bi bi-shield-lock me-2"></i>Give Securely via Paystack
+                    </button>
+                    <p style="color:var(--text-light);font-size:.78rem;text-align:center;margin-top:1rem;">
+                        <i class="bi bi-lock-fill me-1"></i>256-bit SSL Encryption · Powered by Paystack
+                    </p>
+                </div>
+
+                <!-- ── BANK TRANSFER DETAILS ─────────────────────── -->
+                <div style="background:var(--white);border-radius:var(--r);padding:2rem;margin-top:1.5rem;
+                    border:1px solid rgba(201,184,232,.3);box-shadow:var(--shadow-sm);">
+                    <h6 style="font-family:var(--font-display);font-size:1.1rem;margin-bottom:1.5rem;">
+                        <i class="bi bi-bank me-2" style="color:var(--brand-blue);"></i>
+                        Direct Bank Transfer
+                    </h6>
+
+                    <!-- TITHE account -->
+                    <div style="background:linear-gradient(135deg,var(--navy),var(--brand-blue));
+                        border-radius:var(--r-sm);padding:1.5rem;margin-bottom:1rem;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;
+                            flex-wrap:wrap;gap:.5rem;">
+                            <span style="background:var(--yellow);color:var(--navy);font-size:.7rem;
+                            font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+                            padding:3px 12px;border-radius:50px;">TITHE</span>
+                            <span style="color:rgba(255,255,255,.6);font-size:.82rem;">Union Bank</span>
+                        </div>
+                        <div class="row mt-2 g-2">
+                            <div class="col-6">
+                                <p style="color:rgba(255,255,255,.55);font-size:.75rem;margin-bottom:.2rem;">Account Name</p>
+                                <p style="color:var(--white);font-weight:700;font-size:.95rem;margin:0;">
+                                    The City of the Lord Church
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <p style="color:rgba(255,255,255,.55);font-size:.75rem;margin-bottom:.2rem;">Account Number</p>
+                                <p style="color:var(--yellow);font-weight:800;font-size:1.1rem;
+                                    letter-spacing:1px;margin:0;">
+                                    0006520956
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OFFERING account -->
+                    <div style="background:linear-gradient(135deg,var(--lilac-soft),var(--light-blue));
+                        border-radius:var(--r-sm);padding:1.5rem;
+                        border:1px solid rgba(201,184,232,.4);">
+                        <div style="display:flex;justify-content:space-between;align-items:center;
+                            flex-wrap:wrap;gap:.5rem;">
+                            <span style="background:var(--brand-blue);color:var(--white);font-size:.7rem;
+                            font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+                            padding:3px 12px;border-radius:50px;">OFFERING</span>
+                            <span style="color:var(--text-mid);font-size:.82rem;">Polaris Bank</span>
+                        </div>
+                        <div class="row mt-2 g-2">
+                            <div class="col-6">
+                                <p style="color:var(--text-light);font-size:.75rem;margin-bottom:.2rem;">Account Name</p>
+                                <p style="color:var(--navy);font-weight:700;font-size:.95rem;margin:0;">
+                                    The City of the Lord Church
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <p style="color:var(--text-light);font-size:.75rem;margin-bottom:.2rem;">Account Number</p>
+                                <p style="color:var(--brand-blue);font-weight:800;font-size:1.1rem;
+                                    letter-spacing:1px;margin:0;">
+                                    1771157918
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WHY GIVE SIDEBAR -->
+            <div class="col-lg-5">
+                <div class="info-box mb-4">
+                    <h4>Why We Give</h4>
+                    <div class="d-flex flex-column gap-3 mt-3">
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="info-icon"><i class="bi bi-broadcast"></i></div>
+                            <div>
+                                <p class="fw-bold mb-0" style="color:var(--white);font-size:.95rem;">Gospel Outreach</p>
+                                <p style="font-size:.85rem;">Funding evangelism and missions across Nigeria and the nations.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="info-icon"><i class="bi bi-building"></i></div>
+                            <div>
+                                <p class="fw-bold mb-0" style="color:var(--white);font-size:.95rem;">Building Project</p>
+                                <p style="font-size:.85rem;">Expanding our facilities to accommodate more worshippers.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="info-icon"><i class="bi bi-people"></i></div>
+                            <div>
+                                <p class="fw-bold mb-0" style="color:var(--white);font-size:.95rem;">Community Care</p>
+                                <p style="font-size:.85rem;">Supporting widows, orphans, and the needy in our community.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="info-icon"><i class="bi bi-book"></i></div>
+                            <div>
+                                <p class="fw-bold mb-0" style="color:var(--white);font-size:.95rem;">Bible Education</p>
+                                <p style="font-size:.85rem;">Training the next generation of disciples and leaders.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trust badges -->
+                <div style="background:var(--white);border-radius:var(--r);padding:1.5rem;
+                    border:1px solid rgba(201,184,232,.3);box-shadow:var(--shadow-sm);
+                    text-align:center;">
+                    <p style="font-size:.78rem;color:var(--text-light);margin-bottom:1rem;font-weight:700;
+                    text-transform:uppercase;letter-spacing:1.5px;">Safe &amp; Secure</p>
+                    <div class="d-flex justify-content-center gap-4">
+                        <div>
+                            <i class="bi bi-shield-check" style="font-size:1.6rem;color:var(--brand-blue);"></i>
+                            <p style="font-size:.75rem;color:var(--text-mid);margin-top:.3rem;margin-bottom:0;">SSL Secure</p>
+                        </div>
+                        <div>
+                            <i class="bi bi-lock" style="font-size:1.6rem;color:var(--brand-blue);"></i>
+                            <p style="font-size:.75rem;color:var(--text-mid);margin-top:.3rem;margin-bottom:0;">Encrypted</p>
+                        </div>
+                        <div>
+                            <i class="bi bi-award" style="font-size:1.6rem;color:var(--brand-blue);"></i>
+                            <p style="font-size:.75rem;color:var(--text-mid);margin-top:.3rem;margin-bottom:0;">Verified</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Paystack JS -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+    function setAmount(val, btn) {
+    document.getElementById('donorAmount').value = val;
+    document.querySelectorAll('button[onclick^="setAmount"]').forEach(b => {
+    b.style.background = 'var(--off-white)';
+    b.style.borderColor = 'rgba(201,184,232,.5)';
+    b.style.color = 'var(--text-dark)';
+    });
+    btn.style.background = 'var(--brand-blue)';
+    btn.style.borderColor = 'var(--brand-blue)';
+    btn.style.color = '#fff';
+    }
+
+    function payWithPaystack() {
+    const name   = document.getElementById('donorName').value.trim();
+    const email  = document.getElementById('donorEmail').value.trim();
+    const amount = parseFloat(document.getElementById('donorAmount').value);
+    const type   = document.getElementById('givingType').value;
+
+    if (!name)  { alert('Please enter your name.'); return; }
+    if (!email) { alert('Please enter your email address.'); return; }
+    if (!amount || amount < 100) { alert('Please enter an amount of at least ₦100.'); return; }
+
+    const handler = PaystackPop.setup({
+    // ⚠️ Replace with your actual Paystack public key from https://dashboard.paystack.com
+    key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    email: email,
+    amount: amount * 100,
+    currency: 'NGN',
+    ref: 'TCLC-' + new Date().getTime(),
+    metadata: { donor_name: name, giving_type: type },
+    callback: function(response) {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/Give/RecordDonation';
+    const fields = {
+    DonorName:        name,
+    Email:            email,
+    Amount:           amount,
+    GivingType:       type,
+    PaymentReference: response.reference,
+    PaymentStatus:    'Completed',
+    __RequestVerificationToken: document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+    };
+    Object.entries(fields).forEach(([k, v]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden'; input.name = k; input.value = v;
+    form.appendChild(input);
+    });
+    document.body.appendChild(form);
+    form.submit();
+    },
+    onClose: function() { console.log('Payment closed'); }
+    });
+    handler.openIframe();
+    }
+</script>
+@Html.AntiForgeryToken()

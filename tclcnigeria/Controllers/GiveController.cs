@@ -5,7 +5,7 @@ using tclcnigeria.Models;
 
 namespace tclcnigeria.Controllers
 {
-    // ── PUBLIC: /Give ────────────────────────────────────────────
+    // PUBLIC
     public class GiveController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -13,7 +13,6 @@ namespace tclcnigeria.Controllers
 
         public IActionResult Index() => View();
 
-        // Called after Paystack payment is verified
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RecordDonation(Donation model)
@@ -24,7 +23,7 @@ namespace tclcnigeria.Controllers
                 model.PaymentStatus = "Completed";
                 _context.Donations.Add(model);
                 await _context.SaveChangesAsync();
-                TempData["Success"] = $"Thank you {model.DonorName}! Your gift of ₦{model.Amount:N0} has been received. God bless you! 🙏";
+                TempData["Success"] = $"Thank you {model.DonorName}! Your gift of {model.Amount:N0} has been received. God bless you!";
                 return RedirectToAction(nameof(ThankYou));
             }
             return View("Index", model);
@@ -33,7 +32,7 @@ namespace tclcnigeria.Controllers
         public IActionResult ThankYou() => View();
     }
 
-    // ── ADMIN: /GivingAdmin ───────────────────────────────────────
+    // ADMIN
     [Authorize]
     public class GivingAdminController : Controller
     {

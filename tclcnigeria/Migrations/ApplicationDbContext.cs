@@ -12,7 +12,7 @@ namespace tclcnigeria.Models
 
         public DbSet<Sermon> Sermons { get; set; }
         public DbSet<ContactForm> ContactMessages { get; set; }
-        public DbSet<ChurchEvent> Events { get; set; }
+        public DbSet<ChurchEvent> ChurchEvents { get; set; }
         public DbSet<PrayerRequest> PrayerRequests { get; set; }
         public DbSet<Donation> Donations { get; set; }
     }
