@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using tclcnigeria.Models;
+using tclcnigeria.Services;
 
 namespace tclcnigeria.Controllers
 {
@@ -8,20 +9,18 @@ namespace tclcnigeria.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
+        private readonly IEmailService _emailService;
 
-        // --- 1. Constructor (Dependency Injection) ---
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IEmailService emailService)
         {
             _logger = logger;
             _context = context;
+            _emailService = emailService;
         }
 
-        // --- 2. Main Church Web Pages ---
-
+        // --- Main Pages ---
         public IActionResult Index() => View();
-
         public IActionResult About() => View();
-
         public IActionResult Ministries() => View();
 
         public IActionResult Sermons()
@@ -30,31 +29,42 @@ namespace tclcnigeria.Controllers
             return View(sermonList);
         }
 
-        // GET: Displays the Contact Page
-        public IActionResult Contact()
-        {
-            return View();
-        }
+        // GET: Contact
+        public IActionResult Contact() => View();
 
-        // POST: Handles the form submission
+        // POST: Contact
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Contact(ContactForm model)
         {
             if (ModelState.IsValid)
             {
-                model.DateSent = DateTime.UtcNow; // Ensures timestamp is set before saving
+                model.DateSent = DateTime.UtcNow;
                 _context.ContactMessages.Add(model);
                 _context.SaveChanges();
 
-                TempData["Success"] = "Thank you! Your message has been recorded and we will reach out shortly.";
+                // Send email notifications
+                _ = Task.Run(async () =>
+                {
+                    try
+                    {
+                        await _emailService.SendContactFormNotificationAsync(
+                            model.Name,
+                            model.Email,
+                            model.Subject,
+                            model.Message
+                        );
+                    }
+                    catch { /* silent fail — don't break user experience */ }
+                });
+
+                TempData["Success"] = "Thank you! Your message has been received and we will reach out shortly.";
                 return RedirectToAction("Contact");
             }
             return View(model);
         }
 
-        // --- 3. System & Legal Pages ---
-
+        // --- System ---
         public IActionResult Privacy() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

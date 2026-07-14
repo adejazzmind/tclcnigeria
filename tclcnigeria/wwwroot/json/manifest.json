@@ -1,0 +1,71 @@
+{
+    "name": "TCLC Nigeria",
+    "short_name": "TCLC",
+    "description": "The City of the Lord Church Nigeria — Bringing healing to the nations.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#070D2E",
+    "theme_color": "#070D2E",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/icons/screenshot-wide.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide"
+        }
+    ],
+    "categories": [ "lifestyle", "education", "social" ],
+    "shortcuts": [
+        {
+            "name": "Sermons",
+            "short_name": "Sermons",
+            "description": "Watch and listen to sermons",
+            "url": "/Home/Sermons",
+            "icons": [
+                {
+                    "src": "/icons/icon-192x192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Prayer Request",
+            "short_name": "Prayer",
+            "description": "Submit a prayer request",
+            "url": "/Prayer",
+            "icons": [
+                {
+                    "src": "/icons/icon-192x192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Give Online",
+            "short_name": "Give",
+            "description": "Give to the church",
+            "url": "/Give",
+            "icons": [
+                {
+                    "src": "/icons/icon-192x192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ]
+}

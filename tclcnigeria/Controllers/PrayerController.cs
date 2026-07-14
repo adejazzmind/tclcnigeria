@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using tclcnigeria.Models;
+using tclcnigeria.Services;
 
 namespace tclcnigeria.Controllers
 {
@@ -9,7 +10,13 @@ namespace tclcnigeria.Controllers
     public class PrayerController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public PrayerController(ApplicationDbContext context) => _context = context;
+        private readonly IEmailService _emailService;
+
+        public PrayerController(ApplicationDbContext context, IEmailService emailService)
+        {
+            _context = context;
+            _emailService = emailService;
+        }
 
         public IActionResult Index() => View();
 
@@ -22,6 +29,21 @@ namespace tclcnigeria.Controllers
                 model.DateSubmitted = DateTime.UtcNow;
                 _context.PrayerRequests.Add(model);
                 await _context.SaveChangesAsync();
+
+                // Send email notifications (fire and forget — doesn't block the user)
+                _ = Task.Run(async () =>
+                {
+                    try
+                    {
+                        await _emailService.SendPrayerRequestNotificationAsync(
+                            model.Name,
+                            model.Email ?? string.Empty,
+                            model.Request
+                        );
+                    }
+                    catch { /* log silently — don't break user experience */ }
+                });
+
                 TempData["Success"] = "Your prayer request has been received. Our team will pray with you.";
                 return RedirectToAction(nameof(Index));
             }
@@ -34,6 +56,7 @@ namespace tclcnigeria.Controllers
     public class PrayerAdminController : Controller
     {
         private readonly ApplicationDbContext _context;
+
         public PrayerAdminController(ApplicationDbContext context) => _context = context;
 
         public async Task<IActionResult> Index()

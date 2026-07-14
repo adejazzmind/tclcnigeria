@@ -15,6 +15,7 @@
 
 <section style="padding:5rem 0;">
     <div class="container">
+
         @if (!Model.Any())
         {
             <div class="text-center py-5">
@@ -34,13 +35,59 @@
                 {
                     <div class="col-md-6">
                         <div class="sermon-card">
+
+                            @* VIDEO *@
                             @if (!string.IsNullOrEmpty(sermon.VideoUrl))
                             {
                                 <div class="ratio ratio-16x9">
-                                    <iframe src="@sermon.VideoUrl" title="@sermon.Title"
-                                            allowfullscreen style="border:0;"></iframe>
+                                    <iframe src="@sermon.VideoUrl"
+                                            title="@sermon.Title"
+                                            allowfullscreen
+                                            style="border:0;"></iframe>
                                 </div>
                             }
+
+                            @* AUDIO PLAYER *@
+                            @if (!string.IsNullOrEmpty(sermon.AudioUrl))
+                            {
+                                <div style="background:linear-gradient(135deg,var(--navy),var(--brand-blue));
+                                    padding:1.5rem;display:flex;flex-direction:column;gap:1rem;">
+                                    <div style="display:flex;align-items:center;gap:1rem;">
+                                        <div style="width:52px;height:52px;border-radius:50%;
+                                            background:rgba(245,200,66,.2);flex-shrink:0;
+                                            display:flex;align-items:center;justify-content:center;
+                                            font-size:1.4rem;color:var(--yellow);">
+                                            <i class="bi bi-music-note-beamed"></i>
+                                        </div>
+                                        <div>
+                                            <p class="fw-bold mb-0" style="color:var(--white);font-size:.95rem;">
+                                                @sermon.Title
+                                            </p>
+                                            <p style="color:rgba(255,255,255,.6);font-size:.8rem;margin:0;">
+                                                Audio Sermon
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <audio controls style="width:100%;border-radius:8px;"
+                                           controlsList="nodownload">
+                                        <source src="@sermon.AudioUrl" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            }
+
+                            @* NO MEDIA PLACEHOLDER *@
+                            @if (string.IsNullOrEmpty(sermon.VideoUrl) && string.IsNullOrEmpty(sermon.AudioUrl))
+                            {
+                                <div style="background:linear-gradient(135deg,var(--lilac-soft),var(--light-blue));
+                                    height:160px;display:flex;align-items:center;justify-content:center;">
+                                    <div style="text-align:center;color:var(--brand-blue);">
+                                        <i class="bi bi-book-half" style="font-size:2.5rem;"></i>
+                                        <p style="margin:.5rem 0 0;font-size:.88rem;">Text Sermon</p>
+                                    </div>
+                                </div>
+                            }
+
                             <div class="sermon-card-body">
                                 @if (!string.IsNullOrEmpty(sermon.SeriesName))
                                 {
@@ -49,13 +96,29 @@
                                 <h5 class="fw-bold mb-2" style="font-family:var(--font-display);">
                                     @sermon.Title
                                 </h5>
-                                <div class="d-flex gap-3 mb-2" style="color:var(--text-light);font-size:.85rem;">
+                                <div class="d-flex flex-wrap gap-3 mb-2"
+                                     style="color:var(--text-light);font-size:.85rem;">
                                     <span><i class="bi bi-person me-1"></i>@sermon.Speaker</span>
                                     <span><i class="bi bi-calendar3 me-1"></i>@sermon.DatePreached.ToString("MMM dd, yyyy")</span>
+                                    @if (!string.IsNullOrEmpty(sermon.VideoUrl))
+                                    {
+                                        <span style="color:var(--brand-blue);">
+                                            <i class="bi bi-camera-video me-1"></i>Video
+                                        </span>
+                                    }
+                                    @if (!string.IsNullOrEmpty(sermon.AudioUrl))
+                                    {
+                                        <span style="color:var(--brand-blue);">
+                                            <i class="bi bi-music-note me-1"></i>Audio
+                                        </span>
+                                    }
                                 </div>
-                                <p style="color:var(--text-mid);font-size:.93rem;margin:0;">
-                                    @sermon.Description
-                                </p>
+                                @if (!string.IsNullOrEmpty(sermon.Description))
+                                {
+                                    <p style="color:var(--text-mid);font-size:.93rem;margin:0;">
+                                        @sermon.Description
+                                    </p>
+                                }
                             </div>
                         </div>
                     </div>

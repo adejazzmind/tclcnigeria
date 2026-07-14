@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using tclcnigeria.Models;
+using tclcnigeria.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,20 +24,13 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+// ✅ Register Email Service
+builder.Services.AddScoped<IEmailService, EmailService>();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
-
-// TEMPORARILY DISABLED AUTO-MIGRATION
-// We will re-enable this after fixing migrations
-/*
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.Migrate();
-}
-*/
 
 if (!app.Environment.IsDevelopment())
 {
