@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using tclcnigeria.Models;
@@ -6,11 +6,9 @@ using tclcnigeria.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Connection string
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
-// PostgreSQL / Neon
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
@@ -25,13 +23,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// ✅ Email Service
 builder.Services.AddScoped<IEmailService, EmailService>();
-
-// ✅ Identity Email Sender (for password reset + confirmation)
-builder.Services.AddScoped<IEmailSender<IdentityUser>, IdentityEmailSender>();
-builder.Services.AddScoped<IEmailSender, IdentityEmailSender>();
-
+builder.Services.AddTransient<IEmailSender, IdentityEmailSender>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
@@ -46,7 +39,6 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapStaticAssets();
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -56,5 +48,4 @@ app.MapControllerRoute(
     .WithStaticAssets();
 
 app.MapRazorPages();
-
 app.Run();
