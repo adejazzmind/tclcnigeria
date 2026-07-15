@@ -203,7 +203,7 @@ h1, h2, h3, h4, h5 {
 .hero-carousel-section {
     position: relative;
     overflow: hidden;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
     .hero-carousel-section .carousel,
@@ -810,7 +810,7 @@ h1, h2, h3, h4, h5 {
     }
 
     .hero-carousel-section {
-        margin-top: 70px;
+        margin-top: 0;
     }
 
         .hero-carousel-section .carousel,
@@ -827,5 +827,79 @@ h1, h2, h3, h4, h5 {
 
     .tclc-indicators {
         bottom: 16px;
+    }
+}
+
+/* ============================================
+   MOBILE GAP FIX
+   ============================================ */
+
+/* Navbar spacer — responsive height */
+.navbar-spacer {
+    height: 70px;
+}
+
+@media (max-width: 991px) {
+    .navbar-spacer {
+        height: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-spacer {
+        height: 56px;
+    }
+}
+
+/* Hero carousel mobile fix */
+@media (max-width: 768px) {
+    .hero-carousel-section .carousel,
+    .hero-carousel-section .carousel-inner,
+    .hero-carousel-section .carousel-item {
+        height: calc(100vh - 56px);
+        min-height: 480px;
+    }
+
+    .hero-title {
+        font-size: 2rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: .95rem !important;
+    }
+
+    .hero-slide-content {
+        padding: 0 1rem;
+    }
+
+    .btn-hero-primary,
+    .btn-hero-outline {
+        font-size: .85rem !important;
+        padding: 10px 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-carousel-section .carousel,
+    .hero-carousel-section .carousel-inner,
+    .hero-carousel-section .carousel-item {
+        height: calc(100vh - 56px);
+        min-height: 440px;
+    }
+
+    .hero-title {
+        font-size: 1.7rem !important;
+    }
+}
+
+/* PWA safe area support (iPhone notch etc) */
+@supports (padding: max(0px)) {
+    .navbar {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+
+    #pwa-banner {
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
     }
 }

@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using tclcnigeria.Models;
 using tclcnigeria.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Connection string from appsettings.json or environment variables
+// Connection string
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
@@ -24,8 +25,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// ✅ Register Email Service
+// ✅ Email Service
 builder.Services.AddScoped<IEmailService, EmailService>();
+
+// ✅ Identity Email Sender (for password reset + confirmation)
+builder.Services.AddScoped<IEmailSender<IdentityUser>, IdentityEmailSender>();
+builder.Services.AddScoped<IEmailSender, IdentityEmailSender>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
