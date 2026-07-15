@@ -6,7 +6,6 @@ using tclcnigeria.Services;
 
 namespace tclcnigeria.Controllers
 {
-    // PUBLIC
     public class PrayerController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,7 +20,7 @@ namespace tclcnigeria.Controllers
         public IActionResult Index() => View();
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> Index(PrayerRequest model)
         {
             if (ModelState.IsValid)
@@ -30,7 +29,6 @@ namespace tclcnigeria.Controllers
                 _context.PrayerRequests.Add(model);
                 await _context.SaveChangesAsync();
 
-                // Send email notifications (fire and forget — doesn't block the user)
                 _ = Task.Run(async () =>
                 {
                     try
@@ -41,7 +39,7 @@ namespace tclcnigeria.Controllers
                             model.Request
                         );
                     }
-                    catch { /* log silently — don't break user experience */ }
+                    catch { }
                 });
 
                 TempData["Success"] = "Your prayer request has been received. Our team will pray with you.";
@@ -51,12 +49,10 @@ namespace tclcnigeria.Controllers
         }
     }
 
-    // ADMIN
     [Authorize]
     public class PrayerAdminController : Controller
     {
         private readonly ApplicationDbContext _context;
-
         public PrayerAdminController(ApplicationDbContext context) => _context = context;
 
         public async Task<IActionResult> Index()
