@@ -31,10 +31,12 @@ namespace tclcnigeria.Services
                 email.Body = builder.ToMessageBody();
 
                 using var smtp = new SmtpClient();
+                var port = int.Parse(_config["Email:SmtpPort"] ?? "465");
+                var useSsl = port == 465;
                 await smtp.ConnectAsync(
                     _config["Email:SmtpHost"],
-                    int.Parse(_config["Email:SmtpPort"] ?? "587"),
-                    SecureSocketOptions.StartTls
+                    port,
+                    useSsl ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.StartTls
                 );
                 await smtp.AuthenticateAsync(
                     _config["Email:SmtpUser"],
