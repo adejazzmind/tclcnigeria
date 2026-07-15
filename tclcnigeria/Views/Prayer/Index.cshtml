@@ -14,7 +14,7 @@
 <section style="padding:5rem 0;">
     <div class="container">
 
-        @if (TempData["Success"] != null)
+        @if (ViewBag.Success != null)
         {
             <div style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);
                 border:1px solid #6ee7b7;border-radius:var(--r);
@@ -23,7 +23,7 @@
                 <span style="font-size:1.8rem;">&#128591;</span>
                 <div>
                     <p class="fw-bold mb-0">Prayer Request Received!</p>
-                    <p class="mb-0" style="font-size:.93rem;">@TempData["Success"]</p>
+                    <p class="mb-0" style="font-size:.93rem;">@ViewBag.Success</p>
                 </div>
             </div>
         }
@@ -42,7 +42,6 @@
                         <div class="mb-3">
                             <label class="form-label" style="font-size:.88rem;font-weight:600;">Full Name</label>
                             <input type="text" name="Name" class="form-control" placeholder="Your full name" required />
-                            <span class="text-danger" style="font-size:.82rem;">@Html.ValidationMessage("Name")</span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" style="font-size:.88rem;font-weight:600;">Email Address (optional)</label>
@@ -53,7 +52,6 @@
                             <textarea name="Request" class="form-control" rows="6"
                                       placeholder="Share what is on your heart... (minimum 10 characters)"
                                       required></textarea>
-                            <span class="text-danger" style="font-size:.82rem;">@Html.ValidationMessage("Request")</span>
                         </div>
                         <button type="submit" class="btn-submit">
                             <i class="bi bi-send-heart me-2"></i>Send Prayer Request

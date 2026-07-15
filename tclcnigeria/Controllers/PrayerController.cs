@@ -35,6 +35,19 @@ namespace tclcnigeria.Controllers
                 model.DateSubmitted = DateTime.UtcNow;
                 _context.PrayerRequests.Add(model);
                 await _context.SaveChangesAsync();
+
+                var name = model.Name;
+                var email = model.Email ?? string.Empty;
+                var request = model.Request;
+
+                _ = Task.Run(async () =>
+                {
+                    try { await _emailService.SendPrayerRequestNotificationAsync(name, email, request); }
+                    catch (Exception ex) { _logger.LogError(ex, "Email failed for {Name}", name); }
+                });
+
+                ViewBag.Success = "Your prayer request has been received. Our intercessory team will pray with you for 30 days.";
+                return View(new PrayerRequest());
             }
             catch (Exception ex)
             {
@@ -42,25 +55,6 @@ namespace tclcnigeria.Controllers
                 ModelState.AddModelError("", "Something went wrong. Please try again.");
                 return View(model);
             }
-
-            var name = model.Name;
-            var email = model.Email ?? string.Empty;
-            var request = model.Request;
-
-            _ = Task.Run(async () =>
-            {
-                try
-                {
-                    await _emailService.SendPrayerRequestNotificationAsync(name, email, request);
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Failed to send prayer email for {Name}", name);
-                }
-            });
-
-            TempData["Success"] = "Your prayer request has been received. Our intercessory team will pray with you for 30 days.";
-            return RedirectToAction(nameof(Index));
         }
     }
 
