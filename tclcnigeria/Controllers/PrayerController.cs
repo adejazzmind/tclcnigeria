@@ -10,11 +10,13 @@ namespace tclcnigeria.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IEmailService _emailService;
+        private readonly ILogger<PrayerController> _logger;
 
-        public PrayerController(ApplicationDbContext context, IEmailService emailService)
+        public PrayerController(ApplicationDbContext context, IEmailService emailService, ILogger<PrayerController> logger)
         {
             _context = context;
             _emailService = emailService;
+            _logger = logger;
         }
 
         public IActionResult Index() => View();
@@ -23,29 +25,42 @@ namespace tclcnigeria.Controllers
         [IgnoreAntiforgeryToken]
         public async Task<IActionResult> Index(PrayerRequest model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
             {
                 model.DateSubmitted = DateTime.UtcNow;
                 _context.PrayerRequests.Add(model);
                 await _context.SaveChangesAsync();
-
-                _ = Task.Run(async () =>
-                {
-                    try
-                    {
-                        await _emailService.SendPrayerRequestNotificationAsync(
-                            model.Name,
-                            model.Email ?? string.Empty,
-                            model.Request
-                        );
-                    }
-                    catch { }
-                });
-
-                TempData["Success"] = "Your prayer request has been received. Our team will pray with you.";
-                return RedirectToAction(nameof(Index));
             }
-            return View(model);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to save prayer request");
+                ModelState.AddModelError("", "Something went wrong. Please try again.");
+                return View(model);
+            }
+
+            var name = model.Name;
+            var email = model.Email ?? string.Empty;
+            var request = model.Request;
+
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    await _emailService.SendPrayerRequestNotificationAsync(name, email, request);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Failed to send prayer email for {Name}", name);
+                }
+            });
+
+            TempData["Success"] = "Your prayer request has been received. Our intercessory team will pray with you for 30 days.";
+            return RedirectToAction(nameof(Index));
         }
     }
 
