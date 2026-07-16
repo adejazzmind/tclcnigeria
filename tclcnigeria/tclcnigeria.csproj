@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -24,4 +24,5 @@
     <Folder Include="wwwroot\icons\" />
   </ItemGroup>
 
+  <!-- Cache buster: 2026-07-16 16:15:46 -->
 </Project>
