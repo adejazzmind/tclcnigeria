@@ -903,3 +903,13 @@ h1, h2, h3, h4, h5 {
         padding-bottom: max(10px, env(safe-area-inset-bottom));
     }
 }
+
+/* iPhone notch/safe area fix */
+@supports (padding-top: env(safe-area-inset-top)) {
+    .navbar {
+        padding-top: env(safe-area-inset-top);
+    }
+    .navbar-spacer {
+        height: calc(70px + env(safe-area-inset-top));
+    }
+}
