@@ -12,6 +12,10 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
+// Persist DataProtection keys in database so they survive container restarts
+builder.Services.AddDataProtection()
+    .SetApplicationName("tclcnigeria");
+
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
     options.Password.RequireDigit = false;
