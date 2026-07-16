@@ -7,7 +7,7 @@ using tclcnigeria.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    ?? throw new InvalidOperationException("Connection string not found.");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
@@ -25,12 +25,6 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddTransient<IEmailSender, IdentityEmailSender>();
-
-builder.Services.AddAntiforgery(options => {
-    options.Cookie.SameSite = SameSiteMode.Lax;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-});
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
