@@ -1,6 +1,5 @@
-﻿using MailKit.Security;
-using MimeKit;
-using SmtpClient = MailKit.Net.Smtp.SmtpClient;
+using System.Text;
+using System.Text.Json;
 
 namespace tclcnigeria.Services
 {
@@ -8,50 +7,55 @@ namespace tclcnigeria.Services
     {
         private readonly IConfiguration _config;
         private readonly ILogger<EmailService> _logger;
+        private readonly HttpClient _httpClient;
 
-        public EmailService(IConfiguration config, ILogger<EmailService> logger)
+        public EmailService(IConfiguration config, ILogger<EmailService> logger, IHttpClientFactory httpClientFactory)
         {
             _config = config;
             _logger = logger;
+            _httpClient = httpClientFactory.CreateClient();
         }
 
         public async Task SendEmailAsync(string toEmail, string toName, string subject, string htmlBody)
         {
             try
             {
-                var smtpHost = _config["Email:SmtpHost"] ?? "smtp-relay.brevo.com";
-                var smtpPort = int.Parse(_config["Email:SmtpPort"] ?? "587");
-                var smtpLogin = _config["Email:SmtpLogin"] ?? "";
-                var smtpPass = _config["Email:SmtpPass"] ?? "";
-                var fromEmail = _config["Email:SmtpUser"] ?? "";
+                var apiKey = _config["Email:BrevoApiKey"] ?? "";
+                var fromEmail = _config["Email:SmtpUser"] ?? "adejazzmind@gmail.com";
                 var fromName = _config["Email:FromName"] ?? "TCLC Nigeria";
 
-                var email = new MimeMessage();
-                email.From.Add(new MailboxAddress(fromName, fromEmail));
-                email.To.Add(new MailboxAddress(toName, toEmail));
-                email.Subject = subject;
+                var payload = new
+                {
+                    sender = new { name = fromName, email = fromEmail },
+                    to = new[] { new { email = toEmail, name = toName } },
+                    subject = subject,
+                    htmlContent = htmlBody
+                };
 
-                var builder = new BodyBuilder { HtmlBody = htmlBody };
-                email.Body = builder.ToMessageBody();
+                var json = JsonSerializer.Serialize(payload);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                using var smtp = new SmtpClient();
-                await smtp.ConnectAsync(smtpHost, smtpPort, SecureSocketOptions.StartTls);
-                await smtp.AuthenticateAsync(smtpLogin, smtpPass);
-                await smtp.SendAsync(email);
-                await smtp.DisconnectAsync(true);
+                _httpClient.DefaultRequestHeaders.Clear();
+                _httpClient.DefaultRequestHeaders.Add("api-key", apiKey);
+                _httpClient.DefaultRequestHeaders.Add("accept", "application/json");
 
-                _logger.LogInformation("Email sent to {Email}: {Subject}", toEmail, subject);
+                var response = await _httpClient.PostAsync("https://api.brevo.com/v3/smtp/email", content);
+                var responseBody = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                    _logger.LogInformation("Email sent via Brevo API to {Email}", toEmail);
+                else
+                    _logger.LogError("Brevo API error: {Status} {Body}", response.StatusCode, responseBody);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to send email to {Email}", toEmail);
-                throw;
             }
         }
 
         public async Task SendPrayerRequestNotificationAsync(string name, string email, string request)
         {
-            var adminEmail = _config["Email:AdminEmail"] ?? _config["Email:SmtpUser"];
+            var adminEmail = _config["Email:AdminEmail"] ?? _config["Email:SmtpUser"] ?? "";
 
             var adminHtml = $@"<div style='font-family:sans-serif;max-width:600px;margin:0 auto;background:#f9f9f9;border-radius:12px;overflow:hidden;'>
               <div style='background:#070D2E;padding:32px;text-align:center;'>
@@ -67,7 +71,7 @@ namespace tclcnigeria.Services
               </div>
             </div>";
 
-            await SendEmailAsync(adminEmail!, "TCLC Admin", $"New Prayer Request from {name}", adminHtml);
+            await SendEmailAsync(adminEmail, "TCLC Admin", $"New Prayer Request from {name}", adminHtml);
 
             if (!string.IsNullOrEmpty(email))
             {
@@ -91,7 +95,7 @@ namespace tclcnigeria.Services
 
         public async Task SendContactFormNotificationAsync(string name, string email, string subject, string message)
         {
-            var adminEmail = _config["Email:AdminEmail"] ?? _config["Email:SmtpUser"];
+            var adminEmail = _config["Email:AdminEmail"] ?? _config["Email:SmtpUser"] ?? "";
 
             var adminHtml = $@"<div style='font-family:sans-serif;max-width:600px;margin:0 auto;'>
               <div style='background:#070D2E;padding:32px;text-align:center;'>
@@ -106,8 +110,7 @@ namespace tclcnigeria.Services
                 </div>
               </div>
             </div>";
-
-            await SendEmailAsync(adminEmail!, "TCLC Admin", $"New Message: {subject}", adminHtml);
+            await SendEmailAsync(adminEmail, "TCLC Admin", $"New Message: {subject}", adminHtml);
 
             var userHtml = $@"<div style='font-family:sans-serif;max-width:600px;margin:0 auto;'>
               <div style='background:#070D2E;padding:32px;text-align:center;'>
