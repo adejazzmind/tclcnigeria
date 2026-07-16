@@ -21,12 +21,13 @@ namespace tclcnigeria.Services
             {
                 var smtpHost = _config["Email:SmtpHost"] ?? "smtp-relay.brevo.com";
                 var smtpPort = int.Parse(_config["Email:SmtpPort"] ?? "587");
-                var smtpUser = _config["Email:SmtpUser"] ?? "";
+                var smtpLogin = _config["Email:SmtpLogin"] ?? "";
                 var smtpPass = _config["Email:SmtpPass"] ?? "";
+                var fromEmail = _config["Email:SmtpUser"] ?? "";
                 var fromName = _config["Email:FromName"] ?? "TCLC Nigeria";
 
                 var email = new MimeMessage();
-                email.From.Add(new MailboxAddress(fromName, smtpUser));
+                email.From.Add(new MailboxAddress(fromName, fromEmail));
                 email.To.Add(new MailboxAddress(toName, toEmail));
                 email.Subject = subject;
 
@@ -35,7 +36,7 @@ namespace tclcnigeria.Services
 
                 using var smtp = new SmtpClient();
                 await smtp.ConnectAsync(smtpHost, smtpPort, SecureSocketOptions.StartTls);
-                await smtp.AuthenticateAsync(smtpUser, smtpPass);
+                await smtp.AuthenticateAsync(smtpLogin, smtpPass);
                 await smtp.SendAsync(email);
                 await smtp.DisconnectAsync(true);
 
@@ -44,6 +45,7 @@ namespace tclcnigeria.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to send email to {Email}", toEmail);
+                throw;
             }
         }
 
@@ -51,8 +53,7 @@ namespace tclcnigeria.Services
         {
             var adminEmail = _config["Email:AdminEmail"] ?? _config["Email:SmtpUser"];
 
-            var adminHtml = $@"
-            <div style='font-family:sans-serif;max-width:600px;margin:0 auto;background:#f9f9f9;border-radius:12px;overflow:hidden;'>
+            var adminHtml = $@"<div style='font-family:sans-serif;max-width:600px;margin:0 auto;background:#f9f9f9;border-radius:12px;overflow:hidden;'>
               <div style='background:#070D2E;padding:32px;text-align:center;'>
                 <h1 style='color:#F5C842;font-size:1.4rem;margin:0;'>New Prayer Request</h1>
                 <p style='color:rgba(255,255,255,0.7);margin:8px 0 0;'>TCLC Nigeria</p>
@@ -70,25 +71,20 @@ namespace tclcnigeria.Services
 
             if (!string.IsNullOrEmpty(email))
             {
-                var userHtml = $@"
-                <div style='font-family:sans-serif;max-width:600px;margin:0 auto;background:#f9f9f9;border-radius:12px;overflow:hidden;'>
+                var userHtml = $@"<div style='font-family:sans-serif;max-width:600px;margin:0 auto;background:#f9f9f9;border-radius:12px;overflow:hidden;'>
                   <div style='background:#070D2E;padding:32px;text-align:center;'>
                     <h1 style='color:#F5C842;font-size:1.4rem;margin:0;'>Prayer Request Received</h1>
                     <p style='color:rgba(255,255,255,0.7);margin:8px 0 0;'>The City of the Lord Church Nigeria</p>
                   </div>
                   <div style='padding:32px;'>
                     <p>Dear <strong>{name}</strong>,</p>
-                    <p style='color:#555;line-height:1.8;'>
-                      Thank you for trusting us with your prayer request. Our intercessory team
-                      will pray with you for <strong>30 days</strong>.
-                    </p>
+                    <p style='color:#555;line-height:1.8;'>Thank you for trusting us with your prayer request. Our intercessory team will pray with you for <strong>30 days</strong>.</p>
                     <div style='background:#fff;border-left:4px solid #F5C842;padding:16px;border-radius:4px;margin:24px 0;'>
                       <p style='color:#555;margin:0;font-style:italic;'>{request}</p>
                     </div>
                     <p style='color:#555;'>God bless you,<br><strong>TCLC Nigeria Intercessory Team</strong></p>
                   </div>
                 </div>";
-
                 await SendEmailAsync(email, name, "We received your Prayer Request - TCLC Nigeria", userHtml);
             }
         }
@@ -97,42 +93,38 @@ namespace tclcnigeria.Services
         {
             var adminEmail = _config["Email:AdminEmail"] ?? _config["Email:SmtpUser"];
 
-            var adminHtml = $@"
-            <div style='font-family:sans-serif;max-width:600px;margin:0 auto;background:#f9f9f9;border-radius:12px;overflow:hidden;'>
+            var adminHtml = $@"<div style='font-family:sans-serif;max-width:600px;margin:0 auto;'>
               <div style='background:#070D2E;padding:32px;text-align:center;'>
-                <h1 style='color:#F5C842;font-size:1.4rem;margin:0;'>New Contact Message</h1>
+                <h1 style='color:#F5C842;margin:0;'>New Contact Message</h1>
               </div>
               <div style='padding:32px;'>
                 <p><strong>From:</strong> {name}</p>
                 <p><strong>Email:</strong> {email}</p>
                 <p><strong>Subject:</strong> {subject}</p>
-                <div style='background:#fff;border-left:4px solid #1A56DB;padding:16px;border-radius:4px;margin-top:16px;'>
-                  <p style='color:#555;margin:0;line-height:1.8;'>{message}</p>
+                <div style='background:#fff;border-left:4px solid #1A56DB;padding:16px;border-radius:4px;'>
+                  <p style='color:#555;margin:0;'>{message}</p>
                 </div>
               </div>
             </div>";
 
             await SendEmailAsync(adminEmail!, "TCLC Admin", $"New Message: {subject}", adminHtml);
 
-            var userHtml = $@"
-            <div style='font-family:sans-serif;max-width:600px;margin:0 auto;background:#f9f9f9;border-radius:12px;overflow:hidden;'>
+            var userHtml = $@"<div style='font-family:sans-serif;max-width:600px;margin:0 auto;'>
               <div style='background:#070D2E;padding:32px;text-align:center;'>
-                <h1 style='color:#F5C842;font-size:1.4rem;margin:0;'>Message Received</h1>
+                <h1 style='color:#F5C842;margin:0;'>Message Received</h1>
               </div>
               <div style='padding:32px;'>
                 <p>Dear <strong>{name}</strong>,</p>
-                <p style='color:#555;line-height:1.8;'>We received your message and will respond within 24-48 hours.</p>
+                <p style='color:#555;'>We received your message and will respond within 24-48 hours.</p>
                 <p style='color:#555;'>God bless,<br><strong>TCLC Nigeria</strong></p>
               </div>
             </div>";
-
             await SendEmailAsync(email, name, "We Got Your Message - TCLC Nigeria", userHtml);
         }
 
         public async Task SendEventReminderAsync(string toEmail, string toName, string eventTitle, string eventDate, string eventDescription)
         {
-            var html = $@"
-            <div style='font-family:sans-serif;max-width:600px;margin:0 auto;'>
+            var html = $@"<div style='font-family:sans-serif;max-width:600px;margin:0 auto;'>
               <div style='background:#070D2E;padding:32px;text-align:center;'>
                 <h1 style='color:#F5C842;margin:0;'>Event Reminder</h1>
               </div>
@@ -144,7 +136,6 @@ namespace tclcnigeria.Services
                 <p>God bless,<br><strong>TCLC Nigeria</strong></p>
               </div>
             </div>";
-
             await SendEmailAsync(toEmail, toName, $"Reminder: {eventTitle}", html);
         }
     }
