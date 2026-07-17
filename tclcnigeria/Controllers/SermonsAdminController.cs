@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using tclcnigeria.Models;
@@ -30,7 +30,7 @@ namespace tclcnigeria.Controllers
                 if (!string.IsNullOrEmpty(sermon.MediaUrl))
                     sermon.MediaUrl = ConvertToEmbed(sermon.MediaUrl);
                 if (sermon.DatePreached == default)
-                    sermon.DatePreached = DateTime.UtcNow;
+                    sermon.DatePreached = DateTime.SpecifyKind(sermon.DatePreached == default ? DateTime.UtcNow : sermon.DatePreached, DateTimeKind.Utc);
                 sermon.Title = sermon.Title ?? "";
                 sermon.Speaker = sermon.Speaker ?? "";
 
