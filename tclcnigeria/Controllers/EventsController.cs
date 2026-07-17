@@ -1,11 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using tclcnigeria.Models;
 
 namespace tclcnigeria.Controllers
 {
-    // PUBLIC
     public class EventsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,7 +20,6 @@ namespace tclcnigeria.Controllers
         }
     }
 
-    // ADMIN
     [Authorize]
     public class EventsAdminController : Controller
     {
@@ -40,61 +38,65 @@ namespace tclcnigeria.Controllers
 
         [HttpPost]
         [IgnoreAntiforgeryToken]
-        public async Task<IActionResult> Create(ChurchEvent churchEvent)
+        public async Task<IActionResult> Create([Bind("Title,Description,EventDate,EventEndDate,Location,Category,ImageUrl,IsFeatured")] ChurchEvent churchEvent)
         {
-            if (ModelState.IsValid)
+            try
             {
+                ModelState.Clear();
+                churchEvent.EventDate = DateTime.SpecifyKind(
+                    churchEvent.EventDate == default ? DateTime.UtcNow : churchEvent.EventDate,
+                    DateTimeKind.Utc);
+                if (churchEvent.EventEndDate.HasValue)
+                    churchEvent.EventEndDate = DateTime.SpecifyKind(churchEvent.EventEndDate.Value, DateTimeKind.Utc);
                 churchEvent.CreatedAt = DateTime.UtcNow;
+                churchEvent.Title = churchEvent.Title ?? "Untitled";
                 _context.Add(churchEvent);
                 await _context.SaveChangesAsync();
-                TempData["Success"] = "Event created successfully!";
                 return RedirectToAction(nameof(Index));
             }
-            return View(churchEvent);
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Error: {ex.Message} | {ex.InnerException?.Message}");
+                return View(churchEvent);
+            }
         }
 
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
-            var churchEvent = await _context.ChurchEvents.FindAsync(id);
-            if (churchEvent == null) return NotFound();
-            return View(churchEvent);
+            var ev = await _context.ChurchEvents.FindAsync(id);
+            if (ev == null) return NotFound();
+            return View(ev);
         }
 
         [HttpPost]
         [IgnoreAntiforgeryToken]
-        public async Task<IActionResult> Edit(int id, ChurchEvent churchEvent)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,EventDate,EventEndDate,Location,Category,ImageUrl,IsFeatured,CreatedAt")] ChurchEvent churchEvent)
         {
             if (id != churchEvent.Id) return NotFound();
-            if (ModelState.IsValid)
+            try
             {
+                ModelState.Clear();
+                churchEvent.EventDate = DateTime.SpecifyKind(churchEvent.EventDate, DateTimeKind.Utc);
+                if (churchEvent.EventEndDate.HasValue)
+                    churchEvent.EventEndDate = DateTime.SpecifyKind(churchEvent.EventEndDate.Value, DateTimeKind.Utc);
                 _context.Update(churchEvent);
                 await _context.SaveChangesAsync();
-                TempData["Success"] = "Event updated!";
                 return RedirectToAction(nameof(Index));
             }
-            return View(churchEvent);
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Error: {ex.Message} | {ex.InnerException?.Message}");
+                return View(churchEvent);
+            }
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> DeleteConfirm(int id)
         {
-            if (id == null) return NotFound();
-            var churchEvent = await _context.ChurchEvents.FirstOrDefaultAsync(e => e.Id == id);
-            if (churchEvent == null) return NotFound();
-            return View(churchEvent);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [IgnoreAntiforgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var churchEvent = await _context.ChurchEvents.FindAsync(id);
-            if (churchEvent != null) _context.ChurchEvents.Remove(churchEvent);
+            var ev = await _context.ChurchEvents.FindAsync(id);
+            if (ev != null) _context.ChurchEvents.Remove(ev);
             await _context.SaveChangesAsync();
-            TempData["Success"] = "Event deleted.";
             return RedirectToAction(nameof(Index));
         }
     }
 }
-
-
