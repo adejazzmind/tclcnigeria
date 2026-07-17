@@ -33,14 +33,18 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddTransient<IEmailSender, IdentityEmailSender>();
 
 builder.Services.AddAntiforgery(options => {
+    options.Cookie.Name = ".tclc.antiforgery";
     options.Cookie.SameSite = SameSiteMode.Lax;
     options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
     options.Cookie.HttpOnly = true;
 });
 
 builder.Services.ConfigureApplicationCookie(options => {
+    options.Cookie.Name = ".tclc.auth";
     options.Cookie.SameSite = SameSiteMode.Lax;
     options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
 });
 
 builder.Services.AddControllersWithViews();
