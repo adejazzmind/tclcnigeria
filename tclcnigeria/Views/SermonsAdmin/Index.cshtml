@@ -1,71 +1,61 @@
-﻿@model IEnumerable<tclcnigeria.Models.Sermon>
-
+@model IEnumerable<tclcnigeria.Models.Sermon>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sermons Admin";
 }
 
-<h1>Index</h1>
+<div class="container" style="padding:4rem 0;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 style="font-family:var(--font-display);margin:0;">Sermons</h2>
+        <a href="/SermonsAdmin/Create"
+           style="background:var(--navy);color:#fff;border-radius:50px;
+                  padding:10px 24px;font-weight:600;text-decoration:none;">
+            + Add New Sermon
+        </a>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Speaker)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatePreached)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VideoUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MediaUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SeriesName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Speaker)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatePreached)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VideoUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MediaUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeriesName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    @if (!Model.Any())
+    {
+        <p style="color:var(--text-mid);">No sermons yet. Click "Add New Sermon" to get started.</p>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead style="background:var(--navy);color:#fff;">
+                    <tr>
+                        <th>Title</th>
+                        <th>Speaker</th>
+                        <th>Date</th>
+                        <th>Series</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var sermon in Model)
+                    {
+                        <tr>
+                            <td>@sermon.Title</td>
+                            <td>@sermon.Speaker</td>
+                            <td>@sermon.DatePreached.ToString("MMM dd, yyyy")</td>
+                            <td>@sermon.SeriesName</td>
+                            <td>
+                                <a href="/SermonsAdmin/Edit/@sermon.Id"
+                                   style="color:var(--brand-blue);margin-right:12px;">Edit</a>
+                                <form method="post" action="/SermonsAdmin/Delete/@sermon.Id"
+                                      style="display:inline;"
+                                      onsubmit="return confirm('Delete this sermon?')">
+                                    <button type="submit"
+                                            style="background:none;border:none;
+                                                   color:#dc2626;cursor:pointer;
+                                                   font-weight:600;padding:0;">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
