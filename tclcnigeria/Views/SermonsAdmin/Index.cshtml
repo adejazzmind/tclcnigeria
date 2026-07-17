@@ -23,11 +23,11 @@
             <table class="table table-hover">
                 <thead style="background:var(--navy);color:#fff;">
                     <tr>
-                        <th>Title</th>
-                        <th>Speaker</th>
-                        <th>Date</th>
-                        <th>Series</th>
-                        <th>Actions</th>
+                        <th style="color:#fff;">Title</th>
+                        <th style="color:#fff;">Speaker</th>
+                        <th style="color:#fff;">Date</th>
+                        <th style="color:#fff;">Series</th>
+                        <th style="color:#fff;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,17 +40,10 @@
                             <td>@sermon.SeriesName</td>
                             <td>
                                 <a href="/SermonsAdmin/Edit/@sermon.Id"
-                                   style="color:var(--brand-blue);margin-right:12px;">Edit</a>
-                                <form method="post" action="/SermonsAdmin/Delete/@sermon.Id"
-                                      style="display:inline;"
-                                      onsubmit="return confirm('Delete this sermon?')">
-                                    <button type="submit"
-                                            style="background:none;border:none;
-                                                   color:#dc2626;cursor:pointer;
-                                                   font-weight:600;padding:0;">
-                                        Delete
-                                    </button>
-                                </form>
+                                   style="color:var(--brand-blue);margin-right:12px;font-weight:600;">Edit</a>
+                                <a href="/SermonsAdmin/DeleteConfirm/@sermon.Id"
+                                   style="color:#dc2626;font-weight:600;"
+                                   onclick="return confirm('Delete this sermon?')">Delete</a>
                             </td>
                         </tr>
                     }

@@ -85,6 +85,14 @@ namespace tclcnigeria.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        
+        public async Task<IActionResult> DeleteConfirm(int id)
+        {
+            var sermon = await _context.Sermons.FindAsync(id);
+            if (sermon != null) _context.Sermons.Remove(sermon);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
         private string ConvertToEmbed(string url)
         {
             if (string.IsNullOrEmpty(url)) return url;
@@ -102,3 +110,4 @@ namespace tclcnigeria.Controllers
         }
     }
 }
+
