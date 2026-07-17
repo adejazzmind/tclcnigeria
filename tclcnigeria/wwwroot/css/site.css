@@ -226,7 +226,7 @@ h1, h2, h3, h4, h5 {
 .hero-slide-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(155deg, rgba(7,13,46,.9) 0%, rgba(26,86,219,.72) 55%, rgba(201,184,232,.35) 100%);
+    background: linear-gradient(155deg, rgba(7,13,46,.35) 0%, rgba(26,86,219,.25) 55%, rgba(0,0,0,.15) 100%);
     z-index: 1;
 }
 
@@ -913,3 +913,4 @@ h1, h2, h3, h4, h5 {
         height: calc(70px + env(safe-area-inset-top));
     }
 }
+
