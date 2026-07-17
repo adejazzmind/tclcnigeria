@@ -29,19 +29,18 @@ namespace tclcnigeria.Controllers
                     sermon.VideoUrl = ConvertToEmbed(sermon.VideoUrl);
                 if (!string.IsNullOrEmpty(sermon.MediaUrl))
                     sermon.MediaUrl = ConvertToEmbed(sermon.MediaUrl);
-                if (sermon.DatePreached == default)
-                    sermon.DatePreached = DateTime.SpecifyKind(sermon.DatePreached == default ? DateTime.UtcNow : sermon.DatePreached, DateTimeKind.Utc);
                 sermon.Title = sermon.Title ?? "";
                 sermon.Speaker = sermon.Speaker ?? "";
-
+                sermon.DatePreached = DateTime.SpecifyKind(
+                    sermon.DatePreached == default ? DateTime.UtcNow : sermon.DatePreached,
+                    DateTimeKind.Utc);
                 _context.Add(sermon);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                var innerMsg = ex.InnerException?.Message ?? "No inner exception";
-                ModelState.AddModelError("", $"Error: {ex.Message} | Inner: {innerMsg}");
+                ModelState.AddModelError("", $"Error: {ex.Message} | Inner: {ex.InnerException?.Message}");
                 return View(sermon);
             }
         }
@@ -63,6 +62,7 @@ namespace tclcnigeria.Controllers
             {
                 if (!string.IsNullOrEmpty(sermon.VideoUrl))
                     sermon.VideoUrl = ConvertToEmbed(sermon.VideoUrl);
+                sermon.DatePreached = DateTime.SpecifyKind(sermon.DatePreached, DateTimeKind.Utc);
                 _context.Update(sermon);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
