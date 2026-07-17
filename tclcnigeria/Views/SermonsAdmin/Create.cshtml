@@ -1,63 +1,54 @@
-ï»¿@model tclcnigeria.Models.Sermon
-
+@model tclcnigeria.Models.Sermon
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add Sermon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<div class="container" style="padding:4rem 0;">
+    <h2 style="font-family:var(--font-display);margin-bottom:2rem;">Add New Sermon</h2>
 
-<h4>Sermon</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Speaker" class="control-label"></label>
-                <input asp-for="Speaker" class="form-control" />
-                <span asp-validation-for="Speaker" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DatePreached" class="control-label"></label>
-                <input asp-for="DatePreached" class="form-control" />
-                <span asp-validation-for="DatePreached" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VideoUrl" class="control-label"></label>
-                <input asp-for="VideoUrl" class="form-control" />
-                <span asp-validation-for="VideoUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MediaUrl" class="control-label"></label>
-                <input asp-for="MediaUrl" class="form-control" />
-                <span asp-validation-for="MediaUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SeriesName" class="control-label"></label>
-                <input asp-for="SeriesName" class="form-control" />
-                <span asp-validation-for="SeriesName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div style="background:#fee2e2;border-radius:8px;padding:1rem;margin-bottom:1rem;color:#991b1b;">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p class="mb-0">@error.ErrorMessage</p>
+            }
+        </div>
+    }
+
+    <form method="post" action="/SermonsAdmin/Create">
+        <div class="mb-3">
+            <label class="form-label fw-bold">Title</label>
+            <input type="text" name="Title" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-bold">Speaker</label>
+            <input type="text" name="Speaker" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-bold">Series Name</label>
+            <input type="text" name="SeriesName" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-bold">Description</label>
+            <textarea name="Description" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-bold">YouTube Video URL</label>
+            <input type="text" name="VideoUrl" class="form-control"
+                   placeholder="https://youtu.be/xxxxx or https://youtube.com/watch?v=xxxxx" />
+            <small class="text-muted">Paste any YouTube link — it will be converted automatically</small>
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Audio URL (optional)</label>
+            <input type="text" name="AudioUrl" class="form-control" placeholder="https://..." />
+        </div>
+        <button type="submit"
+                style="background:var(--navy);color:#fff;border:none;border-radius:50px;
+                       padding:12px 36px;font-weight:600;cursor:pointer;">
+            Save Sermon
+        </button>
+        <a href="/SermonsAdmin" style="margin-left:1rem;color:var(--brand-blue);">Cancel</a>
+    </form>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
