@@ -1,287 +1,196 @@
-﻿@{
+@{
     ViewData["Title"] = "Give Online";
 }
 
-<!-- PAGE HERO -->
 <section class="page-hero">
     <div class="container position-relative" style="z-index:2;">
-        <span class="eyebrow" style="color:var(--yellow);">Support the Vision</span>
+        <span class="eyebrow" style="color:var(--yellow);">Partner With Us</span>
         <h1 class="mt-2 mb-3">Give <em>Generously</em></h1>
-        <p>Your giving partners with us to advance the Kingdom of God in Lagos and beyond.</p>
+        <p>Your giving advances the Gospel in Lagos and beyond. Every seed sown is a Kingdom investment.</p>
     </div>
 </section>
 
 <section style="padding:5rem 0;">
     <div class="container">
 
-        @if (TempData["Success"] != null)
-        {
-            <div style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:1px solid #6ee7b7;
-                border-radius:var(--r);color:#065f46;padding:1.5rem 2rem;margin-bottom:2rem;
-                display:flex;align-items:center;gap:1rem;">
-                <span style="font-size:2rem;">🙏</span>
-                <div>@TempData["Success"]</div>
-            </div>
-        }
-
-        <!-- Scripture banner -->
-        <div style="background:linear-gradient(135deg,var(--lilac-soft),var(--yellow-soft));
-            border-radius:var(--r);padding:1.8rem 2rem;margin-bottom:3rem;
-            border-left:4px solid var(--yellow);text-align:center;">
-            <p style="font-family:var(--font-display);font-size:1.05rem;color:var(--navy);
-                font-style:italic;margin-bottom:.4rem;">
-                "Each of you should give what you have decided in your heart to give, not reluctantly
-                or under compulsion, for God loves a cheerful giver."
+        <div style="background:linear-gradient(135deg,var(--navy),var(--brand-blue));
+            border-radius:var(--r);padding:2.5rem;text-align:center;margin-bottom:4rem;">
+            <i class="bi bi-book-half" style="font-size:2rem;color:var(--yellow);"></i>
+            <p style="font-family:var(--font-display);font-size:1.3rem;font-style:italic;
+                color:var(--white);line-height:1.7;margin:1rem 0 .5rem;">
+                &ldquo;Give, and it will be given to you. A good measure, pressed down, shaken together
+                and running over, will be poured into your lap.&rdquo;
             </p>
-            <span style="color:var(--brand-blue);font-weight:600;font-size:.88rem;">
-                — 2 Corinthians 9:7
-            </span>
+            <p style="color:var(--yellow);font-weight:600;margin:0;">� Luke 6:38</p>
         </div>
 
-        <div class="row g-5">
+        <div class="text-center mb-5">
+            <span class="eyebrow">Bank Transfer</span>
+            <h2 class="section-title">Choose Your <em>Giving Category</em></h2>
+            <div class="divider"></div>
+            <p style="color:var(--text-mid);max-width:560px;margin:0 auto;">
+                Select the account that matches your giving purpose and make a direct bank transfer.
+                Every gift makes an eternal difference.
+            </p>
+        </div>
 
-            <!-- GIVING FORM -->
-            <div class="col-lg-7">
-                <div class="contact-form-card">
-                    <h4 style="font-family:var(--font-display);margin-bottom:.5rem;">Give Online via Paystack</h4>
-                    <p style="color:var(--text-mid);font-size:.92rem;margin-bottom:1.8rem;">
-                        Secure, fast and easy. All transactions are encrypted via Paystack.
-                    </p>
+        <div class="row g-4 mb-5">
 
-                    <!-- Quick amount buttons -->
-                    <div class="mb-4">
-                        <label style="font-size:.88rem;font-weight:600;color:var(--text-dark);
-                        display:block;margin-bottom:.8rem;">Select Amount (₦)</label>
-                        <div class="d-flex flex-wrap gap-2 mb-3">
-                            @foreach (var amt in new[] { 1000, 2000, 5000, 10000, 25000, 50000 })
-                            {
-                                <button type="button" onclick="setAmount(@amt, this)"
-                                        style="border:2px solid rgba(201,184,232,.5);
-                                    background:var(--off-white);border-radius:50px;
-                                    padding:8px 20px;font-weight:600;font-size:.88rem;
-                                    cursor:pointer;transition:all .2s ease;color:var(--text-dark);">
-                                    ₦@amt.ToString("N0")
-                                </button>
-                            }
-                        </div>
+            <div class="col-md-6 col-lg-4">
+                <div style="background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--r);padding:2rem;height:100%;border-top:4px solid var(--yellow);position:relative;overflow:hidden;">
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(245,200,66,.15);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--yellow);margin-bottom:1.2rem;"><i class="bi bi-award"></i></div>
+                    <h5 style="color:var(--yellow);font-family:var(--font-display);font-size:1.1rem;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;">Tithe</h5>
+                    <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:1rem;">
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Name</p>
+                        <p style="color:var(--white);font-weight:600;margin:0 0 12px;font-size:.92rem;">The City of the Lord Church</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Number</p>
+                        <p style="color:var(--yellow);font-weight:700;font-size:1.3rem;letter-spacing:2px;margin:0 0 12px;">0006520956</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Bank</p>
+                        <p style="color:var(--white);font-weight:600;margin:0;">Union Bank</p>
                     </div>
-
-                    <div class="mb-3">
-                        <label style="font-size:.88rem;font-weight:600;color:var(--text-dark);">Full Name</label>
-                        <input type="text" id="donorName" class="form-control" placeholder="Your full name" />
-                    </div>
-                    <div class="mb-3">
-                        <label style="font-size:.88rem;font-weight:600;color:var(--text-dark);">Email Address</label>
-                        <input type="email" id="donorEmail" class="form-control" placeholder="name@example.com" />
-                    </div>
-                    <div class="mb-3">
-                        <label style="font-size:.88rem;font-weight:600;color:var(--text-dark);">Amount (₦)</label>
-                        <input type="number" id="donorAmount" class="form-control"
-                               placeholder="Enter amount e.g. 5000" min="100" />
-                    </div>
-                    <div class="mb-4">
-                        <label style="font-size:.88rem;font-weight:600;color:var(--text-dark);">Giving Type</label>
-                        <select id="givingType" class="form-select">
-                            <option value="Tithe">Tithe</option>
-                            <option value="Offering">Offering</option>
-                            <option value="Seed">Seed Faith</option>
-                            <option value="Project">Building Project</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-
-                    <button onclick="payWithPaystack()" class="btn-submit">
-                        <i class="bi bi-shield-lock me-2"></i>Give Securely via Paystack
+                    <button onclick="copyText('0006520956', this)" style="width:100%;margin-top:1rem;background:rgba(245,200,66,.15);border:1px solid rgba(245,200,66,.3);color:var(--yellow);border-radius:50px;padding:8px;font-size:.82rem;font-weight:600;cursor:pointer;">
+                        <i class="bi bi-copy me-1"></i> Copy Account Number
                     </button>
-                    <p style="color:var(--text-light);font-size:.78rem;text-align:center;margin-top:1rem;">
-                        <i class="bi bi-lock-fill me-1"></i>256-bit SSL Encryption · Powered by Paystack
-                    </p>
-                </div>
-
-                <!-- ── BANK TRANSFER DETAILS ─────────────────────── -->
-                <div style="background:var(--white);border-radius:var(--r);padding:2rem;margin-top:1.5rem;
-                    border:1px solid rgba(201,184,232,.3);box-shadow:var(--shadow-sm);">
-                    <h6 style="font-family:var(--font-display);font-size:1.1rem;margin-bottom:1.5rem;">
-                        <i class="bi bi-bank me-2" style="color:var(--brand-blue);"></i>
-                        Direct Bank Transfer
-                    </h6>
-
-                    <!-- TITHE account -->
-                    <div style="background:linear-gradient(135deg,var(--navy),var(--brand-blue));
-                        border-radius:var(--r-sm);padding:1.5rem;margin-bottom:1rem;">
-                        <div style="display:flex;justify-content:space-between;align-items:center;
-                            flex-wrap:wrap;gap:.5rem;">
-                            <span style="background:var(--yellow);color:var(--navy);font-size:.7rem;
-                            font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-                            padding:3px 12px;border-radius:50px;">TITHE</span>
-                            <span style="color:rgba(255,255,255,.6);font-size:.82rem;">Union Bank</span>
-                        </div>
-                        <div class="row mt-2 g-2">
-                            <div class="col-6">
-                                <p style="color:rgba(255,255,255,.55);font-size:.75rem;margin-bottom:.2rem;">Account Name</p>
-                                <p style="color:var(--white);font-weight:700;font-size:.95rem;margin:0;">
-                                    The City of the Lord Church
-                                </p>
-                            </div>
-                            <div class="col-6">
-                                <p style="color:rgba(255,255,255,.55);font-size:.75rem;margin-bottom:.2rem;">Account Number</p>
-                                <p style="color:var(--yellow);font-weight:800;font-size:1.1rem;
-                                    letter-spacing:1px;margin:0;">
-                                    0006520956
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- OFFERING account -->
-                    <div style="background:linear-gradient(135deg,var(--lilac-soft),var(--light-blue));
-                        border-radius:var(--r-sm);padding:1.5rem;
-                        border:1px solid rgba(201,184,232,.4);">
-                        <div style="display:flex;justify-content:space-between;align-items:center;
-                            flex-wrap:wrap;gap:.5rem;">
-                            <span style="background:var(--brand-blue);color:var(--white);font-size:.7rem;
-                            font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-                            padding:3px 12px;border-radius:50px;">OFFERING</span>
-                            <span style="color:var(--text-mid);font-size:.82rem;">Polaris Bank</span>
-                        </div>
-                        <div class="row mt-2 g-2">
-                            <div class="col-6">
-                                <p style="color:var(--text-light);font-size:.75rem;margin-bottom:.2rem;">Account Name</p>
-                                <p style="color:var(--navy);font-weight:700;font-size:.95rem;margin:0;">
-                                    The City of the Lord Church
-                                </p>
-                            </div>
-                            <div class="col-6">
-                                <p style="color:var(--text-light);font-size:.75rem;margin-bottom:.2rem;">Account Number</p>
-                                <p style="color:var(--brand-blue);font-weight:800;font-size:1.1rem;
-                                    letter-spacing:1px;margin:0;">
-                                    1771157918
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
-            <!-- WHY GIVE SIDEBAR -->
-            <div class="col-lg-5">
-                <div class="info-box mb-4">
-                    <h4>Why We Give</h4>
-                    <div class="d-flex flex-column gap-3 mt-3">
-                        <div class="d-flex gap-3 align-items-start">
-                            <div class="info-icon"><i class="bi bi-broadcast"></i></div>
-                            <div>
-                                <p class="fw-bold mb-0" style="color:var(--white);font-size:.95rem;">Gospel Outreach</p>
-                                <p style="font-size:.85rem;">Funding evangelism and missions across Nigeria and the nations.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-3 align-items-start">
-                            <div class="info-icon"><i class="bi bi-building"></i></div>
-                            <div>
-                                <p class="fw-bold mb-0" style="color:var(--white);font-size:.95rem;">Building Project</p>
-                                <p style="font-size:.85rem;">Expanding our facilities to accommodate more worshippers.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-3 align-items-start">
-                            <div class="info-icon"><i class="bi bi-people"></i></div>
-                            <div>
-                                <p class="fw-bold mb-0" style="color:var(--white);font-size:.95rem;">Community Care</p>
-                                <p style="font-size:.85rem;">Supporting widows, orphans, and the needy in our community.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-3 align-items-start">
-                            <div class="info-icon"><i class="bi bi-book"></i></div>
-                            <div>
-                                <p class="fw-bold mb-0" style="color:var(--white);font-size:.95rem;">Bible Education</p>
-                                <p style="font-size:.85rem;">Training the next generation of disciples and leaders.</p>
-                            </div>
-                        </div>
+            <div class="col-md-6 col-lg-4">
+                <div style="background:linear-gradient(135deg,var(--brand-blue),var(--navy));border-radius:var(--r);padding:2rem;height:100%;border-top:4px solid #60a5fa;position:relative;overflow:hidden;">
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(96,165,250,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#93c5fd;margin-bottom:1.2rem;"><i class="bi bi-gift"></i></div>
+                    <h5 style="color:#93c5fd;font-family:var(--font-display);font-size:1.1rem;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;">Offering</h5>
+                    <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:1rem;">
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Name</p>
+                        <p style="color:var(--white);font-weight:600;margin:0 0 12px;font-size:.92rem;">The City of the Lord Church-Offering</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Number</p>
+                        <p style="color:#93c5fd;font-weight:700;font-size:1.3rem;letter-spacing:2px;margin:0 0 12px;">1311505279</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Bank</p>
+                        <p style="color:var(--white);font-weight:600;margin:0;">Zenith Bank</p>
                     </div>
+                    <button onclick="copyText('1311505279', this)" style="width:100%;margin-top:1rem;background:rgba(96,165,250,.15);border:1px solid rgba(96,165,250,.3);color:#93c5fd;border-radius:50px;padding:8px;font-size:.82rem;font-weight:600;cursor:pointer;">
+                        <i class="bi bi-copy me-1"></i> Copy Account Number
+                    </button>
                 </div>
+            </div>
 
-                <!-- Trust badges -->
-                <div style="background:var(--white);border-radius:var(--r);padding:1.5rem;
-                    border:1px solid rgba(201,184,232,.3);box-shadow:var(--shadow-sm);
-                    text-align:center;">
-                    <p style="font-size:.78rem;color:var(--text-light);margin-bottom:1rem;font-weight:700;
-                    text-transform:uppercase;letter-spacing:1.5px;">Safe &amp; Secure</p>
-                    <div class="d-flex justify-content-center gap-4">
-                        <div>
-                            <i class="bi bi-shield-check" style="font-size:1.6rem;color:var(--brand-blue);"></i>
-                            <p style="font-size:.75rem;color:var(--text-mid);margin-top:.3rem;margin-bottom:0;">SSL Secure</p>
-                        </div>
-                        <div>
-                            <i class="bi bi-lock" style="font-size:1.6rem;color:var(--brand-blue);"></i>
-                            <p style="font-size:.75rem;color:var(--text-mid);margin-top:.3rem;margin-bottom:0;">Encrypted</p>
-                        </div>
-                        <div>
-                            <i class="bi bi-award" style="font-size:1.6rem;color:var(--brand-blue);"></i>
-                            <p style="font-size:.75rem;color:var(--text-mid);margin-top:.3rem;margin-bottom:0;">Verified</p>
-                        </div>
+            <div class="col-md-6 col-lg-4">
+                <div style="background:linear-gradient(135deg,#064e3b,#065f46);border-radius:var(--r);padding:2rem;height:100%;border-top:4px solid #34d399;position:relative;overflow:hidden;">
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(52,211,153,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#6ee7b7;margin-bottom:1.2rem;"><i class="bi bi-building"></i></div>
+                    <h5 style="color:#6ee7b7;font-family:var(--font-display);font-size:1.1rem;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;">Building Fund</h5>
+                    <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:1rem;">
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Name</p>
+                        <p style="color:var(--white);font-weight:600;margin:0 0 12px;font-size:.92rem;">The City of the Lord Church-Building Fund</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Number</p>
+                        <p style="color:#6ee7b7;font-weight:700;font-size:1.3rem;letter-spacing:2px;margin:0 0 12px;">1311505169</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Bank</p>
+                        <p style="color:var(--white);font-weight:600;margin:0;">Zenith Bank</p>
                     </div>
+                    <button onclick="copyText('1311505169', this)" style="width:100%;margin-top:1rem;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3);color:#6ee7b7;border-radius:50px;padding:8px;font-size:.82rem;font-weight:600;cursor:pointer;">
+                        <i class="bi bi-copy me-1"></i> Copy Account Number
+                    </button>
                 </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div style="background:linear-gradient(135deg,#7c2d12,#9a3412);border-radius:var(--r);padding:2rem;height:100%;border-top:4px solid #fb923c;position:relative;overflow:hidden;">
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(251,146,60,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fdba74;margin-bottom:1.2rem;"><i class="bi bi-megaphone"></i></div>
+                    <h5 style="color:#fdba74;font-family:var(--font-display);font-size:1.1rem;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;">Evangelism</h5>
+                    <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:1rem;">
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Name</p>
+                        <p style="color:var(--white);font-weight:600;margin:0 0 12px;font-size:.92rem;">The City of the Lord Church-Evangelism</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Number</p>
+                        <p style="color:#fdba74;font-weight:700;font-size:1.3rem;letter-spacing:2px;margin:0 0 12px;">1311505097</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Bank</p>
+                        <p style="color:var(--white);font-weight:600;margin:0;">Zenith Bank</p>
+                    </div>
+                    <button onclick="copyText('1311505097', this)" style="width:100%;margin-top:1rem;background:rgba(251,146,60,.15);border:1px solid rgba(251,146,60,.3);color:#fdba74;border-radius:50px;padding:8px;font-size:.82rem;font-weight:600;cursor:pointer;">
+                        <i class="bi bi-copy me-1"></i> Copy Account Number
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div style="background:linear-gradient(135deg,#4c1d95,#5b21b6);border-radius:var(--r);padding:2rem;height:100%;border-top:4px solid #a78bfa;position:relative;overflow:hidden;">
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(167,139,250,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#c4b5fd;margin-bottom:1.2rem;"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h5 style="color:#c4b5fd;font-family:var(--font-display);font-size:1.1rem;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;">Kingdom Investment</h5>
+                    <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:1rem;">
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Name</p>
+                        <p style="color:var(--white);font-weight:600;margin:0 0 12px;font-size:.92rem;">The City of the Lord Church-Kingdom Investment</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Number</p>
+                        <p style="color:#c4b5fd;font-weight:700;font-size:1.3rem;letter-spacing:2px;margin:0 0 12px;">1311505688</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Bank</p>
+                        <p style="color:var(--white);font-weight:600;margin:0;">Zenith Bank</p>
+                    </div>
+                    <button onclick="copyText('1311505688', this)" style="width:100%;margin-top:1rem;background:rgba(167,139,250,.15);border:1px solid rgba(167,139,250,.3);color:#c4b5fd;border-radius:50px;padding:8px;font-size:.82rem;font-weight:600;cursor:pointer;">
+                        <i class="bi bi-copy me-1"></i> Copy Account Number
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div style="background:linear-gradient(135deg,#831843,#9d174d);border-radius:var(--r);padding:2rem;height:100%;border-top:4px solid #f472b6;position:relative;overflow:hidden;">
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(244,114,182,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#f9a8d4;margin-bottom:1.2rem;"><i class="bi bi-stars"></i></div>
+                    <h5 style="color:#f9a8d4;font-family:var(--font-display);font-size:1.1rem;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;">IANAC</h5>
+                    <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:1rem;">
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Name</p>
+                        <p style="color:var(--white);font-weight:600;margin:0 0 12px;font-size:.92rem;">The City of the Lord Church-IANAC</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Number</p>
+                        <p style="color:#f9a8d4;font-weight:700;font-size:1.3rem;letter-spacing:2px;margin:0 0 12px;">1311505073</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Bank</p>
+                        <p style="color:var(--white);font-weight:600;margin:0;">Zenith Bank</p>
+                    </div>
+                    <button onclick="copyText('1311505073', this)" style="width:100%;margin-top:1rem;background:rgba(244,114,182,.15);border:1px solid rgba(244,114,182,.3);color:#f9a8d4;border-radius:50px;padding:8px;font-size:.82rem;font-weight:600;cursor:pointer;">
+                        <i class="bi bi-copy me-1"></i> Copy Account Number
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div style="background:linear-gradient(135deg,#1e3a5f,#1e40af);border-radius:var(--r);padding:2rem;height:100%;border-top:4px solid var(--yellow);position:relative;overflow:hidden;">
+                    <div style="width:48px;height:48px;border-radius:14px;background:rgba(245,200,66,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--yellow);margin-bottom:1.2rem;"><i class="bi bi-calendar-event"></i></div>
+                    <h5 style="color:var(--yellow);font-family:var(--font-display);font-size:1.1rem;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;">TCLC Convention</h5>
+                    <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:1rem;">
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Name</p>
+                        <p style="color:var(--white);font-weight:600;margin:0 0 12px;font-size:.92rem;">The City of the Lord Church-TCLC Convention</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Account Number</p>
+                        <p style="color:var(--yellow);font-weight:700;font-size:1.3rem;letter-spacing:2px;margin:0 0 12px;">1226304488</p>
+                        <p style="color:rgba(255,255,255,.6);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">Bank</p>
+                        <p style="color:var(--white);font-weight:600;margin:0;">Zenith Bank</p>
+                    </div>
+                    <button onclick="copyText('1226304488', this)" style="width:100%;margin-top:1rem;background:rgba(245,200,66,.15);border:1px solid rgba(245,200,66,.3);color:var(--yellow);border-radius:50px;padding:8px;font-size:.82rem;font-weight:600;cursor:pointer;">
+                        <i class="bi bi-copy me-1"></i> Copy Account Number
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="background:linear-gradient(135deg,var(--lilac-soft),var(--yellow-soft));border-radius:24px;padding:4rem 3rem;text-align:center;border:1px solid rgba(201,184,232,.4);box-shadow:var(--shadow-md);">
+            <i class="bi bi-heart-fill" style="font-size:2.5rem;color:var(--brand-blue);margin-bottom:1rem;display:block;"></i>
+            <span class="eyebrow">Become a Partner</span>
+            <h3 class="section-title mb-3">Your Giving Makes a Difference</h3>
+            <p style="color:var(--text-mid);font-size:1.05rem;max-width:560px;margin:0 auto 2rem;">
+                Every seed you sow into this ministry goes directly towards winning souls,
+                building lives, and advancing the Kingdom of God in Lagos and beyond.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a asp-controller="Prayer" asp-action="Index" style="display:inline-block;background:var(--navy);color:var(--white);border-radius:50px;padding:14px 36px;font-weight:600;text-decoration:none;">
+                    <i class="bi bi-send-heart me-2"></i>Send a Prayer Request
+                </a>
+                <a asp-controller="Home" asp-action="Contact" style="display:inline-block;background:transparent;color:var(--navy);border:2px solid var(--navy);border-radius:50px;padding:14px 36px;font-weight:600;text-decoration:none;">
+                    <i class="bi bi-envelope me-2"></i>Contact Us
+                </a>
             </div>
         </div>
+
     </div>
 </section>
 
-<!-- Paystack JS -->
-<script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
-    function setAmount(val, btn) {
-    document.getElementById('donorAmount').value = val;
-    document.querySelectorAll('button[onclick^="setAmount"]').forEach(b => {
-    b.style.background = 'var(--off-white)';
-    b.style.borderColor = 'rgba(201,184,232,.5)';
-    b.style.color = 'var(--text-dark)';
+function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(function() {
+        var original = btn.innerHTML;
+        btn.innerHTML = '<i class="bi bi-check-circle me-1"></i> Copied!';
+        setTimeout(function() { btn.innerHTML = original; }, 2000);
     });
-    btn.style.background = 'var(--brand-blue)';
-    btn.style.borderColor = 'var(--brand-blue)';
-    btn.style.color = '#fff';
-    }
-
-    function payWithPaystack() {
-    const name   = document.getElementById('donorName').value.trim();
-    const email  = document.getElementById('donorEmail').value.trim();
-    const amount = parseFloat(document.getElementById('donorAmount').value);
-    const type   = document.getElementById('givingType').value;
-
-    if (!name)  { alert('Please enter your name.'); return; }
-    if (!email) { alert('Please enter your email address.'); return; }
-    if (!amount || amount < 100) { alert('Please enter an amount of at least ₦100.'); return; }
-
-    const handler = PaystackPop.setup({
-    // ⚠️ Replace with your actual Paystack public key from https://dashboard.paystack.com
-    key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-    email: email,
-    amount: amount * 100,
-    currency: 'NGN',
-    ref: 'TCLC-' + new Date().getTime(),
-    metadata: { donor_name: name, giving_type: type },
-    callback: function(response) {
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '/Give/RecordDonation';
-    const fields = {
-    DonorName:        name,
-    Email:            email,
-    Amount:           amount,
-    GivingType:       type,
-    PaymentReference: response.reference,
-    PaymentStatus:    'Completed',
-    __RequestVerificationToken: document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
-    };
-    Object.entries(fields).forEach(([k, v]) => {
-    const input = document.createElement('input');
-    input.type = 'hidden'; input.name = k; input.value = v;
-    form.appendChild(input);
-    });
-    document.body.appendChild(form);
-    form.submit();
-    },
-    onClose: function() { console.log('Payment closed'); }
-    });
-    handler.openIframe();
-    }
+}
 </script>
-@Html.AntiForgeryToken()
