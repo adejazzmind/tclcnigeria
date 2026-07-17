@@ -10,6 +10,6 @@
         public string? MediaUrl { get; set; }
         public string? Description { get; set; }
         public string? SeriesName { get; set; }
-        public DateTime DatePreached { get; set; }
+        public DateTime DatePreached { get; set; } = DateTime.Today;
     }
 }
