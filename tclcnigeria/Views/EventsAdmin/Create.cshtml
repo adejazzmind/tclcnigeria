@@ -1,0 +1,74 @@
+@model tclcnigeria.Models.ChurchEvent
+@{
+    ViewData["Title"] = "Add Event";
+}
+
+<div class="container" style="padding:4rem 0;">
+    <h2 style="font-family:var(--font-display);margin-bottom:2rem;">Add New Event</h2>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div style="background:#fee2e2;border-radius:8px;padding:1rem;margin-bottom:1rem;color:#991b1b;">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p class="mb-0">@error.ErrorMessage</p>
+            }
+        </div>
+    }
+
+    <form method="post" action="/EventsAdmin/Create">
+        <div class="row g-3">
+            <div class="col-12">
+                <label class="form-label fw-bold">Event Title</label>
+                <input type="text" name="Title" class="form-control" required placeholder="e.g. Sunday Service, Convention 2026" />
+            </div>
+            <div class="col-12">
+                <label class="form-label fw-bold">Description</label>
+                <textarea name="Description" class="form-control" rows="4" placeholder="Describe the event..."></textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label fw-bold">Event Date & Time</label>
+                <input type="datetime-local" name="EventDate" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label fw-bold">End Date & Time (optional)</label>
+                <input type="datetime-local" name="EventEndDate" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label fw-bold">Location</label>
+                <input type="text" name="Location" class="form-control" placeholder="25, Kudirat Soule Street, Ogba, Lagos" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label fw-bold">Category</label>
+                <select name="Category" class="form-control">
+                    <option value="General">General</option>
+                    <option value="Sunday Service">Sunday Service</option>
+                    <option value="Convention">Convention</option>
+                    <option value="Prayer">Prayer</option>
+                    <option value="Youth">Youth</option>
+                    <option value="Women">Women</option>
+                    <option value="Men">Men</option>
+                    <option value="Outreach">Outreach</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <label class="form-label fw-bold">Image URL (optional)</label>
+                <input type="text" name="ImageUrl" class="form-control" placeholder="https://..." />
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input type="checkbox" name="IsFeatured" value="true" class="form-check-input" id="featured">
+                    <label class="form-check-label fw-bold" for="featured">Feature this event on homepage</label>
+                </div>
+            </div>
+            <div class="col-12 mt-3">
+                <button type="submit"
+                        style="background:var(--navy);color:#fff;border:none;border-radius:50px;
+                               padding:12px 36px;font-weight:600;cursor:pointer;">
+                    Save Event
+                </button>
+                <a href="/EventsAdmin" style="margin-left:1rem;color:var(--brand-blue);">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
