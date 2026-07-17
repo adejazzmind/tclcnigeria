@@ -25,17 +25,17 @@ namespace tclcnigeria.Controllers
         {
             try
             {
+                ModelState.Clear();
                 if (!string.IsNullOrEmpty(sermon.VideoUrl))
                     sermon.VideoUrl = ConvertToEmbed(sermon.VideoUrl);
                 if (!string.IsNullOrEmpty(sermon.MediaUrl))
                     sermon.MediaUrl = ConvertToEmbed(sermon.MediaUrl);
-                sermon.Title = sermon.Title ?? "";
-                sermon.Speaker = sermon.Speaker ?? "";
-                sermon.DatePreached = DateTime.SpecifyKind(
-                    sermon.DatePreached == default ? DateTime.UtcNow : sermon.DatePreached,
-                    DateTimeKind.Utc);
+                sermon.Title = sermon.Title ?? "Untitled";
+                sermon.Speaker = sermon.Speaker ?? "Unknown";
+                sermon.DatePreached = DateTime.UtcNow;
                 _context.Add(sermon);
                 await _context.SaveChangesAsync();
+                TempData["Success"] = "Sermon created successfully!";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -60,9 +60,10 @@ namespace tclcnigeria.Controllers
             if (id != sermon.Id) return NotFound();
             try
             {
+                ModelState.Clear();
                 if (!string.IsNullOrEmpty(sermon.VideoUrl))
                     sermon.VideoUrl = ConvertToEmbed(sermon.VideoUrl);
-                sermon.DatePreached = DateTime.SpecifyKind(sermon.DatePreached, DateTimeKind.Utc);
+                sermon.DatePreached = DateTime.UtcNow;
                 _context.Update(sermon);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
