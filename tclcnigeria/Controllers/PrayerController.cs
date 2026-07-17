@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using tclcnigeria.Models;
@@ -73,7 +73,7 @@ namespace tclcnigeria.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> MarkPrayed(int id)
         {
             var request = await _context.PrayerRequests.FindAsync(id);
@@ -95,7 +95,7 @@ namespace tclcnigeria.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var request = await _context.PrayerRequests.FindAsync(id);

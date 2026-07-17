@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -43,7 +43,7 @@ namespace tclcnigeria.Controllers
 
         // POST: SermonsAdmin/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Speaker,DatePreached,Description,VideoUrl,MediaUrl,SeriesName")] Sermon sermon)
         {
             if (ModelState.IsValid)
@@ -71,7 +71,7 @@ namespace tclcnigeria.Controllers
 
         // POST: SermonsAdmin/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Speaker,DatePreached,Description,VideoUrl,MediaUrl,SeriesName")] Sermon sermon)
         {
             if (id != sermon.Id) return NotFound();
@@ -109,7 +109,7 @@ namespace tclcnigeria.Controllers
 
         // POST: SermonsAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var sermon = await _context.Sermons.FindAsync(id);

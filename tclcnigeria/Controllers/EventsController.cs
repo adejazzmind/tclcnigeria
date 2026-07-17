@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using tclcnigeria.Models;
@@ -39,7 +39,7 @@ namespace tclcnigeria.Controllers
         public IActionResult Create() => View();
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> Create(ChurchEvent churchEvent)
         {
             if (ModelState.IsValid)
@@ -62,7 +62,7 @@ namespace tclcnigeria.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> Edit(int id, ChurchEvent churchEvent)
         {
             if (id != churchEvent.Id) return NotFound();
@@ -85,7 +85,7 @@ namespace tclcnigeria.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var churchEvent = await _context.ChurchEvents.FindAsync(id);
