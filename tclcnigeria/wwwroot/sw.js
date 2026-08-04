@@ -1,15 +1,12 @@
-const CACHE_NAME = 'tclcnigeria-v3';
+const CACHE_NAME = 'tclcnigeria-v4';
 const OFFLINE_URL = '/offline.html';
 
 const STATIC_ASSETS = [
-  '/',
-  '/Home/About',
-  '/Home/Ministries',
-  '/Home/Sermons',
   '/css/site.css',
   '/lib/bootstrap/dist/css/bootstrap.min.css',
   '/lib/bootstrap/dist/js/bootstrap.bundle.min.js',
-  '/lib/jquery/dist/jquery.min.js'
+  '/lib/jquery/dist/jquery.min.js',
+  OFFLINE_URL
 ];
 
 self.addEventListener('install', event => {
@@ -56,6 +53,27 @@ self.addEventListener('fetch', event => {
     return;
   }
 
+  // Network-first for page navigations (HTML) - always get fresh content
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then(networkResponse => {
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseToCache);
+          });
+          return networkResponse;
+        })
+        .catch(() => {
+          return caches.match(event.request).then(cachedResponse => {
+            return cachedResponse || caches.match(OFFLINE_URL);
+          });
+        })
+    );
+    return;
+  }
+
+  // Cache-first for static assets (css/js) - fine since they rarely change
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
       if (cachedResponse) return cachedResponse;
