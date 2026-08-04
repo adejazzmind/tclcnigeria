@@ -217,7 +217,7 @@ h1, h2, h3, h4, h5 {
     height: 100%;
     width: 100%;
     background-size: cover;
-    background-position: center;
+    background-position: center 20%;
     display: flex;
     align-items: center;
     position: relative;
@@ -913,4 +913,3 @@ h1, h2, h3, h4, h5 {
         height: calc(70px + env(safe-area-inset-top));
     }
 }
-
