@@ -1,61 +1,42 @@
 @model IEnumerable<tclcnigeria.Models.ChurchEvent>
 
 @{
-    ViewData["Title"] = "Manage Events";
+    ViewData["Title"] = "Events Admin";
 }
 
-<div class="container py-4">
+<div class="container" style="padding:4rem 0;">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Manage Events</h2>
-        <a asp-action="Create" class="btn btn-primary">+ Add New Event</a>
+        <h2 style="font-family:var(--font-display);margin:0;">Church Events</h2>
+        <a href="/EventsAdmin/Create" style="background:var(--navy);color:#fff;border-radius:50px;padding:10px 24px;font-weight:600;text-decoration:none;">+ Add New Event</a>
     </div>
-
-    @if (TempData["Success"] != null)
-    {
-        <div class="alert alert-success">@TempData["Success"]</div>
-    }
-
     @if (!Model.Any())
     {
-        <p class="text-muted">No events found. Click "Add New Event" to create one.</p>
+        <p style="color:var(--text-mid);">No events yet. Click Add New Event to get started.</p>
     }
     else
     {
         <div class="table-responsive">
-            <table class="table table-striped align-middle">
-                <thead>
+            <table class="table table-hover">
+                <thead style="background:var(--navy);">
                     <tr>
-                        <th>Title</th>
-                        <th>Date</th>
-                        <th>Location</th>
-                        <th>Category</th>
-                        <th>Featured</th>
-                        <th class="text-end">Actions</th>
+                        <th style="color:#fff;">Title</th>
+                        <th style="color:#fff;">Date</th>
+                        <th style="color:#fff;">Location</th>
+                        <th style="color:#fff;">Category</th>
+                        <th style="color:#fff;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var evt in Model.OrderBy(e => e.EventDate))
+                    @foreach (var ev in Model)
                     {
                         <tr>
-                            <td>@evt.Title</td>
-                            <td>@evt.EventDate.ToString("dd MMM yyyy, h:mm tt")</td>
-                            <td>@evt.Location</td>
-                            <td>@evt.Category</td>
+                            <td>@ev.Title</td>
+                            <td>@ev.EventDate.ToString("MMM dd, yyyy HH:mm")</td>
+                            <td>@ev.Location</td>
+                            <td>@ev.Category</td>
                             <td>
-                                @if (evt.IsFeatured)
-                                {
-                                    <span class="badge bg-warning text-dark">Featured</span>
-                                }
-                                else
-                                {
-                                    <span class="text-muted">—</span>
-                                }
-                            </td>
-                            <td class="text-end">
-                                <form asp-action="Delete" asp-route-id="@evt.Id" method="post" class="d-inline"
-                                      onsubmit="return confirm('Delete this event?');">
-                                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                                </form>
+                                <a href="/EventsAdmin/Edit/@ev.Id" style="color:var(--brand-blue);margin-right:12px;font-weight:600;">Edit</a>
+                                <a href="/EventsAdmin/DeleteConfirm/@ev.Id" style="color:#dc2626;font-weight:600;" onclick="return confirm('Delete this event?')">Delete</a>
                             </td>
                         </tr>
                     }
