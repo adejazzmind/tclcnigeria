@@ -9,7 +9,7 @@ namespace tclcnigeria.Services
         private readonly ILogger<AiService> _logger;
         private readonly string _apiKey;
 
-        private const string Model = "gemini-2.5-flash-lite";
+        private const string Model = "gemini-3.1-flash-lite";
         private const string BaseUrl = "https://generativelanguage.googleapis.com/v1beta/models";
 
         public AiService(HttpClient http, IConfiguration config, ILogger<AiService> logger)
@@ -115,4 +115,5 @@ namespace tclcnigeria.Services
         }
     }
 }
+
 
