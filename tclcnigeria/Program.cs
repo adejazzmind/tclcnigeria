@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +30,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddHttpClient<IAiService, AiService>();
 builder.Services.AddTransient<IEmailSender, IdentityEmailSender>();
 
 builder.Services.AddAntiforgery(options => {
@@ -71,3 +72,4 @@ app.MapControllerRoute(
 
 app.MapRazorPages();
 app.Run();
+
