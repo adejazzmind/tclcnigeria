@@ -68,7 +68,7 @@ namespace tclcnigeria.Services
 
         private async Task<string> GenerateAsync(string systemPrompt, string userPrompt, int maxOutputTokens)
         {
-            var url = $"{BaseUrl}/{Model}:generateContent?key={_apiKey}";
+            var url = $"{BaseUrl}/{Model}:generateContent";
 
             var payload = new
             {
@@ -79,6 +79,8 @@ namespace tclcnigeria.Services
 
             var json = JsonSerializer.Serialize(payload);
             using var content = new StringContent(json, Encoding.UTF8, "application/json");
+                _http.DefaultRequestHeaders.Remove("x-goog-api-key");
+                _http.DefaultRequestHeaders.Add("x-goog-api-key", _apiKey);
 
             try
             {
@@ -113,3 +115,4 @@ namespace tclcnigeria.Services
         }
     }
 }
+
