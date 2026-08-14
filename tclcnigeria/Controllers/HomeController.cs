@@ -22,6 +22,7 @@ namespace tclcnigeria.Controllers
         public IActionResult Index() => View();
         public IActionResult About() => View();
         public IActionResult Ministries() => View();
+        public IActionResult Gallery() => View();
 
         public IActionResult Sermons()
         {
@@ -74,3 +75,4 @@ namespace tclcnigeria.Controllers
         }
     }
 }
+
