@@ -100,3 +100,18 @@
     })();
 </script>
 
+
+<script>
+    (function () {
+        var navbarMain = document.getElementById('navbarMain');
+        var chatWidget = document.getElementById('tclc-ai-widget');
+        if (navbarMain && chatWidget) {
+            navbarMain.addEventListener('show.bs.collapse', function () {
+                chatWidget.style.display = 'none';
+            });
+            navbarMain.addEventListener('hide.bs.collapse', function () {
+                chatWidget.style.display = '';
+            });
+        }
+    })();
+</script>
