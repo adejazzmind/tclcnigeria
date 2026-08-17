@@ -26,6 +26,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     options.Password.RequireLowercase = false;
     options.SignIn.RequireConfirmedAccount = false;
 })
+.AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddHttpClient();
@@ -71,5 +72,38 @@ app.MapControllerRoute(
     .WithStaticAssets();
 
 app.MapRazorPages();
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+    string[] roles = { "BibleSchoolStaff", "CTGStaff" };
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+
+    async Task EnsureStaffAsync(string email, string tempPassword)
+    {
+        var user = await userManager.FindByEmailAsync(email);
+        if (user == null)
+        {
+            user = new IdentityUser { UserName = email, Email = email, EmailConfirmed = true };
+            await userManager.CreateAsync(user, tempPassword);
+        }
+        if (!await userManager.IsInRoleAsync(user, "BibleSchoolStaff"))
+            await userManager.AddToRoleAsync(user, "BibleSchoolStaff");
+        if (!await userManager.IsInRoleAsync(user, "CTGStaff"))
+            await userManager.AddToRoleAsync(user, "CTGStaff");
+    }
+
+    await EnsureStaffAsync("adejazzmind@gmail.com", "Tclc@2026!");
+    await EnsureStaffAsync("foluwalade@gmail.com", "TclcFunmi@2026!");
+}
+
 app.Run();
+
 
