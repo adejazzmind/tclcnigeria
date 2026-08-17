@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Take Exam - " + ViewBag.ExamTitle;
+}
+<section class="page-hero">
+    <div class="container position-relative" style="z-index:2;">
+        <span class="eyebrow" style="color:var(--yellow);">Identify Yourself</span>
+        <h1 class="mt-2 mb-3">@ViewBag.ExamTitle</h1>
+        <p>Enter your details below. We'll check your approved Workforce enrollment before starting.</p>
+    </div>
+</section>
+
+<section style="padding:5rem 0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                @if (ViewBag.Error != null)
+                {
+                    <div style="background:#fee2e2;border:1px solid #fca5a5;border-radius:var(--r);
+                        color:#991b1b;padding:1.2rem 1.5rem;margin-bottom:1.5rem;">
+                        @ViewBag.Error
+                    </div>
+                }
+                <div class="contact-form-card">
+                    <form method="post" action="/Exams/Take/@ViewBag.ExamId">
+                        @Html.AntiForgeryToken()
+                        <div class="mb-3">
+                            <label class="form-label" style="font-size:.88rem;font-weight:600;">Full Name</label>
+                            <input type="text" name="fullName" class="form-control" placeholder="Your full name" required />
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label" style="font-size:.88rem;font-weight:600;">Email Address (must match your approved enrollment)</label>
+                            <input type="email" name="email" class="form-control" placeholder="name@example.com" required />
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="bi bi-arrow-right-circle me-2"></i>Continue to Exam
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

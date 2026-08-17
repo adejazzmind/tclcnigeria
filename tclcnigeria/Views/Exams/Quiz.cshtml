@@ -1,0 +1,59 @@
+@model tclcnigeria.Models.Exam
+@{
+    ViewData["Title"] = "Quiz - " + Model.Title;
+}
+<section class="page-hero">
+    <div class="container position-relative" style="z-index:2;">
+        <span class="eyebrow" style="color:var(--yellow);">Good Luck!</span>
+        <h1 class="mt-2 mb-3">@Model.Title</h1>
+        <p>Answer all questions below, then submit.</p>
+    </div>
+</section>
+
+<section style="padding:5rem 0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <form method="post" action="/Exams/Submit">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="examId" value="@Model.Id" />
+                    <input type="hidden" name="fullName" value="@ViewBag.FullName" />
+                    <input type="hidden" name="email" value="@ViewBag.Email" />
+
+                    @foreach (var q in Model.Questions)
+                    {
+                        <div class="contact-form-card mb-4">
+                            <p style="font-weight:600;margin-bottom:1rem;">@(q.Order + 1). @q.QuestionText</p>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="answer_@q.Id" id="q@(q.Id)_a" value="A" required />
+                                <label class="form-check-label" for="q@(q.Id)_a">A. @q.OptionA</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="answer_@q.Id" id="q@(q.Id)_b" value="B" />
+                                <label class="form-check-label" for="q@(q.Id)_b">B. @q.OptionB</label>
+                            </div>
+                            @if (!string.IsNullOrEmpty(q.OptionC))
+                            {
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="answer_@q.Id" id="q@(q.Id)_c" value="C" />
+                                    <label class="form-check-label" for="q@(q.Id)_c">C. @q.OptionC</label>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(q.OptionD))
+                            {
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="answer_@q.Id" id="q@(q.Id)_d" value="D" />
+                                    <label class="form-check-label" for="q@(q.Id)_d">D. @q.OptionD</label>
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    <button type="submit" class="btn-submit">
+                        <i class="bi bi-check-circle me-2"></i>Submit Exam
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

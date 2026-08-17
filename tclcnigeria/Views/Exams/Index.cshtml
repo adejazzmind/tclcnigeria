@@ -1,0 +1,42 @@
+@model IEnumerable<tclcnigeria.Models.Exam>
+@{
+    ViewData["Title"] = "C.A. & Exams";
+}
+<section class="page-hero">
+    <div class="container position-relative" style="z-index:2;">
+        <span class="eyebrow" style="color:var(--yellow);">Workforce Discipleship</span>
+        <h1 class="mt-2 mb-3">C.A. &amp; <em>Exams</em></h1>
+        <p>Approved Workforce members can take exams here. Enter your registered email to begin.</p>
+    </div>
+</section>
+
+<section style="padding:5rem 0;">
+    <div class="container">
+        @if (!Model.Any())
+        {
+            <p style="color:var(--text-mid);">No exams are available right now. Please check back later.</p>
+        }
+        else
+        {
+            <div class="row g-4">
+                @foreach (var exam in Model)
+                {
+                    <div class="col-md-6 col-lg-4">
+                        <div style="background:var(--white);border-radius:var(--r);padding:2rem;
+                            box-shadow:var(--shadow-sm);border:1px solid rgba(201,184,232,.3);height:100%;
+                            display:flex;flex-direction:column;">
+                            <h5 style="font-family:var(--font-display);margin-bottom:.5rem;">@exam.Title</h5>
+                            <p style="color:var(--text-mid);font-size:.9rem;flex:1;">@exam.Description</p>
+                            <p style="color:var(--text-light);font-size:.8rem;margin-bottom:1rem;">
+                                Passing score: @exam.PassingScorePercent%
+                            </p>
+                            <a asp-action="Take" asp-route-id="@exam.Id" class="btn-submit text-center" style="text-decoration:none;">
+                                Take Exam
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>

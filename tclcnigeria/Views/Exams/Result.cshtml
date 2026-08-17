@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Exam Result";
+    bool passed = ViewBag.Passed;
+}
+<section class="page-hero">
+    <div class="container position-relative" style="z-index:2;">
+        <span class="eyebrow" style="color:var(--yellow);">@ViewBag.ExamTitle</span>
+        <h1 class="mt-2 mb-3">Your Result</h1>
+    </div>
+</section>
+
+<section style="padding:5rem 0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <div style="background:var(--white);border-radius:var(--r);padding:3rem;
+                    box-shadow:var(--shadow-sm);border:1px solid rgba(201,184,232,.3);">
+
+                    @if (passed)
+                    {
+                        <div style="font-size:3rem;color:#059669;margin-bottom:1rem;">&#9989;</div>
+                        <h2 style="font-family:var(--font-display);color:#059669;">You Passed!</h2>
+                    }
+                    else
+                    {
+                        <div style="font-size:3rem;color:#dc2626;margin-bottom:1rem;">&#10060;</div>
+                        <h2 style="font-family:var(--font-display);color:#dc2626;">Not Quite</h2>
+                    }
+
+                    <p style="font-size:1.3rem;font-weight:700;margin:1.5rem 0 .5rem;">
+                        @ViewBag.Score / @ViewBag.Total correct (@ViewBag.Percent%)
+                    </p>
+                    <p style="color:var(--text-mid);">
+                        Passing score required: @ViewBag.PassingScore%
+                    </p>
+
+                    @if (!passed)
+                    {
+                        <p style="color:var(--text-mid);margin-top:1.5rem;font-size:.9rem;">
+                            If you'd like to retake this exam, please contact the Workforce team.
+                        </p>
+                    }
+
+                    <a asp-action="Index" class="btn-submit d-inline-block mt-3" style="text-decoration:none;">
+                        Back to Exams
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
