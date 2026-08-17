@@ -290,6 +290,8 @@
                         <span style="color:rgba(255,255,255,.3);margin:0 6px;">|</span>
                         <a asp-controller="WorkforceAdmin" asp-action="Index">Workforce</a>
                         <span style="color:rgba(255,255,255,.3);margin:0 6px;">|</span>
+                        <a asp-controller="ExamsAdmin" asp-action="Index">Exams</a>
+                        <span style="color:rgba(255,255,255,.3);margin:0 6px;">|</span>
                         <form asp-area="Identity" asp-page="/Account/Logout"
                               asp-route-returnUrl="@Url.Action("Index", "Home")"
                               method="post" style="display:inline;">
@@ -382,6 +384,7 @@
     <partial name="_AiChatWidget" />
 </body>
 </html>
+
 
 
 
