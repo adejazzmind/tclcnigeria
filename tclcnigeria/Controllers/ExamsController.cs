@@ -43,7 +43,7 @@ namespace tclcnigeria.Controllers
             ViewBag.ExamId = exam.Id;
 
             var approved = await _context.CtgEnrollments
-                .AnyAsync(c => c.Email.ToLower() == email.ToLower() && c.Status == "Approved");
+                .AnyAsync(c => c.Email.Trim().ToLower() == email.Trim().ToLower() && c.Status == "Approved");
 
             if (!approved)
             {
@@ -52,7 +52,7 @@ namespace tclcnigeria.Controllers
             }
 
             var priorAttempt = await _context.ExamAttempts
-                .Where(a => a.ExamId == id && a.Email.ToLower() == email.ToLower())
+                .Where(a => a.ExamId == id && a.Email.Trim().ToLower() == email.Trim().ToLower())
                 .OrderByDescending(a => a.SubmittedAt)
                 .FirstOrDefaultAsync();
 
@@ -78,7 +78,7 @@ namespace tclcnigeria.Controllers
             if (exam == null) return NotFound();
 
             var approved = await _context.CtgEnrollments
-                .AnyAsync(c => c.Email.ToLower() == email.ToLower() && c.Status == "Approved");
+                .AnyAsync(c => c.Email.Trim().ToLower() == email.Trim().ToLower() && c.Status == "Approved");
 
             if (!approved) return Forbid();
 
@@ -123,3 +123,4 @@ namespace tclcnigeria.Controllers
         }
     }
 }
+
