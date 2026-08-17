@@ -84,8 +84,23 @@ namespace tclcnigeria.Services
 
             try
             {
-                using var response = await _http.PostAsync(url, content);
-                var body = await response.Content.ReadAsStringAsync();
+                HttpResponseMessage response;
+                string body;
+                int attempt = 0;
+                while (true)
+                {
+                    attempt++;
+                    response = await _http.PostAsync(url, content);
+                    body = await response.Content.ReadAsStringAsync();
+
+                    if (response.StatusCode == System.Net.HttpStatusCode.ServiceUnavailable && attempt < 2)
+                    {
+                        _logger.LogWarning("Gemini API returned 503, retrying once...");
+                        await Task.Delay(1500);
+                        continue;
+                    }
+                    break;
+                }
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -115,5 +130,6 @@ namespace tclcnigeria.Services
         }
     }
 }
+
 
 
