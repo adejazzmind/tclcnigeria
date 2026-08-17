@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
+using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +16,9 @@ namespace tclcnigeria.Models
         public DbSet<ChurchEvent> ChurchEvents { get; set; }
         public DbSet<PrayerRequest> PrayerRequests { get; set; }
         public DbSet<Donation> Donations { get; set; }
+        public DbSet<BibleSchoolApplication> BibleSchoolApplications { get; set; }
+        public DbSet<CtgEnrollment> CtgEnrollments { get; set; }
         public DbSet<DataProtectionKey> DataProtectionKeys { get; set; } = null!;
     }
 }
+
