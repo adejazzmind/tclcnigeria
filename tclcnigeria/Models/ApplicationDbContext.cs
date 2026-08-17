@@ -18,7 +18,11 @@ namespace tclcnigeria.Models
         public DbSet<Donation> Donations { get; set; }
         public DbSet<BibleSchoolApplication> BibleSchoolApplications { get; set; }
         public DbSet<CtgEnrollment> CtgEnrollments { get; set; }
+        public DbSet<Exam> Exams { get; set; }
+        public DbSet<ExamQuestion> ExamQuestions { get; set; }
+        public DbSet<ExamAttempt> ExamAttempts { get; set; }
         public DbSet<DataProtectionKey> DataProtectionKeys { get; set; } = null!;
     }
 }
+
 
