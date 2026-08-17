@@ -72,6 +72,13 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Gallery">Gallery</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Schools</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="BibleSchool" asp-action="Index">Bible School</a></li>
+                                <li><a class="dropdown-item" asp-controller="Workforce" asp-action="Index">The Workforce (C.T.G.)</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Sermons">Sermons</a>
                         </li>
@@ -371,6 +378,7 @@
     <partial name="_AiChatWidget" />
 </body>
 </html>
+
 
 
 
