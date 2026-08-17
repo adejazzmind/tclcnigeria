@@ -1,0 +1,64 @@
+@model IEnumerable<tclcnigeria.Models.BibleSchoolApplication>
+@{
+    ViewData["Title"] = "Bible School Applications";
+}
+<div class="container py-4">
+    <h2 class="fw-bold mb-4"><i class="bi bi-book-half"></i> Bible School Applications</h2>
+    <table class="table table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Applied</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>Reviewed By</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                string rowStyle = item.Status == "Pending" ? "table-warning" : "";
+                <tr class="@rowStyle">
+                    <td>@item.AppliedAt.ToString("MMM dd, yyyy HH:mm")</td>
+                    <td>@item.FullName</td>
+                    <td>@item.Email</td>
+                    <td>@item.Phone</td>
+                    <td>
+                        @if (item.Status == "Approved")
+                        {
+                            <span class="badge bg-success">Approved</span>
+                        }
+                        else if (item.Status == "Rejected")
+                        {
+                            <span class="badge bg-danger">Rejected</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        }
+                    </td>
+                    <td>@(item.ReviewedBy ?? "-")</td>
+                    <td>
+                        @if (item.Status == "Pending")
+                        {
+                            <form method="post" action="/BibleSchoolAdmin/Approve" style="display:inline;">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button type="submit" class="btn btn-sm btn-success">Approve</button>
+                            </form>
+                            <form method="post" action="/BibleSchoolAdmin/Reject" style="display:inline;">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Reject</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <span class="text-muted small">@item.ReviewedAt?.ToString("MMM dd, yyyy")</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
