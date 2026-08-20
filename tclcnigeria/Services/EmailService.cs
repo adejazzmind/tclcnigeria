@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Text.Json;
 
 namespace tclcnigeria.Services
@@ -49,9 +49,14 @@ namespace tclcnigeria.Services
 
         public async Task SendPrayerRequestNotificationAsync(string name, string email, string request)
         {
-            var adminEmail = _config["Email:AdminEmail"] ?? "adejazzmind@gmail.com";
-            await SendEmailAsync(adminEmail, "TCLC Admin", $"New Prayer Request from {name}",
-                $"<div style='font-family:sans-serif;padding:32px;background:#f9f9f9;'><h2 style='color:#070D2E;'>New Prayer Request</h2><p><strong>From:</strong> {name}</p><p><strong>Email:</strong> {email}</p><div style='background:#fff;border-left:4px solid #F5C842;padding:16px;'><p>{request}</p></div></div>");
+            var adminEmailsSetting = _config["Email:AdminEmails"] ?? "adejazzmind@gmail.com,foluwalade@gmail.com";
+            var adminEmails = adminEmailsSetting.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+            foreach (var adminEmail in adminEmails)
+            {
+                await SendEmailAsync(adminEmail, "TCLC Admin", $"New Prayer Request from {name}",
+                    $"<div style='font-family:sans-serif;padding:32px;background:#f9f9f9;'><h2 style='color:#070D2E;'>New Prayer Request</h2><p><strong>From:</strong> {name}</p><p><strong>Email:</strong> {email}</p><div style='background:#fff;border-left:4px solid #F5C842;padding:16px;'><p>{request}</p></div></div>");
+            }
 
             if (!string.IsNullOrEmpty(email))
                 await SendEmailAsync(email, name, "Your Prayer Request - TCLC Nigeria",
@@ -74,3 +79,4 @@ namespace tclcnigeria.Services
         }
     }
 }
+
