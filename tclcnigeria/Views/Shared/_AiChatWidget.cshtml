@@ -38,6 +38,12 @@
     #tclc-ai-input:focus { border-color: var(--brand-blue, #2563eb); }
     #tclc-ai-send { background: var(--navy, #1a2a4a); color: #fff; border: none; border-radius: 50%; width: 38px; height: 38px; cursor: pointer; font-size: 16px; }
     #tclc-ai-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    @@media (max-width: 600px) {
+        #tclc-ai-widget {
+            bottom: 76px;
+        }
+    }
 </style>
 
 <script>
@@ -115,3 +121,6 @@
         }
     })();
 </script>
+
+
+
