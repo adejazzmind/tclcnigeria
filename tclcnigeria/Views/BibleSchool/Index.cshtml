@@ -1,12 +1,12 @@
 @model tclcnigeria.Models.BibleSchoolApplication
 @{
-    ViewData["Title"] = "Bible School Application";
+    ViewData["Title"] = "Lord's City Bible Institute Application";
 }
 
 <section class="page-hero">
     <div class="container position-relative" style="z-index:2;">
         <span class="eyebrow" style="color:var(--yellow);">Grow In The Word</span>
-        <h1 class="mt-2 mb-3">Apply to <em>Lord's City Bible School</em></h1>
+        <h1 class="mt-2 mb-3">Apply to <em>Lord's City Bible Institute</em></h1>
         <p>Study to show yourself approved. Take the next step in your knowledge of God's Word.</p>
     </div>
 </section>
@@ -32,10 +32,10 @@
             <div class="col-lg-7">
                 <div class="contact-form-card">
                     <h4 style="font-family:var(--font-display);margin-bottom:.5rem;">
-                        Bible School Application Form
+                        Lord's City Bible Institute Application Form
                     </h4>
                     <p style="color:var(--text-mid);font-size:.93rem;margin-bottom:1.8rem;">
-                        Fill in your details below. Our Bible School team will review your application.
+                        Fill in your details below. Our Bible Institute team will review your application.
                     </p>
                     <form method="post" action="/BibleSchool">
                         @Html.AntiForgeryToken()
@@ -56,7 +56,7 @@
                             <input type="text" name="Address" class="form-control" placeholder="Your address" />
                         </div>
                         <div class="mb-4">
-                            <label class="form-label" style="font-size:.88rem;font-weight:600;">Why do you want to join Bible School? (optional)</label>
+                            <label class="form-label" style="font-size:.88rem;font-weight:600;">Why do you want to join Lord's City Bible Institute? (optional)</label>
                             <textarea name="Testimony" class="form-control" rows="5"
                                       placeholder="Tell us briefly about your interest..."></textarea>
                         </div>
@@ -87,7 +87,7 @@
                             display:flex;align-items:center;justify-content:center;
                             color:var(--brand-blue);font-weight:700;flex-shrink:0;font-size:.85rem;">1</div>
                         <p style="color:var(--text-mid);font-size:.88rem;margin:0;padding-top:4px;">
-                            Your application is received by the Bible School office
+                            Your application is received by the Bible Institute office
                         </p>
                     </div>
                     <div class="d-flex gap-3 mb-3">
@@ -95,7 +95,7 @@
                             display:flex;align-items:center;justify-content:center;
                             color:var(--brand-blue);font-weight:700;flex-shrink:0;font-size:.85rem;">2</div>
                         <p style="color:var(--text-mid);font-size:.88rem;margin:0;padding-top:4px;">
-                            It's reviewed by our Bible School leadership team
+                            It's reviewed by our Bible Institute leadership team
                         </p>
                     </div>
                     <div class="d-flex gap-3">
@@ -111,3 +111,4 @@
         </div>
     </div>
 </section>
+

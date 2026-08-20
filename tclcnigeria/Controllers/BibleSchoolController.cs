@@ -34,12 +34,12 @@ namespace tclcnigeria.Controllers
                 _context.BibleSchoolApplications.Add(model);
                 await _context.SaveChangesAsync();
 
-                ViewBag.Success = "Thank you! Your Bible School application has been received. Our team will review it and reach out to you soon.";
+                ViewBag.Success = "Thank you! Your Lord's City Bible Institute application has been received. Our team will review it and reach out to you soon.";
                 return View(new BibleSchoolApplication());
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Failed to save Bible School application");
+                _logger.LogError(ex, "Failed to save Lord's City Bible Institute application");
                 ModelState.AddModelError("", "Something went wrong. Please try again.");
                 return View(model);
             }
@@ -91,3 +91,4 @@ namespace tclcnigeria.Controllers
         }
     }
 }
+
