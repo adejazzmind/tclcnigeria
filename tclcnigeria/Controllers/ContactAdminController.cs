@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +9,7 @@ using tclcnigeria.Models;
 
 namespace tclcnigeria.Controllers
 {
-    [Authorize] // Only logged-in users can view or delete messages
+    [Authorize(Roles = "SuperAdmin")]
     public class ContactAdminController : Controller
     {
         private readonly ApplicationDbContext _context;

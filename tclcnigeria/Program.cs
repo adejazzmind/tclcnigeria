@@ -77,7 +77,7 @@ using (var scope = app.Services.CreateScope())
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-    string[] roles = { "BibleSchoolStaff", "CTGStaff" };
+    string[] roles = { "BibleSchoolStaff", "CTGStaff", "SuperAdmin", "MediaStaff" };
     foreach (var role in roles)
     {
         if (!await roleManager.RoleExistsAsync(role))
@@ -100,10 +100,38 @@ using (var scope = app.Services.CreateScope())
             await userManager.AddToRoleAsync(user, "CTGStaff");
     }
 
+    async Task EnsureSuperAdminAsync(string email, string tempPassword)
+    {
+        var user = await userManager.FindByEmailAsync(email);
+        if (user == null)
+        {
+            user = new IdentityUser { UserName = email, Email = email, EmailConfirmed = true };
+            await userManager.CreateAsync(user, tempPassword);
+        }
+        if (!await userManager.IsInRoleAsync(user, "SuperAdmin"))
+            await userManager.AddToRoleAsync(user, "SuperAdmin");
+    }
+
+    async Task EnsureMediaStaffAsync(string email, string tempPassword)
+    {
+        var user = await userManager.FindByEmailAsync(email);
+        if (user == null)
+        {
+            user = new IdentityUser { UserName = email, Email = email, EmailConfirmed = true };
+            await userManager.CreateAsync(user, tempPassword);
+        }
+        if (!await userManager.IsInRoleAsync(user, "MediaStaff"))
+            await userManager.AddToRoleAsync(user, "MediaStaff");
+    }
+
     await EnsureStaffAsync("adejazzmind@gmail.com", "Tclc@2026!");
     await EnsureStaffAsync("foluwalade@gmail.com", "TclcFunmi@2026!");
+    await EnsureSuperAdminAsync("adejazzmind@gmail.com", "Tclc@2026!");
+    await EnsureSuperAdminAsync("foluwalade@gmail.com", "TclcFunmi@2026!");
+    await EnsureMediaStaffAsync("lanreayoaye@gmail.com", "TclcMedia@2026!");
 }
 
 app.Run();
+
 
 

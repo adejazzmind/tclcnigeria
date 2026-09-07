@@ -5,7 +5,7 @@ using tclcnigeria.Models;
 
 namespace tclcnigeria.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "SuperAdmin,MediaStaff")]
     public class SermonsAdminController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -110,4 +110,6 @@ namespace tclcnigeria.Controllers
         }
     }
 }
+
+
 

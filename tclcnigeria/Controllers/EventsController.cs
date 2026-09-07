@@ -20,7 +20,7 @@ namespace tclcnigeria.Controllers
         }
     }
 
-    [Authorize]
+    [Authorize(Roles = "SuperAdmin,MediaStaff")]
     public class EventsAdminController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -100,3 +100,5 @@ namespace tclcnigeria.Controllers
         }
     }
 }
+
+

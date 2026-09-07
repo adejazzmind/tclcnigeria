@@ -58,7 +58,7 @@ namespace tclcnigeria.Controllers
         }
     }
 
-    [Authorize]
+    [Authorize(Roles = "SuperAdmin")]
     public class PrayerAdminController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -105,3 +105,4 @@ namespace tclcnigeria.Controllers
         }
     }
 }
+
