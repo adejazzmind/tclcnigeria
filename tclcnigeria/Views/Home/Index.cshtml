@@ -330,3 +330,66 @@
 
 
 
+
+<script>
+(function () {
+    function animateTitle(titleEl) {
+        if (!titleEl || titleEl.dataset.animated === 'done') return;
+        titleEl.dataset.animated = 'done';
+
+        var units = [];
+        Array.from(titleEl.childNodes).forEach(function (child) {
+            if (child.nodeType === 3) {
+                child.textContent.split(/(\s+)/).forEach(function (part) {
+                    if (part.trim() === '') {
+                        units.push(document.createTextNode(part));
+                    } else {
+                        var span = document.createElement('span');
+                        span.className = 'word';
+                        span.textContent = part;
+                        units.push(span);
+                    }
+                });
+            } else if (child.nodeType === 1 && child.tagName === 'BR') {
+                units.push(child.cloneNode(true));
+            } else if (child.nodeType === 1) {
+                var wrap = document.createElement('span');
+                wrap.className = 'word';
+                wrap.appendChild(child.cloneNode(true));
+                units.push(wrap);
+            }
+        });
+
+        titleEl.innerHTML = '';
+        var delayIndex = 0;
+        units.forEach(function (u) {
+            if (u.classList && u.classList.contains('word')) {
+                u.style.animationDelay = (delayIndex * 0.09) + 's';
+                delayIndex++;
+            }
+            titleEl.appendChild(u);
+        });
+    }
+
+    function animateActiveSlide() {
+        var activeItem = document.querySelector('#tclcHeroCarousel .carousel-item.active');
+        if (!activeItem) return;
+        animateTitle(activeItem.querySelector('.hero-title'));
+    }
+
+    document.addEventListener('DOMContentLoaded', animateActiveSlide);
+
+    var carouselEl = document.getElementById('tclcHeroCarousel');
+    if (carouselEl) {
+        carouselEl.addEventListener('slide.bs.carousel', function (e) {
+            if (e.relatedTarget) {
+                var nextTitle = e.relatedTarget.querySelector('.hero-title');
+                if (nextTitle) {
+                    nextTitle.removeAttribute('data-animated');
+                    animateTitle(nextTitle);
+                }
+            }
+        });
+    }
+})();
+</script>
