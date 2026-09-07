@@ -928,16 +928,24 @@ h1, h2, h3, h4, h5 {
         transform: translateY(0) rotateX(0deg);
     }
 }
+.hero-title {
+    font-weight: 900 !important;
+    text-shadow: 2px 2px 0 rgba(7,13,46,.5), 4px 4px 10px rgba(0,0,0,.35);
+    letter-spacing: -0.5px;
+}
 .hero-title em,
 .hero-title .word em {
-    background: linear-gradient(90deg, var(--yellow) 0%, #fff8dc 45%, var(--yellow) 100%);
-    background-size: 200% auto;
+    background: linear-gradient(90deg, #F5C842 0%, #FF9642 30%, #FFF3C4 55%, #F5C842 80%, #FF9642 100%);
+    background-size: 300% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shimmerText 3s linear infinite;
+    animation: shimmerText 3.5s linear infinite;
     font-style: italic;
+    text-shadow: none;
+    filter: drop-shadow(2px 2px 0 rgba(7,13,46,.4));
 }
 @keyframes shimmerText {
     to { background-position: -200% center; }
 }
+
