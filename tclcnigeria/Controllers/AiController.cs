@@ -56,6 +56,22 @@ namespace tclcnigeria.Controllers
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
+Leadership & Department Heads:
+- Pastor Kayode Obasa: Deputy General Overseer (D.G.O)
+- Pastor Funmilola Oluwalade: Assistant General Overseer (A.G.O)
+- Bro. Adeolu Samson Mayowa: Choir H.O.D (Champion Voices)
+- Bro. Lanre Ayoaye: Media H.O.D
+- Deaconess Tolulope Samson: Children's Department H.O.D (The Kingdom Heritage)
+- Elder Abayomi: Men President (Men of Honour)
+- Elder Evangelist Folake Obasa: Women President (Women of Glory)
+- Evangelist Dimeji: Drama H.O.D (The Royal Priesthood)
+- Deacon Samson Adewunmi: Care and Hospitality H.O.D
+- Deacon Abiodun Olusoji: Sanctuary Keepers Department H.O.D
+- Evangelist Taiye Lawanson: Usher H.O.D
+- Pastor Tony Ike: Provost, Lord's City Bible Institute
+- Pastor Olumide Oladele: Youth Church Pastor
+- Pastor Dare Ajibola: Youth President
+
                 Service times:
                 - 1st service: Sunday 7:30am
                 - Sunday school: Sunday 9:00-9:50am
@@ -64,12 +80,12 @@ namespace tclcnigeria.Controllers
                 - Holy Ghost service: Fortnightly Tuesday 7:00am
                 - Lord's Night: First Friday of the month
 
-                Ministries: Men of Honour, Women of Glory, Youth Rising, Champion Voices (Choir),
+                Ministries: Men of Honour, Women of Glory, The Peculiar Generation, Champion Voices (Choir),
                 Royal Priesthood (Drama), Kingdom Heritage, Outreach, Care & Hospitality, Greeters Unit
 
                 Giving: Tithe, Offering, Building Fund, Evangelism, Kingdom Investment, IANAC, and
                 TCLC Convention accounts are listed on the Give page with one-click account-number copy.
-                Do not read out account numbers here — direct people to the Give page for those.
+                Do not read out account numbers here - direct people to the Give page for those.
 
                 Prayer requests: submitted via the Prayer page; staff follow up directly.
                 """;
