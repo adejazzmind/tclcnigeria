@@ -383,6 +383,105 @@
     </div>
 
     <partial name="_AiChatWidget" />
+
+    <!-- TCLC CONVENTION 2026 RECURRING POPUP -->
+    <style>
+        .tclc-convention-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(4,10,4,.72);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 0;
+            transition: opacity .4s ease;
+            padding: 20px;
+        }
+        .tclc-convention-popup.show {
+            display: flex;
+            opacity: 1;
+        }
+        .tclc-convention-popup-inner {
+            position: relative;
+            max-width: 480px;
+            width: 100%;
+            background: #04210f;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,.5);
+        }
+        .tclc-convention-popup-inner img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .tclc-convention-popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,.55);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 2;
+        }
+    </style>
+    <div id="tclcConventionPopup" class="tclc-convention-popup">
+        <div class="tclc-convention-popup-inner">
+            <button type="button" class="tclc-convention-popup-close" onclick="tclcHideConventionPopup()" aria-label="Close">&times;</button>
+            <a href="/Events">
+                <img src="/images/slides/slide11.jpg" alt="TCLC Convention 2026 - I Will Do a New Thing" />
+            </a>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var CONVENTION_END = new Date("2026-11-22T23:59:59");
+            var popupEl = document.getElementById("tclcConventionPopup");
+            var visible = false;
+
+            function conventionActive() {
+                return new Date() < CONVENTION_END;
+            }
+
+            window.tclcHideConventionPopup = function () {
+                if (popupEl) popupEl.classList.remove("show");
+            };
+
+            function showPopup() {
+                if (!popupEl || !conventionActive()) return;
+                popupEl.classList.add("show");
+            }
+
+            function toggle() {
+                if (!conventionActive()) {
+                    tclcHideConventionPopup();
+                    clearInterval(intervalId);
+                    return;
+                }
+                visible = !visible;
+                if (visible) {
+                    showPopup();
+                } else {
+                    tclcHideConventionPopup();
+                }
+            }
+
+            var intervalId;
+            document.addEventListener("DOMContentLoaded", function () {
+                if (!conventionActive()) return;
+                showPopup();
+                visible = true;
+                intervalId = setInterval(toggle, 60000);
+            });
+        })();
+    </script>
 </body>
 </html>
 
