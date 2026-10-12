@@ -452,24 +452,27 @@
             var phase = 0;
             var VIDEO_SRC = "https://www.youtube.com/embed/UvjwSev4JFU?autoplay=1&mute=1&playsinline=1&rel=0&loop=1&playlist=UvjwSev4JFU";
 
+            var phaseTimer;
+            var FLYER_SECONDS = 20;
+
             function setConventionContent() {
                 var flyer = document.getElementById("tclcConventionFlyerLink");
                 var vid = document.getElementById("tclcConventionVideo");
                 var frame = document.getElementById("tclcConventionVideoFrame");
                 if (!flyer || !vid || !frame) return;
-                phase++;
-                if (phase % 2 === 0) {
+                clearTimeout(phaseTimer);
+                vid.style.display = "none";
+                frame.src = "about:blank";
+                flyer.style.display = "block";
+                phaseTimer = setTimeout(function () {
                     flyer.style.display = "none";
                     vid.style.display = "block";
                     frame.src = VIDEO_SRC;
-                } else {
-                    vid.style.display = "none";
-                    frame.src = "about:blank";
-                    flyer.style.display = "block";
-                }
+                }, FLYER_SECONDS * 1000);
             }
 
             function stopConventionVideo() {
+                clearTimeout(phaseTimer);
                 var f = document.getElementById("tclcConventionVideoFrame");
                 if (f) f.src = "about:blank";
             }
