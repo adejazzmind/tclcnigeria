@@ -435,9 +435,12 @@
     <div id="tclcConventionPopup" class="tclc-convention-popup">
         <div class="tclc-convention-popup-inner">
             <button type="button" class="tclc-convention-popup-close" onclick="tclcHideConventionPopup()" aria-label="Close">&times;</button>
-            <a href="/Events">
+            <a id="tclcConventionFlyerLink" href="/Events">
                 <img src="/images/slides/slide11.jpg" alt="TCLC Convention 2026 - I Will Do a New Thing" />
             </a>
+            <div id="tclcConventionVideo" style="display:none;position:relative;width:min(360px,50vh);padding-top:min(640px,88.9vh);margin:0 auto;">
+                <iframe id="tclcConventionVideoFrame" src="about:blank" title="TCLC Convention 2026 video" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
     <script>
@@ -446,17 +449,42 @@
             var popupEl = document.getElementById("tclcConventionPopup");
             var visible = false;
 
+            var phase = 0;
+            var VIDEO_SRC = "https://www.youtube.com/embed/UvjwSev4JFU?autoplay=1&mute=1&playsinline=1&rel=0&loop=1&playlist=UvjwSev4JFU";
+
+            function setConventionContent() {
+                var flyer = document.getElementById("tclcConventionFlyerLink");
+                var vid = document.getElementById("tclcConventionVideo");
+                var frame = document.getElementById("tclcConventionVideoFrame");
+                if (!flyer || !vid || !frame) return;
+                phase++;
+                if (phase % 2 === 0) {
+                    flyer.style.display = "none";
+                    vid.style.display = "block";
+                    frame.src = VIDEO_SRC;
+                } else {
+                    vid.style.display = "none";
+                    frame.src = "about:blank";
+                    flyer.style.display = "block";
+                }
+            }
+
+            function stopConventionVideo() {
+                var f = document.getElementById("tclcConventionVideoFrame");
+                if (f) f.src = "about:blank";
+            }
+
             function conventionActive() {
                 return new Date() < CONVENTION_END;
             }
 
             window.tclcHideConventionPopup = function () {
-                if (popupEl) popupEl.classList.remove("show");
+                if (popupEl) popupEl.classList.remove("show"); stopConventionVideo();
             };
 
             function showPopup() {
                 if (!popupEl || !conventionActive()) return;
-                popupEl.classList.add("show");
+                setConventionContent(); popupEl.classList.add("show");
             }
 
             function toggle() {
