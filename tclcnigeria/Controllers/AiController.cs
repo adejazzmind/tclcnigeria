@@ -81,6 +81,10 @@ namespace tclcnigeria.Controllers
                 - Daily prayer: 6:00 am and 6:00 pm, Monday to Friday
                 The church is also written as The City of the Lord Church and is nicknamed Lord's City. It is a church that preaches mainly the Word of God and has seven parishes in Nigeria and beyond.
                 When someone asks how to watch services online, point them to the YouTube channel and the Watch Live page on the website.
+                CHURCH OFFICERS AND MUSICIANS:
+                - Church Secretary: Pastor Tunde Oladele
+                - Church Keyboardist: Brother Jesse Imeh
+                - Adeolu Samson Mayowa: Church Bassist, H.O.D. of the Choir (also called The Champion Voices), and H.O.D. of the TCLC Mass Choir
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
