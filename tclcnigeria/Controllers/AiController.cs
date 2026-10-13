@@ -52,7 +52,17 @@ namespace tclcnigeria.Controllers
                 .ToListAsync();
 
             var staticInfo = """
-                Church name: The Church of the Living Christ (TCLC) Nigeria
+                Church name: The City of the Lords' Church (TCLC) Nigeria
+                OFFICIAL CHURCH NAME: The City of the Lords' Church (TCLC). TCLC always stands for The City of the Lords' Church. Never say it stands for anything else.
+                Headquarters: 25, Kudirat Soule Street, Off Coker Street, Ifako, Ogba, Lagos.
+                TCLC Parishes and their pastors:
+                - Oke Aro Parish: Pastor Yemi Oyetunji
+                - Ikorodu Parish: Rev. & Rev. Mrs. Adebanjo
+                - Ikola Parish: Pastor & Pastor Kayode Sanyaolu
+                - Surulere Parish: Pastor Dare Ajibola
+                - Odongunyan Parish: Rev. Asogbon
+                - Eternal Parish (also called Chicago Parish): Pastor & Pastor Mrs. Seun Oladele
+                If asked for a parish street address, say the street addresses of the parishes are not listed here yet and ask the person to contact the church office. Do not guess addresses.
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
