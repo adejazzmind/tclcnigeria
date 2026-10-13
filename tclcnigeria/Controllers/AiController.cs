@@ -94,6 +94,21 @@ namespace tclcnigeria.Controllers
                 GREETERS DEPARTMENT:
                 - Head of Greeters: Sister Esther Obasa
                 - Member of Greeters: Sister Yemisi Fagbamigbe
+                CHOIR MEMBERS - BROTHERS (Group 1): Folorunsho Afolabi, Tunde Ogungbaibi, Tunde Ganiyu, Ayanbode Mutiu, Adeyemi Damilola, Mosadoba Oluwaseun, Olatunde Yinka.
+                - Brother Folorunsho Afolabi: Major Lead Singer of the choir and a member of the media department.
+                - Tunde Ogungbaibi (also called Tunde Ogungbaibi, the Church Drummer): church drummer, choir member.
+                - Tunde Ganiyu: church drummer, choir member.
+                - Ayanbode Mutiu: Talking Drummer 1, choir member.
+                - Adeyemi Damilola: Talking Drummer 2, choir member.
+                - Mosadoba Oluwaseun: the church lead guitarist, choir member.
+                - Olatunde Yinka: choir member (brother).
+                CHOIR MEMBERS - SISTERS (Group 2): Bola Aporio, Alice Alli, Grace Ogundare, Monica Agoye, Oriladewa Remi, OreOluwa Oluwole, Shola Oyebola, Ope Igbalajobi, Lizzy Shomade, Wale Keshiro. (Also Sister Ronke Johnson, Sister Bola Olatunde choir secretary, and Sister Gbemi Ayoaye.)
+                - Wale Keshiro: choir member, member of Drama and the church saxophonist.
+                WORKFORCE MEMBERS (Group 3): Brother Ade Keke, Sister Tope Oladele, Brother Dayo Johnson, Brother Bayo Kalejaiye, Brother Tobi Obasa, Brother Aporio Lekan, Brother Modupe Obasa.
+                - Sister Odujirin Adetoun: member of the Greeters department.
+                - Sister Ajibola Tolani: Assistant Head (H.O.D) of the Children's Department.
+                - Sister Bimpe Ayeni: member of the Ushering department.
+                If someone asks about the choir brothers, answer with Group 1; choir sisters, Group 2; workforce, Group 3.
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
