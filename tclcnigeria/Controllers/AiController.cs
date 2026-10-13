@@ -63,6 +63,13 @@ namespace tclcnigeria.Controllers
                 - Odongunyan Parish: Rev. Asogbon
                 - Eternal Parish (also called Chicago Parish): Pastor & Pastor Mrs. Seun Oladele
                 If asked for a parish street address, say the street addresses of the parishes are not listed here yet and ask the person to contact the church office. Do not guess addresses.
+                LATEST MINISTRY AND DEPARTMENT HEADS (if any earlier entry says something different, use these):
+                - Men of Honour: head is Engr. Yomi Oloyede
+                - Women of Glory: head is Pastor Mrs. Obasa
+                - Kingdom Heritage (children's ministry): head is Deaconess Tolulope Samson Jumoke
+                - The Royal Priesthood (Drama ministry): head is Evangelist Dimeji Ogunbore
+                - Ushering Department: head is Brother Lawanson
+                - Sanctuary Keepers Department: head is Deacon Abiodun Olusoji
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
