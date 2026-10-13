@@ -125,6 +125,7 @@ namespace tclcnigeria.Controllers
                 SANCTUARY KEEPERS: Deacon Abiodun Olusoji is the H.O.D. Members: Sister Adetoye Abosede, Sister Nawalor Rose, Sister Adeboga Busola, Brother Oyebade Adesanmi, Sister Sanyaolu Tobi, Sister Sanyaolu Damilola, Sister Ademuluyi Alice, Sister Sanni Iyabode, Sister Ogunlaja Boluwatife, Sister Odumade Veronica.
                 - Sister Ayomide Oladiti: member of the Greeters department.
                 - Brother Ope Olaide: member of the church Workforce.
+                - Sister Adesokan Wuraola: member of the church Workforce and a teacher in the Children Church department.
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
