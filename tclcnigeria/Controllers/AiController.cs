@@ -131,6 +131,7 @@ namespace tclcnigeria.Controllers
                 - Brother Jerry Ike: member of the Media department.
                 - Brother Timmy Sanyaolu (also known as Timmy Sax): one of the TCLC Choir saxophonists, a member of the Ikola Parish Choir and a Mass Choir member.
                 - Brother Bola Adebanjo: a Mass Choir member and the Choir Master of Ikorodu Parish.
+                - Sister Eniola Oluwalade: member of the C.T.G Workforce.
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
