@@ -68,7 +68,7 @@ namespace tclcnigeria.Controllers
                 - Women of Glory: head is Pastor Mrs. Bukola Obasa
                 - Kingdom Heritage (children's ministry): head is Deaconess Tolulope Samson Jumoke
                 - The Royal Priesthood (Drama ministry): head is Evangelist Dimeji Ogunbore
-                - Ushering Department: head is Brother Lawanson
+                - Ushering Department: head is Evangelist Taiwo Lawanson
                 - Sanctuary Keepers Department: head is Deacon Abiodun Olusoji
                 ONLINE PRESENCE AND CONTACT (official):
                 - Website: tclcnigeria.com
@@ -109,6 +109,20 @@ namespace tclcnigeria.Controllers
                 - Sister Ajibola Tolani: Assistant Head (H.O.D) of the Children's Department.
                 - Sister Bimpe Ayeni: member of the Ushering department.
                 If someone asks about the choir brothers, answer with Group 1; choir sisters, Group 2; workforce, Group 3.
+                MUSIC AND CHOIR: Brother Kessington Osas is the Church Musicologist; he directs and assists the Choir H.O.D to coordinate music in TCLC. Brother Adeolu Samson Mayowa is the H.O.D of the TCLC Choir (The Champion Voices) and the Mass Choir, the Church Bass Guitarist, and a member of the Church Workforce.
+                More choir members (sisters): Thomas Funmilola, Ife Oketoyinbo, Kemi Babalola, Tope Akinyemi Osemwegie, Akintan Yemisi, Adeola Fatuashe. More choir members (brothers): Damilare Adewunmi.
+                TRANSPORTATION: Deacon Ademuluyi Samuel is the H.O.D of Transportation.
+                WOMEN OF GLORY: Sister Adeuyan Olabisi is a Women of Glory member.
+                BIBLE INSTITUTE: Pastor Tony Ike is the Provost of The Lord's City Bible Institute.
+                PASTORS AND ELDERS: Brother Frank Damisa is an Assistant Pastor and workforce member. Pastor Dare Ogunbore is a youth church pastor and a workforce member. Pastor Adesokan is an Elder in TCLC and a member of the church workforce.
+                CHILDREN DEPARTMENT TEACHERS: Sister Femi Alawe (also workforce), Sister Kolawole Abimbola (also workforce), Sister Damilola Arowosola (also workforce), Sister Doyin Oladele (also workforce), Sister Ogunbore Adefunke. Sister Ajibola Tolani is the Assistant H.O.D of the Children Department.
+                WORKFORCE (more members): Sister Salami Adesola, Brother Arowosola Oluwaseun, Sister Oyedepo Oyindamola (also Greeters), Brother Damola Olatunji (also Media), Brother Solomon Oladimeji (also Media), Brother Tobi Ogunsanya (also Graphics and Decoration).
+                MEDIA AND SOUND: Brother Olubanji Womiloju is a member of the Sound and Media department. Brother Folorunsho Afolabi, Brother Damola Olatunji and Brother Solomon Oladimeji are also in media.
+                GRAPHICS AND DECORATION: Brother Tobi Ogunsanya and Sister Sarah are members of the Graphics (and Decoration) department.
+                USHERING DEPARTMENT: Evangelist Taiwo Lawanson is the H.O.D. Members: Deaconess Bola Johnson, Brother Sunday Ogundare, Sister Abiola Abiodun, Brother Oyegunle Somade, Sister Bimpe Ayeni.
+                PROTOCOL UNIT: Evangelist Gbenga Adepoju is the H.O.D of the Protocol Unit and the P.A to the General Overseer. Members: Sister Ayodele Olatunde, Sister Gift Ahmed, Sister Titilayo Ajaga, Sister Roseline Gansallo, Sister Olarenwaju Oriladewa.
+                TRAFFIC UNIT: Brother Tope Ilori is the H.O.D. Members: Brother Dairo Adeniyi, Brother Sunday Ayeni, Brother Seun Odumade.
+                SANCTUARY KEEPERS: Deacon Abiodun Olusoji is the H.O.D. Members: Sister Adetoye Abosede, Sister Nawalor Rose, Sister Adeboga Busola, Brother Oyebade Adesanmi, Sister Sanyaolu Tobi, Sister Sanyaolu Damilola, Sister Ademuluyi Alice, Sister Sanni Iyabode, Sister Ogunlaja Boluwatife, Sister Odumade Veronica.
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
