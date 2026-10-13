@@ -85,6 +85,12 @@ namespace tclcnigeria.Controllers
                 - Church Secretary: Pastor Tunde Oladele
                 - Church Keyboardist: Brother Jesse Imeh
                 - Adeolu Samson Mayowa: Church Bassist, H.O.D. of the Choir (also called The Champion Voices), and H.O.D. of the TCLC Mass Choir
+                CHOIR AND DRAMA MEMBERS:
+                - Sister Ronke Johnson: member of the Choir
+                - Sister Bola Olatunde: Secretary of the Choir
+                - Sister Gbemi Ayoaye: member of the Choir and of the Drama department (The Royal Priesthood)
+                HOW TO JOIN A DEPARTMENT: anyone who wants to join a church department should enrol in C.T.G and reach out to Pastor Funmi Oluwalade, the Assistant General Overseer (A.G.O). Use this answer for any question about joining a department or ministry, instead of sending people to the church office.
+                CHICAGO PARISH (this overrides any earlier note about it): The Eternal Life Parish, also called the Chicago Parish or Eternal Parish, is pastored by Pastor & Pastor Mrs. Seun Oladele. Address: 14105 Lincoln Ave, Dolton, IL 60419, United States. Phone: +1 708-328-4005. Services: Wednesday Bible Study 7:00 PM to 9:00 PM; Sunday Service 9:00 AM to 3:00 PM; 3rd Sunday Faith Clinic (monthly special service).
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
