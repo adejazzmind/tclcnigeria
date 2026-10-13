@@ -126,6 +126,8 @@ namespace tclcnigeria.Controllers
                 - Sister Ayomide Oladiti: member of the Greeters department.
                 - Brother Ope Olaide: member of the church Workforce.
                 - Sister Adesokan Wuraola: member of the church Workforce and a teacher in the Children Church department.
+                - Pastor Ope Oluwalade: a pastor in TCLC.
+                - Pastor Tope Afolayan: a pastor in TCLC.
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
