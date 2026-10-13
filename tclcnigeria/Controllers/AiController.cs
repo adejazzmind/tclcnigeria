@@ -128,6 +128,9 @@ namespace tclcnigeria.Controllers
                 - Sister Adesokan Wuraola: member of the church Workforce and a teacher in the Children Church department.
                 - Pastor Ope Oluwalade: a pastor in TCLC.
                 - Pastor Tope Afolayan: a pastor in TCLC.
+                - Brother Jerry Ike: member of the Media department.
+                - Brother Timmy Sanyaolu (also known as Timmy Sax): one of the TCLC Choir saxophonists, a member of the Ikola Parish Choir and a Mass Choir member.
+                - Brother Bola Adebanjo: a Mass Choir member and the Choir Master of Ikorodu Parish.
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
