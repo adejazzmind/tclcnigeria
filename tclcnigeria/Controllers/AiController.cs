@@ -123,6 +123,8 @@ namespace tclcnigeria.Controllers
                 PROTOCOL UNIT: Evangelist Gbenga Adepoju is the H.O.D of the Protocol Unit and the P.A to the General Overseer. Members: Sister Ayodele Olatunde, Sister Gift Ahmed, Sister Titilayo Ajaga, Sister Roseline Gansallo, Sister Olarenwaju Oriladewa.
                 TRAFFIC UNIT: Brother Tope Ilori is the H.O.D. Members: Brother Dairo Adeniyi, Brother Sunday Ayeni, Brother Seun Odumade.
                 SANCTUARY KEEPERS: Deacon Abiodun Olusoji is the H.O.D. Members: Sister Adetoye Abosede, Sister Nawalor Rose, Sister Adeboga Busola, Brother Oyebade Adesanmi, Sister Sanyaolu Tobi, Sister Sanyaolu Damilola, Sister Ademuluyi Alice, Sister Sanni Iyabode, Sister Ogunlaja Boluwatife, Sister Odumade Veronica.
+                - Sister Ayomide Oladiti: member of the Greeters department.
+                - Brother Ope Olaide: member of the church Workforce.
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
