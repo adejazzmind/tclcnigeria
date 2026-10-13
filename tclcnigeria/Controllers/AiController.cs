@@ -70,6 +70,17 @@ namespace tclcnigeria.Controllers
                 - The Royal Priesthood (Drama ministry): head is Evangelist Dimeji Ogunbore
                 - Ushering Department: head is Brother Lawanson
                 - Sanctuary Keepers Department: head is Deacon Abiodun Olusoji
+                ONLINE PRESENCE AND CONTACT (official):
+                - Website: tclcnigeria.com
+                - YouTube channel: The City of the Lord Church Nigeria HQ. (@tclcnigeria), where services and programs are streamed live and sermons are posted: https://www.youtube.com/@tclcnigeria
+                - Facebook: TCLC Nigeria (@thecityofthelordchurch), the official Facebook page of the church worldwide
+                - X (Twitter): @tclcnigeria
+                - Instagram: @tclcnigeria
+                - Phone: +234 808 883 4964
+                - Email: tclcnigeria@gmail.com
+                - Daily prayer: 6:00 am and 6:00 pm, Monday to Friday
+                The church is also written as The City of the Lord Church and is nicknamed Lord's City. It is a church that preaches mainly the Word of God and has seven parishes in Nigeria and beyond.
+                When someone asks how to watch services online, point them to the YouTube channel and the Watch Live page on the website.
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
