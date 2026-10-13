@@ -65,7 +65,7 @@ namespace tclcnigeria.Controllers
                 If asked for a parish street address, say the street addresses of the parishes are not listed here yet and ask the person to contact the church office. Do not guess addresses.
                 LATEST MINISTRY AND DEPARTMENT HEADS (if any earlier entry says something different, use these):
                 - Men of Honour: head is Engr. Yomi Oloyede
-                - Women of Glory: head is Pastor Mrs. Obasa
+                - Women of Glory: head is Pastor Mrs. Bukola Obasa
                 - Kingdom Heritage (children's ministry): head is Deaconess Tolulope Samson Jumoke
                 - The Royal Priesthood (Drama ministry): head is Evangelist Dimeji Ogunbore
                 - Ushering Department: head is Brother Lawanson
@@ -104,7 +104,7 @@ namespace tclcnigeria.Controllers
                 - Bro. Lanre Ayoaye: Media H.O.D
                 - Deaconess Tolulope Samson: Children's Department H.O.D (The Kingdom Heritage)
                 - Elder Abayomi: Men President (Men of Honour)
-                - Elder Evangelist Folake Obasa: Women President (Women of Glory)
+                - Elder Evangelist Bukola Obasa: Women President (Women of Glory)
                 - Evangelist Dimeji: Drama H.O.D (The Royal Priesthood)
                 - Deacon Samson Adewunmi: Care and Hospitality H.O.D
                 - Deacon Abiodun Olusoji: Sanctuary Keepers Department H.O.D
