@@ -1,9 +1,15 @@
-﻿{
+{
+  "id": "/",
   "name": "TCLC Nigeria",
   "short_name": "TCLC Nigeria",
-  "description": "The City of the Lord Church Nigeria",
+  "description": "The City of the Lords' Church (TCLC) Nigeria - sermons, events, prayer and giving.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["lifestyle", "education"],
   "background_color": "#ffffff",
   "theme_color": "#070D2E",
   "icons": [
