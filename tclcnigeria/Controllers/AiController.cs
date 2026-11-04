@@ -134,6 +134,14 @@ namespace tclcnigeria.Controllers
                 - Sister Eniola Oluwalade: member of the C.T.G Workforce.
                 - Brother Raphael Aluko: choir member.
                 - Sister Tope Olatunbosun: choir member.
+                - Brother James Bankole: member of the church Workforce and the main man (lead person) of the Media department.
+                - TCLC MASS CHOIR: the Mass Choir has 72 members in total. It is made up of the Headquarters choir (The Champion Voices, marked HQ), the Ikorodu Parish choir, the Ikola Parish choir and one Oke Aro Parish member. Everyone on the list is a member of the TCLC Mass Choir.
+                - HEADQUARTERS CHOIR (The Champion Voices, HQ) leadership: Brother Adeolu Samson Mayowa is the Choir H.O.D and the Church Bassist. Sister Olatunde Omobolanle is the Choir Secretary. Brother Osas Kensington (Kessington Osas) is the Musicologist; he coordinates and directs music and works with the Choir H.O.D.
+                - HEADQUARTERS CHOIR (The Champion Voices) members, sisters: Olatunde Omobolanle, Tope Akinyemi, Aderonke Johnson, Funmilola Thomas, Ayoaye Ayogbemisola, Alli Alice, Opeyemi Igbalajobi, Grace Ogundare, Ayomide Israel, Abiodun Adewunmi, Olayimika Somade, Oreoluwa Oluwole, Serah Keke, Oluwakemi Babalola, Akintan Yemisi, Ifeoluwa Oketoyinbo, Monica Agoye, Remilekun Oriladewa, Omobolanle Aporio, Olushola Oyebola, Elizabeth Chukwuemeka, Tope Olatunbosun, Adeola Fatunase, Honour Oyetunji, Abdulsallam Taiwo, Fineface Patience, Godsfavour, Ike Mercy.
+                - HEADQUARTERS CHOIR (The Champion Voices) members, brothers: Adeolu Samson Mayowa, Abiodun Olusoji, Seun Mosadoba, Damilare Adewunmi, Jesse Imeh, Olawale Keshinro, Olayinka Olatunde, Samson Adewunmi, Folorunso Afolabi, Ayankunle Mutiu, Tunde Ganiu, Samuel Johnson, Damilola Adeyemi, Tunde Olugbaibi, Raphael Aluko, Osas Kensington, Tunmise Okoreijor, Tope Adesanwo.
+                - OKE ARO PARISH choir member (also in the Mass Choir): Sister Marvelous Yahya.
+                - IKORODU PARISH CHOIR (also in the Mass Choir): Brothers Bola Adebanjo (Choir Master), Daniel Ebenezer, Caleb Adesanya, Jomiloju Jeje, Similoluwa Jeje, Segun Ogunyinka, Ajuwon Ayo, Ajuwon Deji, Sosanya, Michael Seunfunmi. Sisters Oyeyemi Ebenezer, Jeje Mariam, Shaba Bolade, Joy Mordi, Mordi, Deborah, Testimony, Precious, Victoria Adesanya.
+                - IKOLA PARISH CHOIR (also in the Mass Choir): Brothers Sanyaolu Timilehin, Allen Temini, Nduka Isreal. Sister Sanyaolu Eniola. Brother Timmy Sanyaolu (Timmy Sax) is also an Ikola Parish choir member.
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
