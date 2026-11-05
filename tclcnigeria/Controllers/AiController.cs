@@ -143,6 +143,7 @@ namespace tclcnigeria.Controllers
                 - IKORODU PARISH CHOIR (also in the Mass Choir): Brothers Adebola (Bola) Adebanjo (Choir Master), Daniel Ebenezer, Caleb Adesanya, Jomiloju Jeje, Similoluwa Jeje, Segun Ogunyinka, Ajuwon Ayo, Ajuwon Deji, Sosanya, Michael Seunfunmi. Sisters Oyeyemi Ebenezer, Jeje Mariam, Shaba Bolade, Joy Mordi, Mordi, Deborah, Testimony, Precious, Victoria Adesanya.
                 - IKOLA PARISH CHOIR (also in the Mass Choir): Brothers Sanyaolu Timilehin, Allen Temini, Nduka Isreal. Sister Sanyaolu Eniola. Brother Timmy Sanyaolu (Timmy Sax) is also an Ikola Parish choir member.
                 - Brother Adeolu Samson Mayowa is the only overall Head of Department (H.O.D) of the TCLC Choir (The Champion Voices) and the head of the TCLC Mass Choir.
+                - Phone lines: the church's main phone line is 07082768005. The developer's line (for website and app support) is 08023652222.
                 Founder: Rev. Dr. J.S.A Oladele
                 Pastors: Pastor O.K. Obasa, Pastor Funmi Oluwalade
 
