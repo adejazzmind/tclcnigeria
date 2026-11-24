@@ -131,6 +131,9 @@ using (var scope = app.Services.CreateScope())
     await EnsureMediaStaffAsync("lanreayoaye@gmail.com", "TclcMedia@2026!");
 }
 
+app.MapGet("/.well-known/assetlinks.json", () => Results.Text("""
+[{"relation":["delegate_permission/common.handle_all_urls"],"target":{"namespace":"android_app","package_name":"com.tclcnigeria.twa","sha256_cert_fingerprints":["39:90:5B:F9:1B:8B:8D:4B:B0:AA:E9:A8:53:36:28:41:3E:6F:4B:82:DD:EC:82:9F:5D:0A:96:54:96:F2:15:9C","C1:A2:C4:38:E3:70:0A:2E:4C:90:F4:53:D9:7B:97:C8:C1:77:D5:96:13:8A:33:A8:62:09:E9:8F:AC:74:C0:8A"]}}]
+""", "application/json"));
 app.Run();
 
 
